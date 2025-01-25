@@ -12,8 +12,8 @@ import java.util.Set;
 import org.reflections.Reflections;
 
 import com.jannotate.annotations.MyFrameInterface;
-import com.jannotate.processors.classes.ClassProcessor;
-import com.jannotate.processors.fields.FieldProcessor;
+import com.jannotate.common.ClassProcessor;
+import com.jannotate.common.FieldProcessor;
 
 public class AnnotationProcessorProxy implements InvocationHandler {
     private final Object target;

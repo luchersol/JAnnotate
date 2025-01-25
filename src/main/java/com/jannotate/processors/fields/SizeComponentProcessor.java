@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import javax.swing.JComponent;
 
 import com.jannotate.annotations.fields.SizeComponent;
+import com.jannotate.common.FieldProcessor;
 
 public class SizeComponentProcessor implements FieldProcessor {
 

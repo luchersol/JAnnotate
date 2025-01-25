@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.jannotate.annotations.classes.layoutManager.LayoutManagerAnnotation;
-import com.jannotate.processors.classes.ClassProcessor;
+import com.jannotate.common.ClassProcessor;
 
 public class LayoutManagerAnnotationProcessor implements ClassProcessor {
 

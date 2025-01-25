@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 import com.jannotate.annotations.fields.ActionComponent;
 import com.jannotate.annotations.fields.ActionsComponent;
+import com.jannotate.common.FieldProcessor;
 
 public class ActionsComponentProcessor implements FieldProcessor {
  

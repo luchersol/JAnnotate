@@ -1,4 +1,4 @@
-package com.jannotate.processors.fields;
+package com.jannotate.common;
 
 import java.lang.reflect.Field;
 

@@ -3,6 +3,7 @@ package com.jannotate.processors.classes;
 import java.lang.reflect.Field;
 
 import com.jannotate.annotations.classes.AutoInstantiateFields;
+import com.jannotate.common.ClassProcessor;
 
 public class AutoInstantiateFieldsProcessor implements ClassProcessor {
     

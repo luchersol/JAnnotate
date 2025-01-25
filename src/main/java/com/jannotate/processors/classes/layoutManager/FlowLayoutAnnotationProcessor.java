@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.jannotate.annotations.classes.layoutManager.FlowLayoutAnnotation;
-import com.jannotate.processors.classes.ClassProcessor;
+import com.jannotate.common.ClassProcessor;
 
 public class FlowLayoutAnnotationProcessor implements ClassProcessor {
 

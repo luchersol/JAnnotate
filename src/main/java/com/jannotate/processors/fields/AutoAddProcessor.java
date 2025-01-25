@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import javax.swing.JComponent;
 
 import com.jannotate.annotations.fields.AutoAdd;
+import com.jannotate.common.FieldProcessor;
 
 public class AutoAddProcessor implements FieldProcessor {
     

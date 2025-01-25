@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import javax.swing.AbstractButton;
 
 import com.jannotate.annotations.fields.ActionComponent;
+import com.jannotate.common.FieldProcessor;
 
 public class ActionComponentProcessor implements FieldProcessor {
     

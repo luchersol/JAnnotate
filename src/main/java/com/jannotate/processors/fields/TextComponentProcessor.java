@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import com.jannotate.annotations.fields.TextComponent;
+import com.jannotate.common.FieldProcessor;
 
 public class TextComponentProcessor implements FieldProcessor {
     
