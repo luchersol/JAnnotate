@@ -1,22 +1,23 @@
 package test;
 
 import java.awt.*;
-import java.util.function.Consumer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import src.annotations.AnnotationProcessorProxy;
 import src.annotations.MyFrameInterface;
 import src.annotations.classes.AutoInstantiateFields;
+import src.annotations.classes.LayoutManagerAnnotation;
 import src.annotations.fields.ActionComponent;
 import src.annotations.fields.ActionsComponent;
 import src.annotations.fields.AutoAdd;
 import src.annotations.fields.SizeComponent;
+import src.processors.AnnotationProcessorProxy;
 
 @AutoInstantiateFields
+@LayoutManagerAnnotation(GridLayout.class)
 public class MyFrame extends JFrame implements MyFrameInterface {
 
     @AutoAdd
