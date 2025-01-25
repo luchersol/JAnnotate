@@ -1,4 +1,4 @@
-package src;
+package test;
 
 import java.awt.*;
 import java.util.function.Consumer;
