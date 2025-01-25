@@ -1,13 +1,11 @@
-package src.annotations;
+package src.annotations.classes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface SizeComponent {
-    int width() default 0;
-    int heigth() default 0;
+@Target(ElementType.TYPE)
+public @interface AutoInstantiateFields {
 }

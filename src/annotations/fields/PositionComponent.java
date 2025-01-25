@@ -1,4 +1,4 @@
-package src.annotations;
+package src.annotations.fields;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,8 +7,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ActionComponent {
-    
-    String method() default "";
-    
+public @interface PositionComponent {
+    int x() default 0;
+    int y() default 0;
 }

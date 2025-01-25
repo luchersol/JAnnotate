@@ -1,5 +1,7 @@
 package src.annotations;
 
 public interface MyFrameInterface {
-    void setVisible(boolean visible);
+    default void runAnnotations() {
+        
+    };
 }

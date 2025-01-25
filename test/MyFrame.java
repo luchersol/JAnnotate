@@ -8,13 +8,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import src.annotations.ActionComponent;
-import src.annotations.ActionsComponent;
 import src.annotations.AnnotationProcessorProxy;
-import src.annotations.AutoAdd;
-import src.annotations.AutoInstantiateFields;
 import src.annotations.MyFrameInterface;
-import src.annotations.SizeComponent;
+import src.annotations.classes.AutoInstantiateFields;
+import src.annotations.fields.ActionComponent;
+import src.annotations.fields.ActionsComponent;
+import src.annotations.fields.AutoAdd;
+import src.annotations.fields.SizeComponent;
 
 @AutoInstantiateFields
 public class MyFrame extends JFrame implements MyFrameInterface {
@@ -31,15 +31,15 @@ public class MyFrame extends JFrame implements MyFrameInterface {
     @SizeComponent(width = 300, heigth = 50)
     private JTextField myTextField;
 
-    public MyFrame() {    
+    public MyFrame() { 
+        MyFrameInterface proxyFrame = AnnotationProcessorProxy.createProxy(this);
+        proxyFrame.runAnnotations();
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new FlowLayout());
-
-        MyFrameInterface proxyFrame = (MyFrameInterface) AnnotationProcessorProxy.createProxy(this);
-        proxyFrame.setVisible(true);
-        
         this.pack();
         this.setVisible(true);
+        
     }
 
     public static void printBoton(){
@@ -57,4 +57,5 @@ public class MyFrame extends JFrame implements MyFrameInterface {
     public static void main(String[] args) {
         MyFrame.run();
     }
+
 }

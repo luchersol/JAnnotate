@@ -9,6 +9,13 @@ import java.lang.reflect.Proxy;
 import javax.swing.AbstractButton;
 import javax.swing.JComponent;
 
+import src.annotations.classes.AutoInstantiateFields;
+import src.annotations.fields.ActionComponent;
+import src.annotations.fields.ActionsComponent;
+import src.annotations.fields.AutoAdd;
+import src.annotations.fields.PositionComponent;
+import src.annotations.fields.SizeComponent;
+
 public class AnnotationProcessorProxy implements InvocationHandler {
     private final Object target;
 
@@ -18,10 +25,8 @@ public class AnnotationProcessorProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        if (method.getName().equals("setVisible") && args.length == 1 && args[0] instanceof Boolean) {
-            processAnnotations(target);
-        }
-        return method.invoke(target, args);
+        processAnnotations(target);
+        return method.invoke(target);
     }
 
     private void processAnnotations(Object object) {
@@ -154,8 +159,8 @@ public class AnnotationProcessorProxy implements InvocationHandler {
         
     }
 
-    public static Object createProxy(Object target) {
-        return Proxy.newProxyInstance(
+    public static MyFrameInterface createProxy(Object target) {
+        return (MyFrameInterface) Proxy.newProxyInstance(
             target.getClass().getClassLoader(),
             new Class[]{MyFrameInterface.class},  // Cambiar a la interfaz
             new AnnotationProcessorProxy(target)

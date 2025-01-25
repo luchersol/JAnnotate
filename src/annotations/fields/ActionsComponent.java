@@ -1,4 +1,4 @@
-package src.annotations;
+package src.annotations.fields;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
