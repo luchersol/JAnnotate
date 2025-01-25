@@ -1,10 +1,7 @@
 package com.jannotate;
 
-import java.awt.*;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -12,7 +9,6 @@ import javax.swing.JTextField;
 import com.jannotate.annotations.MyFrameInterface;
 import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.annotations.classes.layoutManager.FlowLayoutAnnotation;
-import com.jannotate.annotations.classes.layoutManager.LayoutManagerAnnotation;
 import com.jannotate.annotations.fields.ActionComponent;
 import com.jannotate.annotations.fields.ActionsComponent;
 import com.jannotate.annotations.fields.AutoAdd;
