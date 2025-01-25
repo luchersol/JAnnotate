@@ -1,4 +1,4 @@
-package src.test.java;
+package com.jannotate;
 
 import java.awt.*;
 
