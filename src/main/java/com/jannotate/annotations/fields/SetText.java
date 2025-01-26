@@ -5,9 +5,15 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import com.jannotate.common.TextColor;
+
+
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface SizeComponent {
-    int width() default 0;
-    int heigth() default 0;
+public @interface SetText {
+    String text() default "";
+    TextColor color() default TextColor.NULL;
+    int red() default 0;
+    int green() default 0;
+    int blue() default 0;
 }

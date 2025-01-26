@@ -1,15 +1,12 @@
-package com.jannotate.annotations.fields;
+package com.jannotate.annotations.classes.layoutManager;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ActionComponent {
-    
-    String method() default "";
-    String action() default "";
-    
+@Target(ElementType.TYPE)
+public @interface UseGridBagLayout {
+
 }

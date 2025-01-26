@@ -5,20 +5,20 @@ import java.lang.reflect.Method;
 
 import javax.swing.AbstractButton;
 
-import com.jannotate.annotations.fields.ActionComponent;
+import com.jannotate.annotations.fields.ActionMethod;
 import com.jannotate.common.FieldProcessor;
 
-public class ActionComponentProcessor implements FieldProcessor {
+public class ActionMethodProcessor implements FieldProcessor {
     
     public void process(Field field, Object object) {
-        if (field.isAnnotationPresent(ActionComponent.class)) {
-            ActionComponent actionAnnotation = field.getAnnotation(ActionComponent.class);
+        if (field.isAnnotationPresent(ActionMethod.class)) {
+            ActionMethod actionAnnotation = field.getAnnotation(ActionMethod.class);
             processActionComponent(field, object, actionAnnotation);
         }
         
     }
 
-    public static void processActionComponent(Field field, Object object, ActionComponent actionAnnotation ) {
+    public static void processActionComponent(Field field, Object object, ActionMethod actionAnnotation ) {
         field.setAccessible(true);
         try {
             Object value = field.get(object);
@@ -32,12 +32,11 @@ public class ActionComponentProcessor implements FieldProcessor {
                 
                 // Agrega un ActionListener que invoca el método
                 component.addActionListener(e -> {
-                        try {
-                            method.invoke(object);
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
-                    
+                    try {
+                        method.invoke(object);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }                    
                 });
             }
         } catch (IllegalAccessException | NoSuchMethodException e) {

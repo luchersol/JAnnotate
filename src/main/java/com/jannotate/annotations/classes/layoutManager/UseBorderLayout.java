@@ -7,9 +7,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface GridLayoutAnnotation {
-    int rows() default 1;
-    int cols() default 0;
+public @interface UseBorderLayout {
     int hgap() default 0;
     int vgap() default 0;
 }

@@ -5,14 +5,14 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import com.jannotate.annotations.fields.TextComponent;
+import com.jannotate.annotations.fields.SetText;
 import com.jannotate.common.FieldProcessor;
 
-public class TextComponentProcessor implements FieldProcessor {
+public class SetTextProcessor implements FieldProcessor {
     
     public void process(Field field, Object object) {
-        if (field.isAnnotationPresent(TextComponent.class)) {
-            TextComponent textAnnotation = field.getAnnotation(TextComponent.class);
+        if (field.isAnnotationPresent(SetText.class)) {
+            SetText textAnnotation = field.getAnnotation(SetText.class);
             field.setAccessible(true);
             try {
                 Object value = field.get(object);

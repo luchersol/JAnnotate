@@ -7,38 +7,36 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import com.jannotate.annotations.MyFrameInterface;
+import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.AutoInstantiateFields;
-import com.jannotate.annotations.classes.layoutManager.FlowLayoutAnnotation;
-import com.jannotate.annotations.fields.ActionComponent;
-import com.jannotate.annotations.fields.ActionsComponent;
-import com.jannotate.annotations.fields.AutoAdd;
-import com.jannotate.annotations.fields.SizeComponent;
-import com.jannotate.annotations.fields.TextComponent;
+import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
+import com.jannotate.annotations.fields.ActionMethod;
+import com.jannotate.annotations.fields.ActionMethods;
+import com.jannotate.annotations.fields.SetSize;
+import com.jannotate.annotations.fields.SetText;
 import com.jannotate.processors.AnnotationProcessorProxy;
 
 @AutoInstantiateFields
-@FlowLayoutAnnotation
+@AutoAddComponents
+@UseFlowLayout
 public class MyFrame extends JFrame implements MyFrameInterface {
 
-    @AutoAdd
-    @ActionsComponent(actions = { @ActionComponent(method = "printBoton"),  @ActionComponent(method = "mostrarAlerta")})
-    @SizeComponent(width = 100, heigth = 40)
-    @TextComponent(text = "Click")
+    @ActionMethods(actions = { @ActionMethod(method = "printBoton"),  @ActionMethod(method = "mostrarAlerta")})
+    @SetSize(width = 100, heigth = 40)
+    @SetText(text = "Click")
     private JButton myButton;
 
-    @AutoAdd
-    @SizeComponent(width = 300, heigth = 50)
-    @TextComponent(text = "Hola")
+    @SetSize(width = 300, heigth = 50)
+    @SetText(text = "Hola")
     private JTextField myTextField;
 
-    @AutoAdd
-    @SizeComponent(width = 300, heigth = 50)
+    @SetSize(width = 300, heigth = 50)
     private JPasswordField myPasswordField;
 
     public MyFrame() { 
         AnnotationProcessorProxy.createProxy(this).applyAnnotations();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.pack();
         this.setVisible(true);
     }
 

@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface FlowLayoutAnnotation {
+public @interface UseFlowLayout {
     int align() default FlowLayout.CENTER;
     int hgap() default 5;
     int vgap() default 5;

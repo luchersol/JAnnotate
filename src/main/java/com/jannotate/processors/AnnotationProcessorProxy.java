@@ -5,15 +5,20 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.reflections.Reflections;
 
 import com.jannotate.annotations.MyFrameInterface;
 import com.jannotate.common.ClassProcessor;
 import com.jannotate.common.FieldProcessor;
+import com.jannotate.common.PriorityAnnotation;
 
 public class AnnotationProcessorProxy implements InvocationHandler {
     private final Object target;
@@ -28,30 +33,6 @@ public class AnnotationProcessorProxy implements InvocationHandler {
         return method.invoke(target);
     }
 
-    // private static List<Class<? extends ClassProcessor>> getClassProcessors() {
-    //     List<Class<? extends ClassProcessor>> clazzProcessor = new ArrayList<>();
-    //     clazzProcessor.add(AutoInstantiateFieldsProcessor.class);
-    //     clazzProcessor.add(BorderLayoutAnnotationProcessor.class);
-    //     clazzProcessor.add(BoxLayoutAnnotationProcessor.class);
-    //     clazzProcessor.add(CardLayoutAnnotationProcessor.class);
-    //     clazzProcessor.add(FlowLayoutAnnotationProcessor.class);
-    //     clazzProcessor.add(GridBagLayoutAnnotationProcessor.class);
-    //     clazzProcessor.add(GridLayoutAnnotationProcessor.class);
-    //     clazzProcessor.add(LayoutManagerAnnotationProcessor.class);
-    //     return clazzProcessor;
-    // }
-
-    // private static List<Class<? extends FieldProcessor>> getFieldProcessors() {
-    //     List<Class<? extends FieldProcessor>> fieldProcessors = new ArrayList<>();
-    //     fieldProcessors.add(ActionComponentProcessor.class);
-    //     fieldProcessors.add(ActionsComponentProcessor.class);
-    //     fieldProcessors.add(AutoAddProcessor.class);
-    //     fieldProcessors.add(PositionComponentProcessor.class);
-    //     fieldProcessors.add(SizeComponentProcessor.class);
-    //     fieldProcessors.add(TextComponentProcessor.class);
-    //     return fieldProcessors;
-    // }
-
     private static final Set<Class<? extends ClassProcessor>> classProcessors;
     private static final Set<Class<? extends FieldProcessor>> fieldProcessors;
 
@@ -59,18 +40,26 @@ public class AnnotationProcessorProxy implements InvocationHandler {
         Reflections classReflections = new Reflections("com.jannotate.processors.classes");
         Reflections fieldReflections = new Reflections("com.jannotate.processors.fields");
 
-        // Encontrar todas las clases que extienden ClassProcessor
         classProcessors = classReflections.getSubTypesOf(ClassProcessor.class);
-        // Encontrar todas las clases que extienden FieldProcessor
         fieldProcessors = fieldReflections.getSubTypesOf(FieldProcessor.class);
     }
 
-    public static Set<Class<? extends ClassProcessor>> getClassProcessors() {
-        return classProcessors;
+    public static List<Class<? extends ClassProcessor>> getClassProcessors() {
+        return classProcessors.stream()
+            .sorted(Comparator.comparingInt((Class<? extends ClassProcessor> cls) -> {
+                PriorityAnnotation annotation = cls.getAnnotation(PriorityAnnotation.class);
+                return annotation != null ? annotation.value() : Integer.MAX_VALUE;
+            }))
+            .collect(Collectors.toList());
     }
 
-    public static Set<Class<? extends FieldProcessor>> getFieldProcessors() {
-        return fieldProcessors;
+    public static List<Class<? extends FieldProcessor>> getFieldProcessors() {
+        return fieldProcessors.stream()
+            .sorted(Comparator.comparingInt((Class<? extends FieldProcessor> cls) -> {
+                PriorityAnnotation annotation = cls.getAnnotation(PriorityAnnotation.class);
+                return annotation != null ? annotation.value() : Integer.MAX_VALUE;
+            }))
+            .collect(Collectors.toList());
     }
 
     private static final Map<Class<? extends ClassProcessor>, Method> classProcessorMethods = new HashMap<>();

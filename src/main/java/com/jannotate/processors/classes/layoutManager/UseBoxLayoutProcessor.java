@@ -8,14 +8,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.jannotate.annotations.classes.layoutManager.BoxLayoutAnnotation;
+import com.jannotate.annotations.classes.layoutManager.UseBoxLayout;
 import com.jannotate.common.ClassProcessor;
 
-public class BoxLayoutAnnotationProcessor implements ClassProcessor {
+public class UseBoxLayoutProcessor implements ClassProcessor {
 
     public void process(Object object, Class<?> clazz){        
-        if (clazz.isAnnotationPresent(BoxLayoutAnnotation.class)) {
-            BoxLayoutAnnotation annotation = clazz.getAnnotation(BoxLayoutAnnotation.class);
+        if (clazz.isAnnotationPresent(UseBoxLayout.class)) {
+            UseBoxLayout annotation = clazz.getAnnotation(UseBoxLayout.class);
             
 
             // Verificar si el objeto es una instancia de JPanel o JFrame
@@ -29,7 +29,7 @@ public class BoxLayoutAnnotationProcessor implements ClassProcessor {
         }
     }
 
-    private static void applyLayout(Container container, Class<? extends LayoutManager> layoutClass, BoxLayoutAnnotation annotation) {
+    private static void applyLayout(Container container, Class<? extends LayoutManager> layoutClass, UseBoxLayout annotation) {
         try {
             int axis = annotation.axis();
             // Crear una instancia del LayoutManager

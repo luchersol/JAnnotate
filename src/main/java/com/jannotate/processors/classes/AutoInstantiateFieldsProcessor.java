@@ -4,7 +4,9 @@ import java.lang.reflect.Field;
 
 import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.common.ClassProcessor;
+import com.jannotate.common.PriorityAnnotation;
 
+@PriorityAnnotation
 public class AutoInstantiateFieldsProcessor implements ClassProcessor {
     
     public void process(Object object, Class<?> clazz) {

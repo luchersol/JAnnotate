@@ -1,39 +1,41 @@
 package com.jannotate.processors.classes.layoutManager;
 
+import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 import java.lang.reflect.Constructor;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.jannotate.annotations.classes.layoutManager.FlowLayoutAnnotation;
+import com.jannotate.annotations.classes.layoutManager.UseBorderLayout;
 import com.jannotate.common.ClassProcessor;
 
-public class FlowLayoutAnnotationProcessor implements ClassProcessor {
+public class UseBorderLayoutProcessor implements ClassProcessor{
 
     public void process(Object object, Class<?> clazz){        
-        if (clazz.isAnnotationPresent(FlowLayoutAnnotation.class)) {
-            FlowLayoutAnnotation annotation = clazz.getAnnotation(FlowLayoutAnnotation.class);
+        
+        if (clazz.isAnnotationPresent(UseBorderLayout.class)) {
+            UseBorderLayout annotation = clazz.getAnnotation(UseBorderLayout.class);
+            
             
             // Verificar si el objeto es una instancia de JPanel o JFrame
             if (object instanceof JPanel) {
                 JPanel panel = (JPanel) object;
-                applyLayout(panel, FlowLayout.class, annotation);
+                applyLayout(panel, BorderLayout.class, annotation);
             } else if (object instanceof JFrame) {
                 JFrame frame = (JFrame) object;
-                applyLayout(frame.getContentPane(), FlowLayout.class, annotation);
+                applyLayout(frame.getContentPane(), BorderLayout.class, annotation);
             }
         }
     }
 
-    private static void applyLayout(Container container, Class<? extends LayoutManager> layoutClass, FlowLayoutAnnotation annotation) {
+    private static void applyLayout(Container container, Class<? extends LayoutManager> layoutClass, UseBorderLayout annotation) {
         try {
-            int align = annotation.align(), hgap = annotation.hgap(), vgap = annotation.vgap();
+            int hgap = annotation.hgap(), vgap = annotation.vgap();
             // Crear una instancia del LayoutManager
-            Constructor<? extends LayoutManager> constructor = layoutClass.getDeclaredConstructor(int.class, int.class, int.class);
-            LayoutManager layoutManager = constructor.newInstance(align, hgap, vgap);
+            Constructor<? extends LayoutManager> constructor = layoutClass.getDeclaredConstructor(int.class, int.class);
+            LayoutManager layoutManager = constructor.newInstance(hgap, vgap);
             container.setLayout(layoutManager);  // Asignar el layout al contenedor
         } catch (Exception e) {
             e.printStackTrace();
@@ -41,4 +43,5 @@ public class FlowLayoutAnnotationProcessor implements ClassProcessor {
             container.setLayout(new java.awt.FlowLayout());
         }
     }
+
 }

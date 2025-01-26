@@ -1,36 +1,39 @@
 package com.jannotate.processors.classes.layoutManager;
 
 import java.awt.Container;
-import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.lang.reflect.Constructor;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.jannotate.annotations.classes.layoutManager.GridBagLayoutAnnotation;
+import com.jannotate.annotations.classes.layoutManager.UseGridLayout;
 import com.jannotate.common.ClassProcessor;
 
-public class GridBagLayoutAnnotationProcessor implements ClassProcessor {
+public class UseGridLayoutProcessor implements ClassProcessor {
 
     public void process(Object object, Class<?> clazz){        
-        if (clazz.isAnnotationPresent(GridBagLayoutAnnotation.class)) {
+        if (clazz.isAnnotationPresent(UseGridLayout.class)) {
+            UseGridLayout annotation = clazz.getAnnotation(UseGridLayout.class);
+
             // Verificar si el objeto es una instancia de JPanel o JFrame
             if (object instanceof JPanel) {
                 JPanel panel = (JPanel) object;
-                applyLayout(panel, GridBagLayout.class);
+                applyLayout(panel, GridLayout.class, annotation);
             } else if (object instanceof JFrame) {
                 JFrame frame = (JFrame) object;
-                applyLayout(frame.getContentPane(), GridBagLayout.class);
+                applyLayout(frame.getContentPane(), GridLayout.class, annotation);
             }
         }
     }
 
-    private static void applyLayout(Container container, Class<? extends LayoutManager> layoutClass) {
+    private static void applyLayout(Container container, Class<? extends LayoutManager> layoutClass, UseGridLayout annotation) {
         try {
+            int rows = annotation.rows(), cols = annotation.cols(), hgap = annotation.hgap(), vgap = annotation.vgap();
             // Crear una instancia del LayoutManager
-            Constructor<? extends LayoutManager> constructor = layoutClass.getDeclaredConstructor();
-            LayoutManager layoutManager = constructor.newInstance();
+            Constructor<? extends LayoutManager> constructor = layoutClass.getDeclaredConstructor(int.class, int.class, int.class, int.class);
+            LayoutManager layoutManager = constructor.newInstance(rows, cols, hgap, vgap);
             container.setLayout(layoutManager);  // Asignar el layout al contenedor
         } catch (Exception e) {
             e.printStackTrace();

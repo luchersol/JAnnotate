@@ -1,14 +1,13 @@
-package com.jannotate.annotations.fields;
+package com.jannotate.annotations.classes.layoutManager;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ActionsComponent {
-    
-    ActionComponent[] actions() default {};
-    
+@Target(ElementType.TYPE)
+public @interface UseCardLayout {
+    int hgap() default 0;
+    int vgap() default 0;
 }
