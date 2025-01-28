@@ -4,27 +4,29 @@ import java.lang.reflect.Field;
 
 import javax.swing.JComponent;
 
-import com.jannotate.annotations.fields.SetSize;
+import com.jannotate.annotations.fields.SetBound;
 import com.jannotate.common.FieldProcessorInterface;
 import com.jannotate.common.JProcessor;
 
 @JProcessor
-public class SetSizeProcessor implements FieldProcessorInterface {
+public class SetBoundProcessor implements FieldProcessorInterface {
 
+    @Override
     public void process(Field field, Object object) {
-        if (field.isAnnotationPresent(SetSize.class)) {
-            SetSize sizeAnnotation = field.getAnnotation(SetSize.class);
+        if(field.isAnnotationPresent(SetBound.class)){
+            SetBound annotation = field.getAnnotation(SetBound.class);
+            int x = annotation.x(), y = annotation.y(), width = annotation.width(), heigth = annotation.heigth();
             field.setAccessible(true);
             try {
                 Object value = field.get(object);
                 if (value instanceof JComponent) {
                     JComponent component = (JComponent) value;
-                    component.setPreferredSize(new java.awt.Dimension(sizeAnnotation.width(), sizeAnnotation.heigth()));
+                    component.setBounds(x,y,width,heigth);
                 }
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
         }
     }
-
+    
 }

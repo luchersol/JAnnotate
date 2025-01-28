@@ -8,11 +8,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.jannotate.annotations.classes.layoutManager.UseLayoutManager;
-import com.jannotate.common.ClassProcessor;
+import com.jannotate.common.ClassProcessorInterface;
+import com.jannotate.common.JProcessor;
 
-public class UseLayoutManagerProcessor implements ClassProcessor {
+@JProcessor
+public class UseLayoutManagerProcessor implements ClassProcessorInterface {
 
-    public void process(Object object, Class<?> clazz){        
+    public void process(Class<?> clazz, Object object){        
         if (clazz.isAnnotationPresent(UseLayoutManager.class)) {
             UseLayoutManager annotation = clazz.getAnnotation(UseLayoutManager.class);
             Class<? extends LayoutManager> layoutClass = annotation.value();

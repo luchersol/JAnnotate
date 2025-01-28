@@ -6,9 +6,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import com.jannotate.annotations.fields.SetText;
-import com.jannotate.common.FieldProcessor;
+import com.jannotate.common.FieldProcessorInterface;
+import com.jannotate.common.JProcessor;
 
-public class SetTextProcessor implements FieldProcessor {
+@JProcessor
+public class SetTextProcessor implements FieldProcessorInterface {
     
     public void process(Field field, Object object) {
         if (field.isAnnotationPresent(SetText.class)) {

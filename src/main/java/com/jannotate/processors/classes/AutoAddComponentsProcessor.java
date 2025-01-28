@@ -1,20 +1,18 @@
 package com.jannotate.processors.classes;
 
+import java.awt.Component;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-
-import javax.swing.JFrame;
 
 import com.jannotate.annotations.classes.AutoInstantiateFields;
-import com.jannotate.common.ClassProcessor;
+import com.jannotate.common.ClassProcessorInterface;
+import com.jannotate.common.JProcessor;
 
-import java.awt.Component;
-
-public class AutoAddComponentsProcessor implements ClassProcessor {
+@JProcessor
+public class AutoAddComponentsProcessor implements ClassProcessorInterface {
 
     @Override
-    public void process(Object object, Class<?> clazz) {
+    public void process(Class<?> clazz, Object object) {
         if (clazz.isAnnotationPresent(AutoInstantiateFields.class)) {
             Field[] fields = clazz.getDeclaredFields();
             for (Field field : fields) {

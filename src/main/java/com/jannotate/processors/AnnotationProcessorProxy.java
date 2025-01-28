@@ -7,7 +7,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -16,8 +15,11 @@ import java.util.stream.Collectors;
 import org.reflections.Reflections;
 
 import com.jannotate.annotations.MyFrameInterface;
-import com.jannotate.common.ClassProcessor;
-import com.jannotate.common.FieldProcessor;
+import com.jannotate.common.AbstractProcessorInterface;
+import com.jannotate.common.ClassProcessorInterface;
+import com.jannotate.common.FieldProcessorInterface;
+import com.jannotate.common.JProcessor;
+import com.jannotate.common.MethodProcessorInterface;
 import com.jannotate.common.PriorityAnnotation;
 
 public class AnnotationProcessorProxy implements InvocationHandler {
@@ -30,47 +32,61 @@ public class AnnotationProcessorProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         processAnnotations(target);
-        return method.invoke(target);
+        return proxy;
     }
 
-    private static final Set<Class<? extends ClassProcessor>> classProcessors;
-    private static final Set<Class<? extends FieldProcessor>> fieldProcessors;
+    private static final Set<Class<? extends ClassProcessorInterface>> classProcessors;
+    private static final Set<Class<? extends FieldProcessorInterface>> fieldProcessors;
+    private static final Set<Class<? extends MethodProcessorInterface>> methodProcessors;
 
     static {
-        Reflections classReflections = new Reflections("com.jannotate.processors.classes");
-        Reflections fieldReflections = new Reflections("com.jannotate.processors.fields");
-
-        classProcessors = classReflections.getSubTypesOf(ClassProcessor.class);
-        fieldProcessors = fieldReflections.getSubTypesOf(FieldProcessor.class);
+        classProcessors = doReflections("com.jannotate.processors.classes", ClassProcessorInterface.class);
+        fieldProcessors = doReflections("com.jannotate.processors.fields", FieldProcessorInterface.class);
+        methodProcessors = doReflections("com.jannotate.processors.methods", MethodProcessorInterface.class);
     }
 
-    public static List<Class<? extends ClassProcessor>> getClassProcessors() {
-        return classProcessors.stream()
-            .sorted(Comparator.comparingInt((Class<? extends ClassProcessor> cls) -> {
+    @SuppressWarnings("unchecked")
+    private static <T extends AbstractProcessorInterface> Set<Class<? extends T>> doReflections(String path, Class<T> clazz) {
+        Set<Class<?>> annotatedClasses = new Reflections(path).getTypesAnnotatedWith(JProcessor.class);
+        return annotatedClasses.stream()
+                .filter(c -> clazz.isAssignableFrom(c)) 
+                .map(c -> (Class<? extends T>) c)
+                .collect(Collectors.toSet());
+    }
+
+    public static List<Class<? extends ClassProcessorInterface>> getClassProcessors() {
+        return getProcessors(classProcessors);
+    }
+
+    public static List<Class<? extends FieldProcessorInterface>> getFieldProcessors() {
+        return getProcessors(fieldProcessors);
+    }
+
+    public static List<Class<? extends MethodProcessorInterface>> getMethodProcessors() {
+        return getProcessors(methodProcessors);
+    }
+
+    public static <T extends AbstractProcessorInterface> List<Class<? extends T>> getProcessors(Set<Class<? extends T>> processors) {
+        return processors.stream()
+            .sorted(Comparator.comparingInt((Class<? extends T> cls) -> {
                 PriorityAnnotation annotation = cls.getAnnotation(PriorityAnnotation.class);
                 return annotation != null ? annotation.value() : Integer.MAX_VALUE;
             }))
             .collect(Collectors.toList());
     }
 
-    public static List<Class<? extends FieldProcessor>> getFieldProcessors() {
-        return fieldProcessors.stream()
-            .sorted(Comparator.comparingInt((Class<? extends FieldProcessor> cls) -> {
-                PriorityAnnotation annotation = cls.getAnnotation(PriorityAnnotation.class);
-                return annotation != null ? annotation.value() : Integer.MAX_VALUE;
-            }))
-            .collect(Collectors.toList());
-    }
+    private static final Map<Class<? extends ClassProcessorInterface>, Method> classProcessorMethods = new HashMap<>();
+    private static final Map<Class<? extends FieldProcessorInterface>, Method> fieldProcessorMethods = new HashMap<>();
+    private static final Map<Class<? extends MethodProcessorInterface>, Method> methodProcessorMethods = new HashMap<>();
 
-    private static final Map<Class<? extends ClassProcessor>, Method> classProcessorMethods = new HashMap<>();
-    private static final Map<Class<? extends FieldProcessor>, Method> fieldProcessorMethods = new HashMap<>();
-    private static final Map<Class<? extends ClassProcessor>, Constructor<?>> classProcessorConstructors = new HashMap<>();
-    private static final Map<Class<? extends FieldProcessor>, Constructor<?>> fieldProcessorConstructors = new HashMap<>();
+    private static final Map<Class<? extends ClassProcessorInterface>, Constructor<?>> classProcessorConstructors = new HashMap<>();
+    private static final Map<Class<? extends FieldProcessorInterface>, Constructor<?>> fieldProcessorConstructors = new HashMap<>();
+    private static final Map<Class<? extends MethodProcessorInterface>, Constructor<?>> methodProcessorConstructors = new HashMap<>();
 
-    private static Method getClassProcessorMethod(Class<? extends ClassProcessor> processor) {
-        return classProcessorMethods.computeIfAbsent(processor, clazz -> {
+    private static <T> Method getProcessorMethod(Map<Class<? extends T>, Method> methodMap, Class<? extends T> processorClass, Class<?> parameter1, Class<?> parameter2) {
+        return methodMap.computeIfAbsent(processorClass, clazz -> {
             try {
-                return clazz.getMethod("process", Object.class, Class.class);
+                return clazz.getMethod("process", parameter1, parameter2);
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
                 return null;
@@ -78,19 +94,20 @@ public class AnnotationProcessorProxy implements InvocationHandler {
         });
     }
     
-    private static Method getFieldProcessorMethod(Class<? extends FieldProcessor> processor) {
-        return fieldProcessorMethods.computeIfAbsent(processor, clazz -> {
-            try {
-                return clazz.getMethod("process", Field.class, Object.class);
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-                return null;
-            }
-        });
+    private static Method getClassProcessorMethod(Class<? extends ClassProcessorInterface> processor) {
+        return getProcessorMethod(classProcessorMethods, processor, Class.class, Object.class);
     }
     
-    private static Constructor<?> getClassProcessorConstructor(Class<? extends ClassProcessor> processor) {
-        return classProcessorConstructors.computeIfAbsent(processor, clazz -> {
+    private static Method getFieldProcessorMethod(Class<? extends FieldProcessorInterface> processor) {
+        return getProcessorMethod(fieldProcessorMethods, processor, Field.class, Object.class);
+    }
+    
+    private static Method getMethodProcessorMethod(Class<? extends MethodProcessorInterface> processor) {
+        return getProcessorMethod(methodProcessorMethods, processor, Method.class, Object.class);
+    }
+    
+    private static <T> Constructor<?> getProcessorConstructor(Map<Class<? extends T>, Constructor<?>> constructorMap, Class<? extends T> processorClass) {
+        return constructorMap.computeIfAbsent(processorClass, clazz -> {
             try {
                 return clazz.getConstructor();
             } catch (NoSuchMethodException e) {
@@ -100,34 +117,36 @@ public class AnnotationProcessorProxy implements InvocationHandler {
         });
     }
     
-    private static Constructor<?> getFieldProcessorConstructor(Class<? extends FieldProcessor> processor) {
-        return fieldProcessorConstructors.computeIfAbsent(processor, clazz -> {
-            try {
-                return clazz.getConstructor();
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-                return null;
-            }
-        });
+    // Uso de la función genérica para las clases específicas
+    private static Constructor<?> getClassProcessorConstructor(Class<? extends ClassProcessorInterface> processor) {
+        return getProcessorConstructor(classProcessorConstructors, processor);
     }
     
+    private static Constructor<?> getFieldProcessorConstructor(Class<? extends FieldProcessorInterface> processor) {
+        return getProcessorConstructor(fieldProcessorConstructors, processor);
+    }
+    
+    private static Constructor<?> getMethodProcessorConstructor(Class<? extends MethodProcessorInterface> processor) {
+        return getProcessorConstructor(methodProcessorConstructors, processor);
+    }
 
-    private void processAnnotations(Object object) {
-        Class<?> clazz = object.getClass();
-        for (Class<? extends ClassProcessor> clazzProcessor : getClassProcessors()) {
+    private static void processAnnotationClass(Class<?> clazz, Object object){
+        for (Class<? extends ClassProcessorInterface> clazzProcessor : getClassProcessors()) {
             try {
                 Method method = getClassProcessorMethod(clazzProcessor);
                 Constructor<?> constructor = getClassProcessorConstructor(clazzProcessor);
                 if (method != null && constructor != null) {
-                    method.invoke(constructor.newInstance(), object, clazz);
+                    method.invoke(constructor.newInstance(), clazz, object);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
+    }
+    
+    private static void processAnnotationFields(Class<?> clazz, Object object){
         for (Field field : clazz.getDeclaredFields()) {
-            for (Class<? extends FieldProcessor> clazzProcessor : getFieldProcessors()) {
+            for (Class<? extends FieldProcessorInterface> clazzProcessor : getFieldProcessors()) {
                 try {
                     Method method = getFieldProcessorMethod(clazzProcessor);
                     Constructor<?> constructor = getFieldProcessorConstructor(clazzProcessor);
@@ -139,14 +158,36 @@ public class AnnotationProcessorProxy implements InvocationHandler {
                 }
             }
         }
-
     }
 
-    public static MyFrameInterface createProxy(Object target) {
-        return (MyFrameInterface) Proxy.newProxyInstance(
+    private static void processAnnotationMethods(Class<?> clazz, Object object){
+        for (Method method : clazz.getDeclaredMethods()) {
+            for (Class<? extends MethodProcessorInterface> clazzProcessor : getMethodProcessors()) {
+                try {
+                    Method innerMethod = getMethodProcessorMethod(clazzProcessor);
+                    Constructor<?> constructor = getMethodProcessorConstructor(clazzProcessor);
+                    if (innerMethod != null && constructor != null) {
+                        innerMethod.invoke(constructor.newInstance(), method, object);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void processAnnotations(Object object) {
+        Class<?> clazz = object.getClass();
+        processAnnotationClass(clazz, object);
+        processAnnotationFields(clazz, object);
+        processAnnotationMethods(clazz, object);
+    }
+
+    public static void createProxy(Object target) {
+        ((MyFrameInterface) Proxy.newProxyInstance(
             target.getClass().getClassLoader(),
-            new Class[]{MyFrameInterface.class},  // Cambiar a la interfaz
+            new Class[]{MyFrameInterface.class},
             new AnnotationProcessorProxy(target)
-        );
+        )).applyAnnotations();
     }
 }

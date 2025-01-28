@@ -1,14 +1,17 @@
-package com.jannotate.common;
+package com.jannotate.annotations.fields;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface PriorityAnnotation {
-    
-    int value() default 0;
+public @interface SetBound {
+
+    int x();
+    int y();
+    int width();
+    int heigth();
 
 }

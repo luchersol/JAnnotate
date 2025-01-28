@@ -5,9 +5,11 @@ import java.lang.reflect.Field;
 import javax.swing.JComponent;
 
 import com.jannotate.annotations.fields.SetPosition;
-import com.jannotate.common.FieldProcessor;
+import com.jannotate.common.FieldProcessorInterface;
+import com.jannotate.common.JProcessor;
 
-public class SetPositionProcessor implements FieldProcessor {
+@JProcessor
+public class SetPositionProcessor implements FieldProcessorInterface {
     
     public void process(Field field, Object object) {
         if (field.isAnnotationPresent(SetPosition.class)) {

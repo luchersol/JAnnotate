@@ -3,13 +3,15 @@ package com.jannotate.processors.classes;
 import java.lang.reflect.Field;
 
 import com.jannotate.annotations.classes.AutoInstantiateFields;
-import com.jannotate.common.ClassProcessor;
+import com.jannotate.common.ClassProcessorInterface;
+import com.jannotate.common.JProcessor;
 import com.jannotate.common.PriorityAnnotation;
 
+@JProcessor
 @PriorityAnnotation
-public class AutoInstantiateFieldsProcessor implements ClassProcessor {
+public class AutoInstantiateFieldsProcessor implements ClassProcessorInterface {
     
-    public void process(Object object, Class<?> clazz) {
+    public void process(Class<?> clazz, Object object) {
         if (clazz.isAnnotationPresent(AutoInstantiateFields.class)) {
             Field[] fields = clazz.getDeclaredFields();
             for (Field field : fields) {

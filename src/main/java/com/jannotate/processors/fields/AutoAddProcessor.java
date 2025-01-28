@@ -6,9 +6,11 @@ import java.lang.reflect.Field;
 import javax.swing.JComponent;
 
 import com.jannotate.annotations.fields.AutoAdd;
-import com.jannotate.common.FieldProcessor;
+import com.jannotate.common.FieldProcessorInterface;
+import com.jannotate.common.JProcessor;
 
-public class AutoAddProcessor implements FieldProcessor {
+@JProcessor
+public class AutoAddProcessor implements FieldProcessorInterface {
     
     public void process(Field field, Object object) {
         Container container = (Container) object;

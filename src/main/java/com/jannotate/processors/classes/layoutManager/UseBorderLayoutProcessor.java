@@ -9,11 +9,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.jannotate.annotations.classes.layoutManager.UseBorderLayout;
-import com.jannotate.common.ClassProcessor;
+import com.jannotate.common.ClassProcessorInterface;
+import com.jannotate.common.JProcessor;
 
-public class UseBorderLayoutProcessor implements ClassProcessor{
+@JProcessor
+public class UseBorderLayoutProcessor implements ClassProcessorInterface{
 
-    public void process(Object object, Class<?> clazz){        
+    public void process(Class<?> clazz, Object object){        
         
         if (clazz.isAnnotationPresent(UseBorderLayout.class)) {
             UseBorderLayout annotation = clazz.getAnnotation(UseBorderLayout.class);

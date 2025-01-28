@@ -9,11 +9,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.jannotate.annotations.classes.layoutManager.UseGridBagLayout;
-import com.jannotate.common.ClassProcessor;
+import com.jannotate.common.ClassProcessorInterface;
+import com.jannotate.common.JProcessor;
 
-public class UseGridBagLayoutProcessor implements ClassProcessor {
+@JProcessor
+public class UseGridBagLayoutProcessor implements ClassProcessorInterface {
 
-    public void process(Object object, Class<?> clazz){        
+    public void process(Class<?> clazz, Object object){        
         if (clazz.isAnnotationPresent(UseGridBagLayout.class)) {
             // Verificar si el objeto es una instancia de JPanel o JFrame
             if (object instanceof JPanel) {

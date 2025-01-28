@@ -2,7 +2,8 @@
     "java.compile.nullAnalysis.mode": "automatic",
     "java.project.sourcePaths": [
         "src/main/java",
-        "src/test/java"
+        "src/test/java",
+        "org/reflections"
     ],
     "java.configuration.updateBuildConfiguration": "interactive"
 }

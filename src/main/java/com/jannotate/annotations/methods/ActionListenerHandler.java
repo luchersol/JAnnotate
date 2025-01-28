@@ -1,14 +1,15 @@
-package com.jannotate.common;
+package com.jannotate.annotations.methods;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface PriorityAnnotation {
+public @interface ActionListenerHandler {
     
-    int value() default 0;
-
+    String component();
+    String[] args() default {};
+    
 }
