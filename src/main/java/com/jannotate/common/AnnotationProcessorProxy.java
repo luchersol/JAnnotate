@@ -1,4 +1,4 @@
-package com.jannotate.processors;
+package com.jannotate.common;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -14,13 +14,13 @@ import java.util.stream.Collectors;
 
 import org.reflections.Reflections;
 
-import com.jannotate.annotations.MyFrameInterface;
-import com.jannotate.common.AbstractProcessorInterface;
-import com.jannotate.common.ClassProcessorInterface;
-import com.jannotate.common.FieldProcessorInterface;
-import com.jannotate.common.JProcessor;
-import com.jannotate.common.MethodProcessorInterface;
-import com.jannotate.common.PriorityAnnotation;
+import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.annotations.PriorityAnnotation;
+import com.jannotate.common.interfaces.AbstractProcessorInterface;
+import com.jannotate.common.interfaces.ClassProcessorInterface;
+import com.jannotate.common.interfaces.FieldProcessorInterface;
+import com.jannotate.common.interfaces.MethodProcessorInterface;
+import com.jannotate.common.interfaces.MyFrameInterface;
 
 public class AnnotationProcessorProxy implements InvocationHandler {
     private final Object target;
@@ -71,6 +71,12 @@ public class AnnotationProcessorProxy implements InvocationHandler {
             .sorted(Comparator.comparingInt((Class<? extends T> cls) -> {
                 PriorityAnnotation annotation = cls.getAnnotation(PriorityAnnotation.class);
                 return annotation != null ? annotation.value() : Integer.MAX_VALUE;
+            }).thenComparing((Class<? extends T> cls) -> {
+                PriorityAnnotation annotation = cls.getAnnotation(PriorityAnnotation.class);
+                // Opcional: puedes definir cómo ordenar por `annotations` si tiene múltiples valores
+                return annotation != null && annotation.annotations().length > 0
+                    ? annotation.annotations()[0].getName() // Ordena por el nombre de la primera clase en la lista
+                    : ""; // Usa un valor por defecto si no hay anotaciones
             }))
             .collect(Collectors.toList());
     }
@@ -129,7 +135,7 @@ public class AnnotationProcessorProxy implements InvocationHandler {
     private static Constructor<?> getMethodProcessorConstructor(Class<? extends MethodProcessorInterface> processor) {
         return getProcessorConstructor(methodProcessorConstructors, processor);
     }
-
+    
     private static void processAnnotationClass(Class<?> clazz, Object object){
         for (Class<? extends ClassProcessorInterface> clazzProcessor : getClassProcessors()) {
             try {

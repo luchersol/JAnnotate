@@ -3,8 +3,8 @@ package com.jannotate.processors.classes;
 import java.awt.Component;
 
 import com.jannotate.annotations.classes.IsVisible;
-import com.jannotate.common.ClassProcessorInterface;
-import com.jannotate.common.JProcessor;
+import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.interfaces.ClassProcessorInterface;
 
 @JProcessor
 public class IsVisibleProcessor implements ClassProcessorInterface {

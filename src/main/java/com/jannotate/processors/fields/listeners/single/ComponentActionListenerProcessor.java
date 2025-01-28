@@ -7,8 +7,8 @@ import java.lang.reflect.Method;
 import javax.swing.AbstractButton;
 
 import com.jannotate.annotations.fields.listeners.single.ComponentActionListener;
-import com.jannotate.common.AbstractListenerProcessor;
-import com.jannotate.common.JProcessor;
+import com.jannotate.common.abstractClasses.AbstractListenerProcessor;
+import com.jannotate.common.annotations.JProcessor;
 
 @JProcessor
 public class ComponentActionListenerProcessor extends AbstractListenerProcessor<ComponentActionListener> {
@@ -26,9 +26,7 @@ public class ComponentActionListenerProcessor extends AbstractListenerProcessor<
             if (value instanceof AbstractButton) {
                 AbstractButton component = (AbstractButton) value;
                 String methodName = annotation.method();
-                
-                Method method = object.getClass().getDeclaredMethod(methodName);
-                method.setAccessible(true);
+                Method method = getMethod(object.getClass(), methodName, annotation.type_args());
                 Object[] args = parseArguments(method, annotation.args());
                 component.addActionListener(e -> {
                     try {

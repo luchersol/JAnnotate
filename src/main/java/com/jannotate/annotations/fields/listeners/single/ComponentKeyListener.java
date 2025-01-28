@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.jannotate.common.MethodAndArgs;
+import com.jannotate.common.annotations.MethodAndArgs;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

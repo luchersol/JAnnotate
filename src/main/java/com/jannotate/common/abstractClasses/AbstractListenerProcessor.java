@@ -1,11 +1,12 @@
-package com.jannotate.common;
+package com.jannotate.common.abstractClasses;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-public abstract class AbstractListenerProcessor<T extends Annotation> implements FieldProcessorInterface {
+import com.jannotate.common.interfaces.FieldProcessorInterface;
 
+public abstract class AbstractListenerProcessor<T extends Annotation> implements FieldProcessorInterface {
 
     @Override
     public void process(Field field, Object object) {
@@ -18,6 +19,14 @@ public abstract class AbstractListenerProcessor<T extends Annotation> implements
     protected abstract Class<T> getAnnotationClass();
 
     public abstract void bindSwingListener(Field field, Object object, T annotation);
+
+    protected static Method getMethod(Class<?> clazz, String methodName, Class<?>[] type_args) throws NoSuchMethodException, SecurityException {
+        Method method = type_args.length == 0 ?
+                            clazz.getDeclaredMethod(methodName):
+                            clazz.getDeclaredMethod(methodName, type_args);
+        method.setAccessible(true);
+        return method;
+    }
 
     protected static Object[] parseArguments(Method method, String[] args) throws IllegalArgumentException {
         Class<?>[] parameterTypes = method.getParameterTypes();

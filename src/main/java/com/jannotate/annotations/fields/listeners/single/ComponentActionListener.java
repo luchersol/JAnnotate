@@ -11,5 +11,6 @@ public @interface ComponentActionListener {
     
     String method() default "";
     String[] args() default {};
+    Class<?>[] type_args() default {};
     
 }

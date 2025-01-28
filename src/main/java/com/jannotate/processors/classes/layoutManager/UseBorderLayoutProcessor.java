@@ -8,11 +8,14 @@ import java.lang.reflect.Constructor;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.layoutManager.UseBorderLayout;
-import com.jannotate.common.ClassProcessorInterface;
-import com.jannotate.common.JProcessor;
+import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.annotations.PriorityAnnotation;
+import com.jannotate.common.interfaces.ClassProcessorInterface;
 
 @JProcessor
+@PriorityAnnotation(value = 1, annotations = {AutoAddComponents.class})
 public class UseBorderLayoutProcessor implements ClassProcessorInterface{
 
     public void process(Class<?> clazz, Object object){        

@@ -3,9 +3,9 @@ package com.jannotate.processors.classes;
 import java.lang.reflect.Field;
 
 import com.jannotate.annotations.classes.AutoInstantiateFields;
-import com.jannotate.common.ClassProcessorInterface;
-import com.jannotate.common.JProcessor;
-import com.jannotate.common.PriorityAnnotation;
+import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.annotations.PriorityAnnotation;
+import com.jannotate.common.interfaces.ClassProcessorInterface;
 
 @JProcessor
 @PriorityAnnotation

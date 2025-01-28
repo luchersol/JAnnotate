@@ -11,6 +11,6 @@ import com.jannotate.annotations.fields.listeners.single.ComponentActionListener
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ComponentActionListeners {
     
-    ComponentActionListener[] actions() default {};
+    ComponentActionListener[] value() default {};
     
 }

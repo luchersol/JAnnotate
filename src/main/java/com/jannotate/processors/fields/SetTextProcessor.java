@@ -6,8 +6,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import com.jannotate.annotations.fields.SetText;
-import com.jannotate.common.FieldProcessorInterface;
-import com.jannotate.common.JProcessor;
+import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.interfaces.FieldProcessorInterface;
 
 @JProcessor
 public class SetTextProcessor implements FieldProcessorInterface {

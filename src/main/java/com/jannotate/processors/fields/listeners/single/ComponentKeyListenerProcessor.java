@@ -12,10 +12,10 @@ import javax.swing.JComponent;
 
 import com.jannotate.annotations.fields.listeners.single.ComponentActionListener;
 import com.jannotate.annotations.fields.listeners.single.ComponentKeyListener;
-import com.jannotate.common.AbstractListenerProcessor;
-import com.jannotate.common.FieldProcessorInterface;
-import com.jannotate.common.JProcessor;
-import com.jannotate.common.MethodAndArgs;
+import com.jannotate.common.abstractClasses.AbstractListenerProcessor;
+import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.annotations.MethodAndArgs;
+import com.jannotate.common.interfaces.FieldProcessorInterface;
 
 @JProcessor
 public class ComponentKeyListenerProcessor extends AbstractListenerProcessor<ComponentKeyListener> {

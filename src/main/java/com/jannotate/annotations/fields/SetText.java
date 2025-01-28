@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.jannotate.common.TextColor;
+import com.jannotate.common.enums.TextColor;
 
 
 @Target(ElementType.FIELD)

@@ -4,20 +4,25 @@ import java.lang.reflect.Method;
 
 import com.jannotate.annotations.methods.ActionListenerHandler;
 import com.jannotate.annotations.methods.ActionListenerHandlers;
-import com.jannotate.common.JProcessor;
-import com.jannotate.common.MethodProcessorInterface;
+import com.jannotate.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
+import com.jannotate.common.annotations.JProcessor;
 
 @JProcessor
-public class ActionListenerHandlersProcessor implements MethodProcessorInterface{
+public class ActionListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<ActionListenerHandlerProcessor, ActionListenerHandler, ActionListenerHandlers> {
 
     @Override
-    public void process(Method method, Object object) {
-        if(method.isAnnotationPresent(ActionListenerHandlers.class)){
-            ActionListenerHandlers annotations = method.getAnnotation(ActionListenerHandlers.class);
-            for (ActionListenerHandler annotation : annotations.actions()) {
-                ActionListenerHandlerProcessor.processActionListenerHandler(method, object, annotation);
-            }
-        }
+    public Class<ActionListenerHandlerProcessor> getProcessorClass() {
+        return ActionListenerHandlerProcessor.class;
+    }
+
+    @Override
+    public Class<ActionListenerHandler> getAnnotationSingleClass() {
+        return ActionListenerHandler.class;
+    }
+
+    @Override
+    public Class<ActionListenerHandlers> getAnnotationGroupClass() {
+        return ActionListenerHandlers.class;
     }
     
 }

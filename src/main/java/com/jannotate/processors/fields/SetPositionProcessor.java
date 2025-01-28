@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 import javax.swing.JComponent;
 
 import com.jannotate.annotations.fields.SetPosition;
-import com.jannotate.common.FieldProcessorInterface;
-import com.jannotate.common.JProcessor;
+import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.interfaces.FieldProcessorInterface;
 
 @JProcessor
 public class SetPositionProcessor implements FieldProcessorInterface {

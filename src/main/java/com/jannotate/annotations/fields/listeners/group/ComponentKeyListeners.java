@@ -10,5 +10,5 @@ import com.jannotate.annotations.fields.listeners.single.ComponentKeyListener;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ComponentKeyListeners {
-    ComponentKeyListener[] actions() default {};
+    ComponentKeyListener[] value() default {};
 }

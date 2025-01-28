@@ -1,4 +1,4 @@
-package com.jannotate.common;
+package com.jannotate.common.enums;
 
 import java.awt.Color;
 

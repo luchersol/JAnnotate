@@ -1,4 +1,4 @@
-package com.jannotate.common;
+package com.jannotate.common.interfaces;
 
 public interface FieldAndClassProccesorInterface extends FieldProcessorInterface, ClassProcessorInterface{
 

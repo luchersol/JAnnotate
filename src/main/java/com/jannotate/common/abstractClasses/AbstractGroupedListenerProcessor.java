@@ -1,30 +1,29 @@
-package com.jannotate.common;
+package com.jannotate.common.abstractClasses;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import com.jannotate.annotations.fields.listeners.group.ComponentActionListeners;
+import com.jannotate.common.interfaces.FieldProcessorInterface;
 
-// <Processor, Annotation>
-public abstract class AbstractGroupedListenerProcessor<P extends AbstractListenerProcessor<L>, L extends Annotation, G extends Annotation> implements FieldProcessorInterface {
+public abstract class AbstractGroupedListenerProcessor<P extends AbstractListenerProcessor<S>, S extends Annotation, G extends Annotation> implements FieldProcessorInterface {
 
     public abstract Class<P> getProcessorClass();
 
-    public abstract Class<L> getAnnotationSingleClass();
+    public abstract Class<S> getAnnotationSingleClass();
 
     public abstract Class<G> getAnnotationGroupClass();
 
     @SuppressWarnings("unchecked")
     public void process(Field field, Object object) {
-        if (field.isAnnotationPresent(ComponentActionListeners.class)) {
+        if (field.isAnnotationPresent(getAnnotationGroupClass())) {
             G groupAnnotations = field.getAnnotation(getAnnotationGroupClass());
             try {
-                Method method = groupAnnotations.annotationType().getMethod("actions");
-                Object result = method.invoke(groupAnnotations);
+                Method value = groupAnnotations.annotationType().getMethod("value");
+                Object result = value.invoke(groupAnnotations);
                 if (result instanceof Object[]) {
-                    L[] actions = (L[]) result;
-                    for (L actionComponent : actions) {
+                    S[] actions = (S[]) result;
+                    for (S actionComponent : actions) {
                         P instance = getProcessorClass().getDeclaredConstructor().newInstance();
                         instance.bindSwingListener(field, object, actionComponent);
                     }
