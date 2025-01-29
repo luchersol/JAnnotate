@@ -5,8 +5,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -40,18 +42,20 @@ public class AnnotationProcessorProxy implements InvocationHandler {
     private static final Set<Class<? extends MethodProcessorInterface>> methodProcessors;
 
     static {
-        classProcessors = doReflections("com.jannotate.processors.classes", ClassProcessorInterface.class);
-        fieldProcessors = doReflections("com.jannotate.processors.fields", FieldProcessorInterface.class);
-        methodProcessors = doReflections("com.jannotate.processors.methods", MethodProcessorInterface.class);
+        classProcessors = doReflections(ClassProcessorInterface.class, "com.jannotate.processors.classes", "com.jannotate.processors.mixed.fields_classes");
+        fieldProcessors = doReflections(FieldProcessorInterface.class, "com.jannotate.processors.fields", "com.jannotate.processors.mixed.fields_classes");
+        methodProcessors = doReflections(MethodProcessorInterface.class, "com.jannotate.processors.methods");
     }
 
     @SuppressWarnings("unchecked")
-    private static <T extends AbstractProcessorInterface> Set<Class<? extends T>> doReflections(String path, Class<T> clazz) {
-        Set<Class<?>> annotatedClasses = new Reflections(path).getTypesAnnotatedWith(JProcessor.class);
-        return annotatedClasses.stream()
+    private static <T extends AbstractProcessorInterface> Set<Class<? extends T>> doReflections(Class<T> clazz, String... paths) {
+        Set<Class<?>> annotatedClasses = new HashSet<>();
+        Arrays.stream(paths).forEach(path -> annotatedClasses.addAll(new Reflections(path).getTypesAnnotatedWith(JProcessor.class)));
+        Set<Class<? extends T>> res =  annotatedClasses.stream()
                 .filter(c -> clazz.isAssignableFrom(c)) 
                 .map(c -> (Class<? extends T>) c)
                 .collect(Collectors.toSet());
+        return res;
     }
 
     public static List<Class<? extends ClassProcessorInterface>> getClassProcessors() {

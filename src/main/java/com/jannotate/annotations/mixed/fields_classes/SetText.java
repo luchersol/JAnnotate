@@ -1,4 +1,4 @@
-package com.jannotate.annotations.fields;
+package com.jannotate.annotations.mixed.fields_classes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,11 +7,10 @@ import java.lang.annotation.Target;
 
 import com.jannotate.common.enums.TextColor;
 
-
-@Target(ElementType.FIELD)
+@Target({ElementType.TYPE, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SetText {
-    String text() default "";
+    String value() default "";
     TextColor color() default TextColor.NULL;
     int red() default 0;
     int green() default 0;

@@ -5,5 +5,8 @@
         "src/test/java",
         "org/reflections"
     ],
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "always"
+    }
 }

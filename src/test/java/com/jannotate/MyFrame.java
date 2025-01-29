@@ -1,53 +1,50 @@
 package com.jannotate;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.AutoInstantiateFields;
-import com.jannotate.annotations.classes.IsVisible;
-import com.jannotate.annotations.classes.layoutManager.UseBorderLayout;
+import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
 import com.jannotate.annotations.fields.BorderPosition;
-import com.jannotate.annotations.fields.GridBagConfig;
-import com.jannotate.annotations.fields.SetSize;
-import com.jannotate.annotations.fields.SetText;
 import com.jannotate.annotations.fields.listeners.group.ComponentActionListeners;
 import com.jannotate.annotations.fields.listeners.single.ComponentActionListener;
 import com.jannotate.annotations.methods.ActionListenerHandler;
 import com.jannotate.annotations.methods.ActionListenerHandlers;
-import com.jannotate.common.AnnotationProcessorProxy;
+import com.jannotate.annotations.mixed.fields_classes.IsVisible;
+import com.jannotate.annotations.mixed.fields_classes.SetSize;
+import com.jannotate.annotations.mixed.fields_classes.SetText;
+import com.jannotate.annotations.mixed.fields_classes.SetTitle;
+import com.jannotate.common.classes.JFrame2;
 import com.jannotate.common.enums.TextColor;
-import com.jannotate.common.interfaces.MyFrameInterface;
 
-@AutoInstantiateFields
+
+@UseFlowLayout
 @AutoAddComponents
-@UseBorderLayout
+@AutoInstantiateFields
 @IsVisible
-public class MyFrame extends JFrame implements MyFrameInterface {
+@SetTitle("MY FRAME")
+@SetSize(heigth = 500, width = 500)
+public class MyFrame extends JFrame2 {
 
-    // @ComponentActionListeners({
-    //         @ComponentActionListener(method = "printBoton"),
-    //         @ComponentActionListener(method = "mostrarAlerta") 
-    // })
     @BorderPosition(BorderLayout.SOUTH)
-    @SetText(text = "Click", color = TextColor.BLUE)
-    private JButton myButton;
+    @SetText(value = "Click", color = TextColor.BLUE)
+    @ComponentActionListeners({ @ComponentActionListener(method = "printBoton"),
+            @ComponentActionListener(method = "mostrarAlerta") })
+    JButton myButton;
 
     @BorderPosition(BorderLayout.NORTH)
-    @SetText(text = "Hola")
-    private JTextField myTextField;
+    @SetText(value = "Hola", color = TextColor.RED)
+    @SetSize(width = 100, heigth = 100)
+    JTextField myTextField;
 
-    @ActionListenerHandlers({
-            @ActionListenerHandler(component = "myButton", args = { "1" }),
-            @ActionListenerHandler(component = "myTextField", args = { "2" })
-    })
+    @ActionListenerHandlers({ @ActionListenerHandler(component = "myButton", args = { "1" }),
+            @ActionListenerHandler(component = "myTextField", args = { "2" }) })
     public static ActionListener metodoActionListener(int i) {
         return new ActionListener() {
             @Override
@@ -66,15 +63,9 @@ public class MyFrame extends JFrame implements MyFrameInterface {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public MyFrame() {
-        AnnotationProcessorProxy.createProxy(this);
-        this.setSize(500, 500);
-        // this.setExtendedState(JFrame.NORMAL);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
     public static void main(String[] args) {
         MyFrame.run();
+
     }
 
     public static MyFrame run() {
