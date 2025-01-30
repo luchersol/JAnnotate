@@ -4,8 +4,9 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.EventListener;
 
-public abstract class AbstractGroupedListenerHandlerProcessor<P extends AbstractListenerHandlerProcessor<S>, S extends Annotation, G extends Annotation>
+public abstract class AbstractGroupedListenerHandlerProcessor<P extends AbstractListenerHandlerProcessor<S, ? extends EventListener>, S extends Annotation, G extends Annotation>
         extends AbstractMethodProccessor<G> {
 
     @SuppressWarnings("unchecked")
