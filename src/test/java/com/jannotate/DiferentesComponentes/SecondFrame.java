@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
-import com.jannotate.annotations.fields.listeners.single.ComponentActionListener;
+import com.jannotate.annotations.fields.listeners.single.AddActionListener;
 import com.jannotate.annotations.mixed.fields_classes.IsVisible;
 import com.jannotate.annotations.mixed.fields_classes.SetSize;
 import com.jannotate.annotations.mixed.fields_classes.SetText;
@@ -21,15 +21,15 @@ import com.jannotate.common.classes.JFrame2;
 @SetTitle("Nueva Pantalla")
 @SetSize(width = 300, heigth = 150)
 public class SecondFrame extends JFrame2 {
-    
+
     @SetText("Esto es una nueva ventana")
     JLabel label;
 
     @SetText("Cerrar")
-    @ComponentActionListener(method = "dispose")
+    @AddActionListener(method = "dispose")
     JButton closeButton;
 
-    public void dispose(){
+    public void dispose() {
         super.dispose();
     }
 

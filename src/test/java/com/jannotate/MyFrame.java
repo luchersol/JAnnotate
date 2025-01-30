@@ -14,8 +14,8 @@ import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
 import com.jannotate.annotations.fields.SetImagenIcon;
-import com.jannotate.annotations.fields.listeners.group.ComponentActionListeners;
-import com.jannotate.annotations.fields.listeners.single.ComponentActionListener;
+import com.jannotate.annotations.fields.listeners.group.AddActionListeners;
+import com.jannotate.annotations.fields.listeners.single.AddActionListener;
 import com.jannotate.annotations.methods.handlers.group.ActionListenerHandlers;
 import com.jannotate.annotations.methods.handlers.single.ActionListenerHandler;
 import com.jannotate.annotations.mixed.fields_classes.IsVisible;
@@ -34,9 +34,9 @@ import com.jannotate.common.enums.TextColor;
 public class MyFrame extends JFrame2 {
 
     @SetText(value = "Click", color = TextColor.BLUE)
-    @ComponentActionListeners({
-            @ComponentActionListener(method = "printBoton"),
-            @ComponentActionListener(method = "mostrarAlerta")
+    @AddActionListeners({
+            @AddActionListener(method = "printBoton"),
+            @AddActionListener(method = "mostrarAlerta")
     })
     JButton jButton;
 

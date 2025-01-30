@@ -7,7 +7,7 @@ import javax.swing.JTextField;
 import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
-import com.jannotate.annotations.fields.listeners.single.ComponentActionListener;
+import com.jannotate.annotations.fields.listeners.single.AddActionListener;
 import com.jannotate.annotations.mixed.fields_classes.IsVisible;
 import com.jannotate.annotations.mixed.fields_classes.SetSize;
 import com.jannotate.annotations.mixed.fields_classes.SetText;
@@ -24,10 +24,9 @@ public class MainFrame extends JFrame2 {
 
     JTextField textField;
 
-    @ComponentActionListener(method = "openNewWindow")
+    @AddActionListener(method = "openNewWindow")
     @SetText("Abrir nueva pantalla")
     JButton button;
-
 
     public MainFrame() {
         super();
@@ -43,4 +42,3 @@ public class MainFrame extends JFrame2 {
         new SecondFrame();
     }
 }
-
