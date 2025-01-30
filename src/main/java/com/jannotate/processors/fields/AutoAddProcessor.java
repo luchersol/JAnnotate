@@ -6,27 +6,19 @@ import java.lang.reflect.Field;
 import javax.swing.JComponent;
 
 import com.jannotate.annotations.fields.AutoAdd;
+import com.jannotate.common.abstractClasses.AbstractFieldProcessor;
 import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.interfaces.FieldProcessorInterface;
 
 @JProcessor
-public class AutoAddProcessor implements FieldProcessorInterface {
-    
-    public void process(Field field, Object object) {
-        Container container = (Container) object;
-        if (field.isAnnotationPresent(AutoAdd.class)) {
-            field.setAccessible(true);
-            try {
-                Object value = field.get(container);
-                if (value instanceof JComponent) {
-                    container.add((JComponent) value);
-                } else {
-                    throw new IllegalArgumentException("Field annotated with @AutoAdd must be a JComponent.");
-                }
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
+public class AutoAddProcessor extends AbstractFieldProcessor<AutoAdd> {
+
+    public void process(Field field, Object object, AutoAdd annotation) {
+        try {
+            Container container = (Container) object;
+            JComponent value = getFieldAs(field, object, JComponent.class);
+            container.add(value);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
-        
     }
 }

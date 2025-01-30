@@ -10,7 +10,15 @@ import com.jannotate.common.annotations.MethodAndArgs;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ComponentKeyListener {
-    MethodAndArgs keyType() default @MethodAndArgs();
-    MethodAndArgs keyPressed() default @MethodAndArgs();
-    MethodAndArgs keyReleased() default @MethodAndArgs();
+    MethodAndArgs onKeyType() default @MethodAndArgs();
+
+    char[] keyTypedParams() default {};
+
+    MethodAndArgs onKeyPressed() default @MethodAndArgs();
+
+    int[] keyPressedParams() default {};
+
+    MethodAndArgs onKeyReleased() default @MethodAndArgs();
+
+    int[] keyReleasedParams() default {};
 }

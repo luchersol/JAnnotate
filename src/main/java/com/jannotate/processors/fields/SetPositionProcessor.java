@@ -5,25 +5,19 @@ import java.lang.reflect.Field;
 import javax.swing.JComponent;
 
 import com.jannotate.annotations.fields.SetPosition;
+import com.jannotate.common.abstractClasses.AbstractFieldProcessor;
 import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.interfaces.FieldProcessorInterface;
 
 @JProcessor
-public class SetPositionProcessor implements FieldProcessorInterface {
-    
-    public void process(Field field, Object object) {
-        if (field.isAnnotationPresent(SetPosition.class)) {
-            SetPosition positionAnnotation = field.getAnnotation(SetPosition.class);
-            field.setAccessible(true);
-            try {
-                Object value = field.get(object);
-                if (value instanceof JComponent) {
-                    JComponent component = (JComponent) value;
-                    component.setBounds(positionAnnotation.x(), positionAnnotation.y(), component.getWidth(), component.getHeight());
-                }
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
+public class SetPositionProcessor extends AbstractFieldProcessor<SetPosition> {
+
+    public void process(Field field, Object object, SetPosition annotation) {
+        try {
+            JComponent jComponent = getFieldAs(field, object, JComponent.class);
+            int x = annotation.x(), y = annotation.y(), width = jComponent.getWidth(), heigth = jComponent.getHeight();
+            jComponent.setBounds(x, y, width, heigth);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
     }
 

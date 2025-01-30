@@ -2,35 +2,62 @@ package com.jannotate.common.abstractClasses;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
-import com.jannotate.common.interfaces.MethodProcessorInterface;
+public abstract class AbstractGroupedListenerHandlerProcessor<P extends AbstractListenerHandlerProcessor<S>, S extends Annotation, G extends Annotation>
+        extends AbstractMethodProccessor<G> {
 
-public abstract class AbstractGroupedListenerHandlerProcessor<P extends AbstractListenerHandlerProcessor<S>, S extends Annotation, G extends Annotation> implements MethodProcessorInterface {
+    @SuppressWarnings("unchecked")
+    public Class<P> getProcessorClass() {
+        return (Class<P>) getGenericClass(0);
+    };
 
-    public abstract Class<P> getProcessorClass();
+    @SuppressWarnings("unchecked")
+    public Class<S> getAnnotationSingleClass() {
+        return (Class<S>) getGenericClass(1);
+    };
 
-    public abstract Class<S> getAnnotationSingleClass();
+    @SuppressWarnings("unchecked")
+    public Class<G> getAnnotationGroupClass() {
+        return (Class<G>) getGenericClass(2);
+    };
 
-    public abstract Class<G> getAnnotationGroupClass();
+    private Class<?> getGenericClass(int index) {
+        Type superclass = getClass().getGenericSuperclass();
+        if (superclass instanceof ParameterizedType) {
+            Type[] typeArguments = ((ParameterizedType) superclass).getActualTypeArguments();
+            if (index >= 0 && index < typeArguments.length) {
+                if (typeArguments[index] instanceof Class<?>) {
+                    return (Class<?>) typeArguments[index];
+                }
+            }
+        }
+        return null;
+    }
 
     @SuppressWarnings("unchecked")
     public void process(Method method, Object object) {
         if (method.isAnnotationPresent(getAnnotationGroupClass())) {
             G groupAnnotations = method.getAnnotation(getAnnotationGroupClass());
-            try {
-                Method value = groupAnnotations.annotationType().getMethod("value");
-                Object result = value.invoke(groupAnnotations);
-                if (result instanceof Object[]) {
-                    S[] actions = (S[]) result;
-                    for (S actionComponent : actions) {
-                        P instance = getProcessorClass().getDeclaredConstructor().newInstance();
-                        instance.bindSwingListenerHandler(method, object, actionComponent);
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            process(method, object, groupAnnotations);
+        }
+    }
 
+    @SuppressWarnings("unchecked")
+    public void process(Method method, Object object, G annotation) {
+        try {
+            Method value = annotation.annotationType().getMethod("value");
+            Object result = value.invoke(annotation);
+            if (result instanceof Object[]) {
+                S[] actions = (S[]) result;
+                for (S actionComponent : actions) {
+                    P instance = getProcessorClass().getDeclaredConstructor().newInstance();
+                    instance.process(method, object, actionComponent);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

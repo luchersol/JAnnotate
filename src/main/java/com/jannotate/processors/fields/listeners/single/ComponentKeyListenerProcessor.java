@@ -1,82 +1,76 @@
 package com.jannotate.processors.fields.listeners.single;
 
-import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
-import javax.swing.AbstractButton;
 import javax.swing.JComponent;
 
-import com.jannotate.annotations.fields.listeners.single.ComponentActionListener;
 import com.jannotate.annotations.fields.listeners.single.ComponentKeyListener;
 import com.jannotate.common.abstractClasses.AbstractListenerProcessor;
 import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.annotations.MethodAndArgs;
-import com.jannotate.common.interfaces.FieldProcessorInterface;
 
 @JProcessor
 public class ComponentKeyListenerProcessor extends AbstractListenerProcessor<ComponentKeyListener> {
 
     @Override
-    protected Class<ComponentKeyListener> getAnnotationClass() {
-        return ComponentKeyListener.class;
-    }
-
-    @Override
-    public void bindSwingListener(Field field, Object object, ComponentKeyListener annotation) {
-        field.setAccessible(true);
+    public void process(Field field, Object object, ComponentKeyListener annotation) {
         try {
-            Object value = field.get(object);
-            if (value instanceof JComponent) {
-                JComponent component = (JComponent) value;
-                component.addKeyListener(new KeyListener() {
-                    @Override
-                    public void keyTyped(KeyEvent e) {
-                        try {
-                            MethodAndArgs methodAndArgs = annotation.keyType();
-                            Method method = object.getClass().getDeclaredMethod(methodAndArgs.method());
-                            method.setAccessible(true);
-                            Object[] args = parseArguments(method, methodAndArgs.args());
-                            method.invoke(object, args);
-                        } catch (NoSuchMethodException | SecurityException |IllegalAccessException | IllegalArgumentException | InvocationTargetException e1) {
-                            e1.printStackTrace();
+            JComponent component = getFieldAs(field, object, JComponent.class);
+            component.addKeyListener(new KeyListener() {
+                @Override
+                public void keyTyped(KeyEvent event) {
+                    try {
+                        if (isEmptyOrInclude(annotation.keyTypedParams(), event.getKeyChar())) {
+                            processMethodAndArgs(annotation.onKeyType(), object);
                         }
+                    } catch (NoSuchMethodException | SecurityException | IllegalAccessException
+                            | IllegalArgumentException | InvocationTargetException e) {
+                        e.printStackTrace();
                     }
+                }
 
-                    @Override
-                    public void keyPressed(KeyEvent e) {
-                        try {
-                            MethodAndArgs methodAndArgs = annotation.keyPressed();
-                            Method method = object.getClass().getDeclaredMethod(methodAndArgs.method());
-                            method.setAccessible(true);
-                            Object[] args = parseArguments(method, methodAndArgs.args());
-                            method.invoke(object, args);
-                        } catch (NoSuchMethodException | SecurityException |IllegalAccessException | IllegalArgumentException | InvocationTargetException e1) {
-                            e1.printStackTrace();
+                @Override
+                public void keyPressed(KeyEvent event) {
+                    try {
+                        if (isEmptyOrInclude(annotation.keyPressedParams(), event.getKeyCode())) {
+                            processMethodAndArgs(annotation.onKeyPressed(), object);
                         }
+                    } catch (NoSuchMethodException | SecurityException | IllegalAccessException
+                            | IllegalArgumentException | InvocationTargetException e) {
+                        e.printStackTrace();
                     }
+                }
 
-                    @Override
-                    public void keyReleased(KeyEvent e) {
-                        try {
-                            MethodAndArgs methodAndArgs = annotation.keyReleased();
-                            Method method = object.getClass().getDeclaredMethod(methodAndArgs.method());
-                            method.setAccessible(true);
-                            Object[] args = parseArguments(method, methodAndArgs.args());
-                            method.invoke(object, args);
-                        } catch (NoSuchMethodException | SecurityException |IllegalAccessException | IllegalArgumentException | InvocationTargetException e1) {
-                            e1.printStackTrace();
+                @Override
+                public void keyReleased(KeyEvent event) {
+                    try {
+                        if (isEmptyOrInclude(annotation.keyReleasedParams(), event.getKeyCode())) {
+                            processMethodAndArgs(annotation.onKeyReleased(), object);
                         }
+                    } catch (NoSuchMethodException | SecurityException | IllegalAccessException
+                            | IllegalArgumentException | InvocationTargetException e) {
+                        e.printStackTrace();
                     }
-                    
-                });
-            }
+                }
+
+            });
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
+    private boolean isEmptyOrInclude(char[] options, char option) {
+        return options.length == 0 || IntStream.range(0, options.length)
+                .anyMatch(i -> options[i] == option);
+    }
+
+    private boolean isEmptyOrInclude(int[] options, int option) {
+        return options.length == 0 || Arrays.stream(options).anyMatch(i -> i == option);
+    }
+
 }

@@ -1,28 +1,30 @@
 package com.jannotate;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
-import com.jannotate.annotations.fields.BorderPosition;
+import com.jannotate.annotations.fields.SetImagenIcon;
 import com.jannotate.annotations.fields.listeners.group.ComponentActionListeners;
 import com.jannotate.annotations.fields.listeners.single.ComponentActionListener;
-import com.jannotate.annotations.methods.ActionListenerHandler;
-import com.jannotate.annotations.methods.ActionListenerHandlers;
+import com.jannotate.annotations.fields.listeners.single.ComponentKeyListener;
+import com.jannotate.annotations.methods.handlers.group.ActionListenerHandlers;
+import com.jannotate.annotations.methods.handlers.single.ActionListenerHandler;
 import com.jannotate.annotations.mixed.fields_classes.IsVisible;
 import com.jannotate.annotations.mixed.fields_classes.SetSize;
 import com.jannotate.annotations.mixed.fields_classes.SetText;
 import com.jannotate.annotations.mixed.fields_classes.SetTitle;
+import com.jannotate.common.annotations.MethodAndArgs;
 import com.jannotate.common.classes.JFrame2;
 import com.jannotate.common.enums.TextColor;
-
 
 @UseFlowLayout
 @AutoAddComponents
@@ -32,20 +34,33 @@ import com.jannotate.common.enums.TextColor;
 @SetSize(heigth = 500, width = 500)
 public class MyFrame extends JFrame2 {
 
-    @BorderPosition(BorderLayout.SOUTH)
     @SetText(value = "Click", color = TextColor.BLUE)
-    @ComponentActionListeners({ @ComponentActionListener(method = "printBoton"),
-            @ComponentActionListener(method = "mostrarAlerta") })
-    JButton myButton;
+    @ComponentActionListeners({
+            @ComponentActionListener(method = "printBoton"),
+            @ComponentActionListener(method = "mostrarAlerta")
+    })
+    JButton jButton;
 
-    @BorderPosition(BorderLayout.NORTH)
     @SetText(value = "Hola", color = TextColor.RED)
     @SetSize(width = 100, heigth = 100)
-    JTextField myTextField;
+    @ComponentKeyListener(onKeyType = @MethodAndArgs("printTecladoTipo"), keyTypedParams = {
+            '0' }, onKeyPressed = @MethodAndArgs("printTecladoPresionado"), keyPressedParams = {
+                    KeyEvent.VK_1 }, onKeyReleased = @MethodAndArgs("printTecladoSoltado"), keyReleasedParams = {
+                            KeyEvent.VK_2 })
+    JTextField jTextField_1;
 
-    @ActionListenerHandlers({ @ActionListenerHandler(component = "myButton", args = { "1" }),
-            @ActionListenerHandler(component = "myTextField", args = { "2" }) })
-    public static ActionListener metodoActionListener(int i) {
+    @SetSize(width = 100, heigth = 100)
+    JTextField jTextField_2;
+
+    @SetImagenIcon("src/main/resources/images/imagen.png")
+    JLabel jLabel;
+
+    @ActionListenerHandlers({
+            @ActionListenerHandler(component = "jButton", args = { "1" }),
+            @ActionListenerHandler(component = "jTextField_1", args = { "2" }),
+            @ActionListenerHandler(component = "jTextField_2", args = { "3" })
+    })
+    public ActionListener metodoActionListener(int i) {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,7 +69,7 @@ public class MyFrame extends JFrame2 {
         };
     }
 
-    public static void printBoton() {
+    public void printBoton() {
         System.out.println("Presionaste el botón");
     }
 
@@ -63,13 +78,26 @@ public class MyFrame extends JFrame2 {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
+    public void printTecladoTipo() {
+        System.out.println("Tecla tipo");
+    }
+
+    public void printTecladoPresionado() {
+        System.out.println("Tecla pulsada");
+    }
+
+    public void printTecladoSoltado() {
+        System.out.println("Tecla soltada");
+    }
+
     public static void main(String[] args) {
         MyFrame.run();
 
     }
 
     public static MyFrame run() {
-        return new MyFrame();
+        MyFrame myFrame = new MyFrame();
+        return myFrame;
     }
 
 }

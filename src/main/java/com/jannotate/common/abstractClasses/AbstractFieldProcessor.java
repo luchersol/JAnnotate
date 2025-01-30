@@ -4,13 +4,18 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 
-public abstract class AbstractListenerProcessor<T extends Annotation> extends AbstractFieldProcessor<T> {
+import com.jannotate.common.interfaces.FieldProcessorInterface;
+
+public abstract class AbstractFieldProcessor<T extends Annotation> extends AbstractProcessor
+        implements FieldProcessorInterface {
+
+    public abstract void process(Field field, Object object, T annotation);
 
     @Override
     public void process(Field field, Object object) {
-        if (field != null && object != null && field.isAnnotationPresent(getAnnotationClass())) {
-            T annotation = field.getAnnotation(getAnnotationClass());
+        if (field.isAnnotationPresent(getAnnotationClass())) {
             field.setAccessible(true);
+            T annotation = field.getAnnotation(getAnnotationClass());
             process(field, object, annotation);
         }
     }

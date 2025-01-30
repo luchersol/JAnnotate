@@ -6,7 +6,8 @@
         "org/reflections"
     ],
     "java.configuration.updateBuildConfiguration": "interactive",
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-        "source.organizeImports": "always"
+        "source.organizeImports": "always",
     }
 }

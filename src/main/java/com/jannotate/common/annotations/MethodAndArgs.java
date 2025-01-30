@@ -1,6 +1,9 @@
 package com.jannotate.common.annotations;
 
 public @interface MethodAndArgs {
-    String method() default "";
+    String value() default "";
+
     String[] args() default {};
+
+    Class<?>[] type_args() default {};
 }

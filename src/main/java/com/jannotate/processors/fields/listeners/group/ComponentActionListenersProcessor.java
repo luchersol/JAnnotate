@@ -7,21 +7,7 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.fields.listeners.single.ComponentActionListenerProcessor;
 
 @JProcessor
-public class ComponentActionListenersProcessor extends AbstractGroupedListenerProcessor<ComponentActionListenerProcessor, ComponentActionListener, ComponentActionListeners> {
-
-    @Override
-    public Class<ComponentActionListenerProcessor> getProcessorClass() {
-        return ComponentActionListenerProcessor.class;
-    }
-
-    @Override
-    public Class<ComponentActionListener> getAnnotationSingleClass() {
-        return ComponentActionListener.class;
-    }
-
-    @Override
-    public Class<ComponentActionListeners> getAnnotationGroupClass() {
-        return ComponentActionListeners.class;
-    }
+public class ComponentActionListenersProcessor extends
+        AbstractGroupedListenerProcessor<ComponentActionListenerProcessor, ComponentActionListener, ComponentActionListeners> {
 
 }
