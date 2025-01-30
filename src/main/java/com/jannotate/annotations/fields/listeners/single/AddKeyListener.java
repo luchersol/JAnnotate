@@ -9,7 +9,7 @@ import com.jannotate.common.annotations.MethodAndArgs;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ComponentKeyListener {
+public @interface AddKeyListener {
     MethodAndArgs onKeyType() default @MethodAndArgs();
 
     char[] keyTypedParams() default {};

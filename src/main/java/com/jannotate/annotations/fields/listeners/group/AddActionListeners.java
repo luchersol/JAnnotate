@@ -5,12 +5,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.jannotate.annotations.fields.listeners.single.ComponentActionListener;
+import com.jannotate.annotations.fields.listeners.single.AddActionListener;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ComponentActionListeners {
-    
-    ComponentActionListener[] value() default {};
-    
+public @interface AddActionListeners {
+
+    AddActionListener[] value() default {};
+
 }

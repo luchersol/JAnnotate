@@ -5,15 +5,15 @@ import java.lang.reflect.Method;
 
 import javax.swing.AbstractButton;
 
-import com.jannotate.annotations.fields.listeners.single.ComponentActionListener;
+import com.jannotate.annotations.fields.listeners.single.AddActionListener;
 import com.jannotate.common.abstractClasses.AbstractListenerProcessor;
 import com.jannotate.common.annotations.JProcessor;
 
 @JProcessor
-public class ComponentActionListenerProcessor extends AbstractListenerProcessor<ComponentActionListener> {
+public class AddActionListenerProcessor extends AbstractListenerProcessor<AddActionListener> {
 
     @Override
-    public void process(Field field, Object object, ComponentActionListener annotation) {
+    public void process(Field field, Object object, AddActionListener annotation) {
         try {
             AbstractButton component = getFieldAs(field, object, AbstractButton.class);
             Method method = getMethod(object.getClass(), annotation.method(), annotation.type_args());

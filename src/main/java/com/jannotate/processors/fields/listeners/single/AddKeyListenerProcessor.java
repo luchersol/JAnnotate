@@ -9,18 +9,18 @@ import java.util.stream.IntStream;
 
 import javax.swing.JComponent;
 
-import com.jannotate.annotations.fields.listeners.single.ComponentKeyListener;
+import com.jannotate.annotations.fields.listeners.single.AddKeyListener;
 import com.jannotate.common.abstractClasses.AbstractListenerProcessor;
 import com.jannotate.common.annotations.JProcessor;
 
 @JProcessor
-public class ComponentKeyListenerProcessor extends AbstractListenerProcessor<ComponentKeyListener> {
+public class AddKeyListenerProcessor extends AbstractListenerProcessor<AddKeyListener> {
 
     @Override
-    public void process(Field field, Object object, ComponentKeyListener annotation) {
+    public void process(Field field, Object object, AddKeyListener annotation) {
         try {
-            JComponent component = getFieldAs(field, object, JComponent.class);
-            component.addKeyListener(new KeyListener() {
+            JComponent jComponent = getFieldAs(field, object, JComponent.class);
+            jComponent.addKeyListener(new KeyListener() {
                 @Override
                 public void keyTyped(KeyEvent event) {
                     try {
