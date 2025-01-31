@@ -37,7 +37,6 @@ public abstract class AbstractGroupedListenerHandlerProcessor<P extends Abstract
         return null;
     }
 
-    @SuppressWarnings("unchecked")
     public void process(Method method, Object object) {
         if (method.isAnnotationPresent(getAnnotationGroupClass())) {
             G groupAnnotations = method.getAnnotation(getAnnotationGroupClass());

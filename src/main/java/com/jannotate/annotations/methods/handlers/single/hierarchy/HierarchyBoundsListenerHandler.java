@@ -1,4 +1,4 @@
-package com.jannotate.annotations.fields.listeners.single;
+package com.jannotate.annotations.methods.handlers.single.hierarchy;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +7,8 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface AddMouseMotionListener {
+public @interface HierarchyBoundsListenerHandler {
+    String component();
 
+    String[] args() default {};
 }

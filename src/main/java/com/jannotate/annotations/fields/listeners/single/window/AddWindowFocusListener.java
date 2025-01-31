@@ -1,4 +1,4 @@
-package com.jannotate.annotations.fields.listeners.single;
+package com.jannotate.annotations.fields.listeners.single.window;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,10 +9,8 @@ import com.jannotate.common.annotations.MethodAndArgs;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface AddContainerListener {
+public @interface AddWindowFocusListener {
+    MethodAndArgs onWindowGainedFocus() default @MethodAndArgs();
 
-    MethodAndArgs onContainerAdded() default @MethodAndArgs();
-
-    MethodAndArgs onContainerRemoved() default @MethodAndArgs();
-
+    MethodAndArgs onWindowLostFocus() default @MethodAndArgs();
 }

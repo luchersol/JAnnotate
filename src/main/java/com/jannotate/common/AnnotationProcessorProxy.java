@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 import org.reflections.Reflections;
 
+import com.jannotate.common.abstractClasses.CustomSwingComponent;
 import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.common.annotations.PriorityAnnotation;
 import com.jannotate.common.interfaces.AbstractProcessorInterface;
@@ -42,17 +43,21 @@ public class AnnotationProcessorProxy implements InvocationHandler {
     private static final Set<Class<? extends MethodProcessorInterface>> methodProcessors;
 
     static {
-        classProcessors = doReflections(ClassProcessorInterface.class, "com.jannotate.processors.classes", "com.jannotate.processors.mixed.fields_classes");
-        fieldProcessors = doReflections(FieldProcessorInterface.class, "com.jannotate.processors.fields", "com.jannotate.processors.mixed.fields_classes");
+        classProcessors = doReflections(ClassProcessorInterface.class, "com.jannotate.processors.classes",
+                "com.jannotate.processors.mixed.fields_classes");
+        fieldProcessors = doReflections(FieldProcessorInterface.class, "com.jannotate.processors.fields",
+                "com.jannotate.processors.mixed.fields_classes");
         methodProcessors = doReflections(MethodProcessorInterface.class, "com.jannotate.processors.methods");
     }
 
     @SuppressWarnings("unchecked")
-    private static <T extends AbstractProcessorInterface> Set<Class<? extends T>> doReflections(Class<T> clazz, String... paths) {
+    private static <T extends AbstractProcessorInterface> Set<Class<? extends T>> doReflections(Class<T> clazz,
+            String... paths) {
         Set<Class<?>> annotatedClasses = new HashSet<>();
-        Arrays.stream(paths).forEach(path -> annotatedClasses.addAll(new Reflections(path).getTypesAnnotatedWith(JProcessor.class)));
-        Set<Class<? extends T>> res =  annotatedClasses.stream()
-                .filter(c -> clazz.isAssignableFrom(c)) 
+        Arrays.stream(paths).forEach(
+                path -> annotatedClasses.addAll(new Reflections(path).getTypesAnnotatedWith(JProcessor.class)));
+        Set<Class<? extends T>> res = annotatedClasses.stream()
+                .filter(c -> clazz.isAssignableFrom(c))
                 .map(c -> (Class<? extends T>) c)
                 .collect(Collectors.toSet());
         return res;
@@ -70,19 +75,22 @@ public class AnnotationProcessorProxy implements InvocationHandler {
         return getProcessors(methodProcessors);
     }
 
-    public static <T extends AbstractProcessorInterface> List<Class<? extends T>> getProcessors(Set<Class<? extends T>> processors) {
+    public static <T extends AbstractProcessorInterface> List<Class<? extends T>> getProcessors(
+            Set<Class<? extends T>> processors) {
         return processors.stream()
-            .sorted(Comparator.comparingInt((Class<? extends T> cls) -> {
-                PriorityAnnotation annotation = cls.getAnnotation(PriorityAnnotation.class);
-                return annotation != null ? annotation.value() : Integer.MAX_VALUE;
-            }).thenComparing((Class<? extends T> cls) -> {
-                PriorityAnnotation annotation = cls.getAnnotation(PriorityAnnotation.class);
-                // Opcional: puedes definir cómo ordenar por `annotations` si tiene múltiples valores
-                return annotation != null && annotation.annotations().length > 0
-                    ? annotation.annotations()[0].getName() // Ordena por el nombre de la primera clase en la lista
-                    : ""; // Usa un valor por defecto si no hay anotaciones
-            }))
-            .collect(Collectors.toList());
+                .sorted(Comparator.comparingInt((Class<? extends T> cls) -> {
+                    PriorityAnnotation annotation = cls.getAnnotation(PriorityAnnotation.class);
+                    return annotation != null ? annotation.value() : Integer.MAX_VALUE;
+                }).thenComparing((Class<? extends T> cls) -> {
+                    PriorityAnnotation annotation = cls.getAnnotation(PriorityAnnotation.class);
+                    // Opcional: puedes definir cómo ordenar por `annotations` si tiene múltiples
+                    // valores
+                    return annotation != null && annotation.annotations().length > 0
+                            ? annotation.annotations()[0].getName() // Ordena por el nombre de la primera clase en la
+                                                                    // lista
+                            : ""; // Usa un valor por defecto si no hay anotaciones
+                }))
+                .collect(Collectors.toList());
     }
 
     private static final Map<Class<? extends ClassProcessorInterface>, Method> classProcessorMethods = new HashMap<>();
@@ -93,7 +101,8 @@ public class AnnotationProcessorProxy implements InvocationHandler {
     private static final Map<Class<? extends FieldProcessorInterface>, Constructor<?>> fieldProcessorConstructors = new HashMap<>();
     private static final Map<Class<? extends MethodProcessorInterface>, Constructor<?>> methodProcessorConstructors = new HashMap<>();
 
-    private static <T> Method getProcessorMethod(Map<Class<? extends T>, Method> methodMap, Class<? extends T> processorClass, Class<?> parameter1, Class<?> parameter2) {
+    private static <T> Method getProcessorMethod(Map<Class<? extends T>, Method> methodMap,
+            Class<? extends T> processorClass, Class<?> parameter1, Class<?> parameter2) {
         return methodMap.computeIfAbsent(processorClass, clazz -> {
             try {
                 return clazz.getMethod("process", parameter1, parameter2);
@@ -103,20 +112,21 @@ public class AnnotationProcessorProxy implements InvocationHandler {
             }
         });
     }
-    
+
     private static Method getClassProcessorMethod(Class<? extends ClassProcessorInterface> processor) {
         return getProcessorMethod(classProcessorMethods, processor, Class.class, Object.class);
     }
-    
+
     private static Method getFieldProcessorMethod(Class<? extends FieldProcessorInterface> processor) {
         return getProcessorMethod(fieldProcessorMethods, processor, Field.class, Object.class);
     }
-    
+
     private static Method getMethodProcessorMethod(Class<? extends MethodProcessorInterface> processor) {
         return getProcessorMethod(methodProcessorMethods, processor, Method.class, Object.class);
     }
-    
-    private static <T> Constructor<?> getProcessorConstructor(Map<Class<? extends T>, Constructor<?>> constructorMap, Class<? extends T> processorClass) {
+
+    private static <T> Constructor<?> getProcessorConstructor(Map<Class<? extends T>, Constructor<?>> constructorMap,
+            Class<? extends T> processorClass) {
         return constructorMap.computeIfAbsent(processorClass, clazz -> {
             try {
                 return clazz.getConstructor();
@@ -126,21 +136,20 @@ public class AnnotationProcessorProxy implements InvocationHandler {
             }
         });
     }
-    
-    // Uso de la función genérica para las clases específicas
+
     private static Constructor<?> getClassProcessorConstructor(Class<? extends ClassProcessorInterface> processor) {
         return getProcessorConstructor(classProcessorConstructors, processor);
     }
-    
+
     private static Constructor<?> getFieldProcessorConstructor(Class<? extends FieldProcessorInterface> processor) {
         return getProcessorConstructor(fieldProcessorConstructors, processor);
     }
-    
+
     private static Constructor<?> getMethodProcessorConstructor(Class<? extends MethodProcessorInterface> processor) {
         return getProcessorConstructor(methodProcessorConstructors, processor);
     }
-    
-    private static void processAnnotationClass(Class<?> clazz, Object object){
+
+    private static void processAnnotationClass(Class<?> clazz, Object object) {
         for (Class<? extends ClassProcessorInterface> clazzProcessor : getClassProcessors()) {
             try {
                 Method method = getClassProcessorMethod(clazzProcessor);
@@ -153,8 +162,8 @@ public class AnnotationProcessorProxy implements InvocationHandler {
             }
         }
     }
-    
-    private static void processAnnotationFields(Class<?> clazz, Object object){
+
+    private static void processAnnotationFields(Class<?> clazz, Object object) {
         for (Field field : clazz.getDeclaredFields()) {
             for (Class<? extends FieldProcessorInterface> clazzProcessor : getFieldProcessors()) {
                 try {
@@ -170,7 +179,7 @@ public class AnnotationProcessorProxy implements InvocationHandler {
         }
     }
 
-    private static void processAnnotationMethods(Class<?> clazz, Object object){
+    private static void processAnnotationMethods(Class<?> clazz, Object object) {
         for (Method method : clazz.getDeclaredMethods()) {
             for (Class<? extends MethodProcessorInterface> clazzProcessor : getMethodProcessors()) {
                 try {
@@ -194,10 +203,12 @@ public class AnnotationProcessorProxy implements InvocationHandler {
     }
 
     public static void createProxy(Object target) {
+        if (target instanceof CustomSwingComponent<?>) {
+            target = ((CustomSwingComponent<?>) target).getInstance();
+        }
         ((MyFrameInterface) Proxy.newProxyInstance(
-            target.getClass().getClassLoader(),
-            new Class[]{MyFrameInterface.class},
-            new AnnotationProcessorProxy(target)
-        )).applyAnnotations();
+                target.getClass().getClassLoader(),
+                new Class[] { MyFrameInterface.class },
+                new AnnotationProcessorProxy(target))).applyAnnotations();
     }
 }

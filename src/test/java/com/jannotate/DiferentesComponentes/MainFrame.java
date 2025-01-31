@@ -12,7 +12,7 @@ import com.jannotate.annotations.mixed.fields_classes.IsVisible;
 import com.jannotate.annotations.mixed.fields_classes.SetSize;
 import com.jannotate.annotations.mixed.fields_classes.SetText;
 import com.jannotate.annotations.mixed.fields_classes.SetTitle;
-import com.jannotate.common.classes.JFrame2;
+import com.jannotate.common.abstractClasses.CustomSwingComponent;
 
 @UseFlowLayout
 @AutoAddComponents
@@ -20,7 +20,7 @@ import com.jannotate.common.classes.JFrame2;
 @IsVisible
 @SetTitle("Ventana Principal!")
 @SetSize(width = 400, heigth = 200)
-public class MainFrame extends JFrame2 {
+public class MainFrame extends CustomSwingComponent<JFrame> {
 
     JTextField textField;
 
@@ -31,7 +31,6 @@ public class MainFrame extends JFrame2 {
     public MainFrame() {
         super();
         this.textField.setColumns(20);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public static void main(String[] args) {
