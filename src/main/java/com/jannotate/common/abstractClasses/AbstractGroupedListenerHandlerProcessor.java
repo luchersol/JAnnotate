@@ -4,7 +4,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.EventListener;
 
-public abstract class AbstractGroupedListenerHandlerProcessor<P extends AbstractListenerHandlerProcessor<Annotation, ? extends EventListener>, S extends Annotation, G extends Annotation>
+public abstract class AbstractGroupedListenerHandlerProcessor<P extends AbstractListenerHandlerProcessor<S, ? extends EventListener>, S extends Annotation, G extends Annotation>
         extends AbstractMethodProccessor<G> {
 
     @SuppressWarnings("unchecked")
@@ -35,8 +35,8 @@ public abstract class AbstractGroupedListenerHandlerProcessor<P extends Abstract
             Method value = annotation.annotationType().getMethod("value");
             Object result = value.invoke(annotation);
             if (result instanceof Object[]) {
-                Annotation[] actions = (Annotation[]) result;
-                for (Annotation actionComponent : actions) {
+                S[] actions = (S[]) result;
+                for (S actionComponent : actions) {
                     P instance = getProcessorClass().getDeclaredConstructor().newInstance();
                     instance.process(method, object, actionComponent);
                 }

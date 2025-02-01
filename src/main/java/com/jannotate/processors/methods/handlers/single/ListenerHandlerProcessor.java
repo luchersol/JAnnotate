@@ -15,9 +15,9 @@ public class ListenerHandlerProcessor extends AbstractListenerHandlerProcessor<L
         StringBuilder addMethod = new StringBuilder(annotation.addMethod().trim());
         if (addMethod.isEmpty()) {
             addMethod.append("add");
-            addMethod.append(annotation.type().getCanonicalName());
+            addMethod.append(annotation.type().getSimpleName());
         }
-        System.out.println(addMethod);
+
         process(method, object, annotation, addMethod.toString(), annotation.type());
     }
 

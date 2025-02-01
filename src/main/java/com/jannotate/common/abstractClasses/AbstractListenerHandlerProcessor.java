@@ -2,8 +2,6 @@ package com.jannotate.common.abstractClasses;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.EventListener;
 
 public abstract class AbstractListenerHandlerProcessor<T extends Annotation, L extends EventListener>
@@ -38,20 +36,6 @@ public abstract class AbstractListenerHandlerProcessor<T extends Annotation, L e
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private Class<?> getGenericTypeClass(int index) {
-        Type superclass = getClass().getGenericSuperclass();
-
-        if (superclass instanceof ParameterizedType) {
-            Type[] typeArguments = ((ParameterizedType) superclass).getActualTypeArguments();
-            if (index >= 0 && index < typeArguments.length) {
-                if (typeArguments[index] instanceof Class<?>) {
-                    return (Class<?>) typeArguments[index];
-                }
-            }
-        }
-        return null;
     }
 
     @SuppressWarnings("unchecked")

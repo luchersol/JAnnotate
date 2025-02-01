@@ -19,6 +19,7 @@ import com.jannotate.annotations.fields.SetImagenIcon;
 import com.jannotate.annotations.fields.listeners.group.AddActionListeners;
 import com.jannotate.annotations.fields.listeners.single.AddActionListener;
 import com.jannotate.annotations.methods.handlers.group.ActionListenerHandlers;
+import com.jannotate.annotations.methods.handlers.group.ListenerHandlers;
 import com.jannotate.annotations.methods.handlers.single.ActionListenerHandler;
 import com.jannotate.annotations.methods.handlers.single.KeyListenerHandler;
 import com.jannotate.annotations.methods.handlers.single.ListenerHandler;
@@ -88,7 +89,9 @@ public class MyFrame extends JFrame2 {
         };
     }
 
-    @ListenerHandler(value = "jButton", type = MouseListener.class)
+    @ListenerHandlers({
+            @ListenerHandler(value = "jButton", type = MouseListener.class)
+    })
     public MouseListener metodoMouseListener() {
         return new MouseListener() {
             @Override
