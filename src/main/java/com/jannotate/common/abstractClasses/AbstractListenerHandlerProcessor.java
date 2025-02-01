@@ -11,12 +11,29 @@ public abstract class AbstractListenerHandlerProcessor<T extends Annotation, L e
 
     public void process(Method method, Object object, T annotation, String addMethodName) {
         try {
-            Method componetMethod = annotation.getClass().getDeclaredMethod("component");
+            Method valueMethod = annotation.getClass().getDeclaredMethod("value");
             Method argsMethod = annotation.getClass().getDeclaredMethod("args");
-            Object component = getFieldAs(componetMethod.invoke(annotation).toString(), object, Object.class);
+            String value = valueMethod.invoke(annotation).toString();
+            Object component = value.isBlank() ? object : getFieldAs(value, object, Object.class);
             Object[] parametros = parseArguments(method, (String[]) argsMethod.invoke(annotation));
-            Method addMethod = getMethod(component.getClass(), addMethodName, getLClass());
-            L listener = getLClass().cast(method.invoke(object, parametros));
+            Method addMethod = getMethod(component.getClass(), addMethodName, getEventListenerClass());
+            L listener = getEventListenerClass().cast(method.invoke(object, parametros));
+            addMethod.invoke(component, listener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public <E extends EventListener> void process(Method method, Object object, T annotation, String addMethodName,
+            Class<E> clazzEventListener) {
+        try {
+            Method valueMethod = annotation.getClass().getDeclaredMethod("value");
+            Method argsMethod = annotation.getClass().getDeclaredMethod("args");
+            String value = valueMethod.invoke(annotation).toString();
+            Object component = value.isBlank() ? object : getFieldAs(value, object, Object.class);
+            Object[] parametros = parseArguments(method, (String[]) argsMethod.invoke(annotation));
+            Method addMethod = getMethod(component.getClass(), addMethodName, clazzEventListener);
+            E listener = clazzEventListener.cast(method.invoke(object, parametros));
             addMethod.invoke(component, listener);
         } catch (Exception e) {
             e.printStackTrace();
@@ -38,7 +55,7 @@ public abstract class AbstractListenerHandlerProcessor<T extends Annotation, L e
     }
 
     @SuppressWarnings("unchecked")
-    private Class<L> getLClass() {
-        return (Class<L>) getGenericTypeClass(1);
+    private Class<L> getEventListenerClass() {
+        return (Class<L>) getAnnotationClass(getClass(), 1);
     }
 }

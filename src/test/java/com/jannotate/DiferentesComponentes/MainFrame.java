@@ -1,7 +1,6 @@
 package com.jannotate.DiferentesComponentes;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 import com.jannotate.annotations.classes.AutoAddComponents;
@@ -9,32 +8,29 @@ import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
 import com.jannotate.annotations.fields.listeners.single.AddActionListener;
 import com.jannotate.annotations.mixed.fields_classes.IsVisible;
+import com.jannotate.annotations.mixed.fields_classes.SetColumns;
 import com.jannotate.annotations.mixed.fields_classes.SetSize;
 import com.jannotate.annotations.mixed.fields_classes.SetText;
 import com.jannotate.annotations.mixed.fields_classes.SetTitle;
-import com.jannotate.common.abstractClasses.CustomSwingComponent;
+import com.jannotate.common.classes.JFrame2;
 
 @UseFlowLayout
 @AutoAddComponents
 @AutoInstantiateFields
 @IsVisible
-@SetTitle("Ventana Principal!")
+@SetTitle("Ventana Principal")
 @SetSize(width = 400, heigth = 200)
-public class MainFrame extends CustomSwingComponent<JFrame> {
+public class MainFrame extends JFrame2 {
 
+    @SetColumns(20)
     JTextField textField;
 
     @AddActionListener(method = "openNewWindow")
     @SetText("Abrir nueva pantalla")
     JButton button;
 
-    public MainFrame() {
-        super();
-        this.textField.setColumns(20);
-    }
-
     public static void main(String[] args) {
-        new MainFrame();
+        MainFrame mainFrame = new MainFrame();
     }
 
     public void openNewWindow() {

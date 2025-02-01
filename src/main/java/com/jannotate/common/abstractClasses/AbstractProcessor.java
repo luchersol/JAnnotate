@@ -3,6 +3,7 @@ package com.jannotate.common.abstractClasses;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 
 import com.jannotate.common.annotations.MethodAndArgs;
 
@@ -33,6 +34,44 @@ public abstract class AbstractProcessor {
             }
         }
         throw new NoSuchMethodException();
+    }
+
+    protected static <T> Class<?> getAnnotationClass(Class<T> clazz, int index) {
+        ParameterizedType parameterizedType = (ParameterizedType) clazz.getGenericSuperclass();
+        return (Class<?>) parameterizedType.getActualTypeArguments()[index];
+    }
+
+    public static void processMethodInField(Field field, Object object, String methodName, Object[] params,
+            Class<?>... parameterType) {
+        try {
+            Object value = getFieldAs(field, object, Object.class);
+            Method method = getMethod(value.getClass(), methodName, parameterType);
+            method.invoke(value, params);
+        } catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException
+                | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void processMethodInField(Field field, Object object, String methodName, Object param,
+            Class<?>... parameterType) {
+        processMethodInField(field, object, methodName, new Object[] { param }, parameterType);
+    }
+
+    public static void processMethodInClass(Class<?> clazz, Object object, String methodName, Object[] params,
+            Class<?>... parameterType) {
+        try {
+            Method method = getMethod(clazz, methodName, parameterType);
+            method.invoke(object, params);
+        } catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException
+                | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void processMethodInClass(Class<?> clazz, Object object, String methodName, Object param,
+            Class<?>... parameterType) {
+        processMethodInClass(clazz, object, methodName, new Object[] { param }, parameterType);
     }
 
     protected static void processMethodAndArgs(MethodAndArgs methodAndArgs, Object object)

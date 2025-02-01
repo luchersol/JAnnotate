@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ItemListenerHandler {
-    String component();
+    String value();
 
     String[] args() default {};
 }

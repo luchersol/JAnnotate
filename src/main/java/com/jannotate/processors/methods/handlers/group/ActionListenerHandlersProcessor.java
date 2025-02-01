@@ -8,6 +8,5 @@ import com.jannotate.processors.methods.handlers.single.ActionListenerHandlerPro
 
 @JProcessor
 public class ActionListenerHandlersProcessor extends
-        AbstractGroupedListenerHandlerProcessor<ActionListenerHandlerProcessor, ActionListenerHandler, ActionListenerHandlers> {
-
+                AbstractGroupedListenerHandlerProcessor<ActionListenerHandlerProcessor, ActionListenerHandler, ActionListenerHandlers> {
 }

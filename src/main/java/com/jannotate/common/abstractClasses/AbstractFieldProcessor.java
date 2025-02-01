@@ -2,7 +2,6 @@ package com.jannotate.common.abstractClasses;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
 
 import com.jannotate.common.interfaces.FieldProcessorInterface;
 
@@ -22,8 +21,7 @@ public abstract class AbstractFieldProcessor<T extends Annotation> extends Abstr
 
     @SuppressWarnings("unchecked")
     private Class<T> getAnnotationClass() {
-        ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
-        return (Class<T>) parameterizedType.getActualTypeArguments()[0];
+        return (Class<T>) getAnnotationClass(getClass(), 0);
     }
 
 }

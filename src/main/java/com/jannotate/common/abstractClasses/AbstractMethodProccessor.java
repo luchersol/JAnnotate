@@ -2,7 +2,6 @@ package com.jannotate.common.abstractClasses;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
 
 import com.jannotate.common.interfaces.MethodProcessorInterface;
 
@@ -22,7 +21,6 @@ public abstract class AbstractMethodProccessor<T extends Annotation> extends Abs
 
     @SuppressWarnings("unchecked")
     private Class<T> getAnnotationClass() {
-        ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
-        return (Class<T>) parameterizedType.getActualTypeArguments()[0];
+        return (Class<T>) getAnnotationClass(getClass(), 0);
     }
 }

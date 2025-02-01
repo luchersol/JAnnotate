@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ContainerListenerHandler {
 
-    String component();
+    String value();
 
     String[] args() default {};
 

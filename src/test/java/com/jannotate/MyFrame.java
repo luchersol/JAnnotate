@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,6 +20,8 @@ import com.jannotate.annotations.fields.listeners.group.AddActionListeners;
 import com.jannotate.annotations.fields.listeners.single.AddActionListener;
 import com.jannotate.annotations.methods.handlers.group.ActionListenerHandlers;
 import com.jannotate.annotations.methods.handlers.single.ActionListenerHandler;
+import com.jannotate.annotations.methods.handlers.single.KeyListenerHandler;
+import com.jannotate.annotations.methods.handlers.single.ListenerHandler;
 import com.jannotate.annotations.mixed.fields_classes.IsVisible;
 import com.jannotate.annotations.mixed.fields_classes.SetSize;
 import com.jannotate.annotations.mixed.fields_classes.SetText;
@@ -51,9 +55,9 @@ public class MyFrame extends JFrame2 {
     JLabel jLabel;
 
     @ActionListenerHandlers({
-            @ActionListenerHandler(component = "jButton", args = { "1" }),
-            @ActionListenerHandler(component = "jTextField_1", args = { "2" }),
-            @ActionListenerHandler(component = "jTextField_2", args = { "3" })
+            @ActionListenerHandler(value = "jButton", args = { "1" }),
+            @ActionListenerHandler(value = "jTextField_1", args = { "2" }),
+            @ActionListenerHandler(value = "jTextField_2", args = { "3" })
     })
     public ActionListener metodoActionListener(int i) {
         return new ActionListener() {
@@ -64,7 +68,7 @@ public class MyFrame extends JFrame2 {
         };
     }
 
-    // @KeyListenerHandler(component = "jTextField_1")
+    @KeyListenerHandler(value = "jTextField_1")
     public KeyListener metodoKeyListener() {
         return new KeyListener() {
             @Override
@@ -74,12 +78,42 @@ public class MyFrame extends JFrame2 {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println(e.getKeyChar());
+                // System.out.println(e.getKeyChar());
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                System.out.println(e.getKeyChar());
+                // System.out.println(e.getKeyChar());
+            }
+        };
+    }
+
+    @ListenerHandler(value = "jButton", type = MouseListener.class)
+    public MouseListener metodoMouseListener() {
+        return new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("Mouse Clicked en " + e.getPoint());
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                System.out.println("Mouse Pressed");
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                System.out.println("Mouse Released");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                System.out.println("Mouse Entered");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                System.out.println("Mouse Exited");
             }
         };
     }
@@ -106,13 +140,7 @@ public class MyFrame extends JFrame2 {
     }
 
     public static void main(String[] args) {
-        MyFrame.run();
-
-    }
-
-    public static MyFrame run() {
-        MyFrame myFrame = new MyFrame();
-        return myFrame;
+        new MyFrame();
     }
 
 }

@@ -1,0 +1,12 @@
+package com.jannotate.processors.methods.handlers.group.hierarchy;
+
+import com.jannotate.annotations.methods.handlers.group.hierarchy.HierarchyBoundsListenerHandlers;
+import com.jannotate.annotations.methods.handlers.single.hierarchy.HierarchyBoundsListenerHandler;
+import com.jannotate.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
+import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.processors.methods.handlers.single.hierarchy.HierarchyBoundsListenerHandlerProcessor;
+
+@JProcessor
+public class HierarchyBoundsListenerHandlersProcessor extends
+                AbstractGroupedListenerHandlerProcessor<HierarchyBoundsListenerHandlerProcessor, HierarchyBoundsListenerHandler, HierarchyBoundsListenerHandlers> {
+}
