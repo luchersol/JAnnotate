@@ -10,24 +10,23 @@ import javax.swing.JPanel;
 
 import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.layoutManager.UseGridBagLayout;
+import com.jannotate.common.abstractClasses.AbstractClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.common.annotations.PriorityAnnotation;
-import com.jannotate.common.interfaces.ClassProcessorInterface;
+import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
 @PriorityAnnotation(value = 1, annotations = { AutoAddComponents.class })
-public class UseGridBagLayoutProcessor implements ClassProcessorInterface {
+public class UseGridBagLayoutProcessor extends AbstractClassProcessor<UseGridBagLayout> {
 
-    public void process(Class<?> clazz, Object object) {
-        if (clazz.isAnnotationPresent(UseGridBagLayout.class)) {
-            // Verificar si el objeto es una instancia de JPanel o JFrame
-            if (object instanceof JPanel) {
-                JPanel panel = (JPanel) object;
-                applyLayout(panel, GridBagLayout.class);
-            } else if (object instanceof JFrame) {
-                JFrame frame = (JFrame) object;
-                applyLayout(frame.getContentPane(), GridBagLayout.class);
-            }
+    @Override
+    public void process(Class<?> clazz, Object object, UseGridBagLayout annotation) throws SevereException {
+        if (object instanceof JPanel) {
+            JPanel panel = (JPanel) object;
+            applyLayout(panel, GridBagLayout.class);
+        } else if (object instanceof JFrame) {
+            JFrame frame = (JFrame) object;
+            applyLayout(frame.getContentPane(), GridBagLayout.class);
         }
     }
 
@@ -43,4 +42,5 @@ public class UseGridBagLayoutProcessor implements ClassProcessorInterface {
             container.setLayout(new java.awt.FlowLayout());
         }
     }
+
 }

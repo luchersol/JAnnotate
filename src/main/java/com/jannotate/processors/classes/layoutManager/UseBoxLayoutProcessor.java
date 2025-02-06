@@ -10,26 +10,23 @@ import javax.swing.JPanel;
 
 import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.layoutManager.UseBoxLayout;
+import com.jannotate.common.abstractClasses.AbstractClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.common.annotations.PriorityAnnotation;
-import com.jannotate.common.interfaces.ClassProcessorInterface;
+import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
 @PriorityAnnotation(value = 1, annotations = { AutoAddComponents.class })
-public class UseBoxLayoutProcessor implements ClassProcessorInterface {
+public class UseBoxLayoutProcessor extends AbstractClassProcessor<UseBoxLayout> {
 
-    public void process(Class<?> clazz, Object object) {
-        if (clazz.isAnnotationPresent(UseBoxLayout.class)) {
-            UseBoxLayout annotation = clazz.getAnnotation(UseBoxLayout.class);
-
-            // Verificar si el objeto es una instancia de JPanel o JFrame
-            if (object instanceof JPanel) {
-                JPanel panel = (JPanel) object;
-                applyLayout(panel, BoxLayout.class, annotation);
-            } else if (object instanceof JFrame) {
-                JFrame frame = (JFrame) object;
-                applyLayout(frame.getContentPane(), BoxLayout.class, annotation);
-            }
+    @Override
+    public void process(Class<?> clazz, Object object, UseBoxLayout annotation) throws SevereException {
+        if (object instanceof JPanel) {
+            JPanel panel = (JPanel) object;
+            applyLayout(panel, BoxLayout.class, annotation);
+        } else if (object instanceof JFrame) {
+            JFrame frame = (JFrame) object;
+            applyLayout(frame.getContentPane(), BoxLayout.class, annotation);
         }
     }
 
@@ -48,4 +45,5 @@ public class UseBoxLayoutProcessor implements ClassProcessorInterface {
             container.setLayout(new java.awt.FlowLayout());
         }
     }
+
 }

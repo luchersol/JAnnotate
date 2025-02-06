@@ -9,27 +9,25 @@ import javax.swing.JPanel;
 
 import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.layoutManager.UseLayoutManager;
+import com.jannotate.common.abstractClasses.AbstractClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.common.annotations.PriorityAnnotation;
-import com.jannotate.common.interfaces.ClassProcessorInterface;
+import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
 @PriorityAnnotation(value = 1, annotations = { AutoAddComponents.class })
-public class UseLayoutManagerProcessor implements ClassProcessorInterface {
+public class UseLayoutManagerProcessor extends AbstractClassProcessor<UseLayoutManager> {
 
-    public void process(Class<?> clazz, Object object) {
-        if (clazz.isAnnotationPresent(UseLayoutManager.class)) {
-            UseLayoutManager annotation = clazz.getAnnotation(UseLayoutManager.class);
-            Class<? extends LayoutManager> layoutClass = annotation.value();
+    @Override
+    public void process(Class<?> clazz, Object object, UseLayoutManager annotation) throws SevereException {
+        Class<? extends LayoutManager> layoutClass = annotation.value();
 
-            // Verificar si el objeto es una instancia de JPanel o JFrame
-            if (object instanceof JPanel) {
-                JPanel panel = (JPanel) object;
-                applyLayout(panel, layoutClass);
-            } else if (object instanceof JFrame) {
-                JFrame frame = (JFrame) object;
-                applyLayout(frame.getContentPane(), layoutClass);
-            }
+        if (object instanceof JPanel) {
+            JPanel panel = (JPanel) object;
+            applyLayout(panel, layoutClass);
+        } else if (object instanceof JFrame) {
+            JFrame frame = (JFrame) object;
+            applyLayout(frame.getContentPane(), layoutClass);
         }
     }
 
@@ -45,4 +43,5 @@ public class UseLayoutManagerProcessor implements ClassProcessorInterface {
             container.setLayout(new java.awt.FlowLayout());
         }
     }
+
 }

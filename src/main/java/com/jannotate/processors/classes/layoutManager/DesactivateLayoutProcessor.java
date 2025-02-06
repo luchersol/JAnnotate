@@ -1,28 +1,24 @@
 package com.jannotate.processors.classes.layoutManager;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.LayoutManager;
 
 import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.layoutManager.DesactivateLayout;
+import com.jannotate.common.abstractClasses.AbstractClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.common.annotations.PriorityAnnotation;
-import com.jannotate.common.interfaces.ClassProcessorInterface;
+import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
 @PriorityAnnotation(value = 1, annotations = { AutoAddComponents.class })
-public class DesactivateLayoutProcessor implements ClassProcessorInterface {
+public class DesactivateLayoutProcessor extends AbstractClassProcessor<DesactivateLayout> {
 
     @Override
-    public void process(Class<?> clazz, Object object) {
-        if (clazz.isAnnotationPresent(DesactivateLayout.class)) {
-            if (object instanceof JPanel) {
-                JPanel panel = (JPanel) object;
-                panel.setLayout(null);
-            } else if (object instanceof JFrame) {
-                JFrame frame = (JFrame) object;
-                frame.setLayout(null);
-            }
+    public void process(Class<?> clazz, Object object, DesactivateLayout annotation) throws SevereException {
+        try {
+            processMethodInClass(clazz, object, "setLayout", new Object[] { null }, LayoutManager.class);
+        } catch (Exception e) {
+            SevereException.throw_exception(e);
         }
     }
 

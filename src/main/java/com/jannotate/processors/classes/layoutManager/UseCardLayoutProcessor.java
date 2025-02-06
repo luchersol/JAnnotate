@@ -10,26 +10,23 @@ import javax.swing.JPanel;
 
 import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.layoutManager.UseCardLayout;
+import com.jannotate.common.abstractClasses.AbstractClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.common.annotations.PriorityAnnotation;
-import com.jannotate.common.interfaces.ClassProcessorInterface;
+import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
 @PriorityAnnotation(value = 1, annotations = { AutoAddComponents.class })
-public class UseCardLayoutProcessor implements ClassProcessorInterface {
+public class UseCardLayoutProcessor extends AbstractClassProcessor<UseCardLayout> {
 
-    public void process(Class<?> clazz, Object object) {
-        if (clazz.isAnnotationPresent(UseCardLayout.class)) {
-            UseCardLayout annotation = clazz.getAnnotation(UseCardLayout.class);
-
-            // Verificar si el objeto es una instancia de JPanel o JFrame
-            if (object instanceof JPanel) {
-                JPanel panel = (JPanel) object;
-                applyLayout(panel, CardLayout.class, annotation);
-            } else if (object instanceof JFrame) {
-                JFrame frame = (JFrame) object;
-                applyLayout(frame.getContentPane(), CardLayout.class, annotation);
-            }
+    @Override
+    public void process(Class<?> clazz, Object object, UseCardLayout annotation) throws SevereException {
+        if (object instanceof JPanel) {
+            JPanel panel = (JPanel) object;
+            applyLayout(panel, CardLayout.class, annotation);
+        } else if (object instanceof JFrame) {
+            JFrame frame = (JFrame) object;
+            applyLayout(frame.getContentPane(), CardLayout.class, annotation);
         }
     }
 
@@ -47,4 +44,5 @@ public class UseCardLayoutProcessor implements ClassProcessorInterface {
             container.setLayout(new java.awt.FlowLayout());
         }
     }
+
 }

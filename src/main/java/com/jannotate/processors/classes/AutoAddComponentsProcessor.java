@@ -14,32 +14,36 @@ import java.util.List;
 
 import javax.swing.JComponent;
 
-import com.jannotate.annotations.classes.AutoInstantiateFields;
+import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.layoutManager.UseBorderLayout;
 import com.jannotate.annotations.classes.layoutManager.UseGridBagLayout;
 import com.jannotate.annotations.classes.layoutManager.UseLayoutManager;
 import com.jannotate.annotations.fields.AddOrder;
 import com.jannotate.annotations.fields.BorderPosition;
 import com.jannotate.annotations.fields.GridBagConfig;
+import com.jannotate.common.abstractClasses.AbstractClassProcessor;
 import com.jannotate.common.annotations.InsetsAnnotation;
 import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.interfaces.ClassProcessorInterface;
+import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
-public class AutoAddComponentsProcessor implements ClassProcessorInterface {
+public class AutoAddComponentsProcessor extends AbstractClassProcessor<AutoAddComponents> {
 
     @Override
-    public void process(Class<?> clazz, Object object) {
-        if (clazz.isAnnotationPresent(AutoInstantiateFields.class)) {
-            processAdd(clazz, object);
-        }
-    }
-
-    public void processAdd(Class<?> clazz, Object object) {
+    public void process(Class<?> clazz, Object object, AutoAddComponents annotation) throws SevereException {
         List<Field> sortedFields = Arrays.stream(clazz.getDeclaredFields())
+                .filter((Field f) -> {
+                    try {
+                        f.setAccessible(true);
+                        return f.get(object) instanceof Component;
+                    } catch (IllegalArgumentException | IllegalAccessException e) {
+                        e.printStackTrace();
+                        return false;
+                    }
+                })
                 .sorted(Comparator.comparingInt((Field field) -> {
-                    AddOrder annotation = field.getAnnotation(AddOrder.class);
-                    return annotation != null ? annotation.value() : Integer.MAX_VALUE;
+                    AddOrder innerAnnotation = field.getAnnotation(AddOrder.class);
+                    return innerAnnotation != null ? innerAnnotation.value() : Integer.MAX_VALUE;
                 }))
                 .toList();
 

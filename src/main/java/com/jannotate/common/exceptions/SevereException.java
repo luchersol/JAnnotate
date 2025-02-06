@@ -15,4 +15,20 @@ public class SevereException extends Exception {
         }
         return e.getMessage() != null ? e.getMessage() : "Unknown error";
     }
+
+    public static SevereException of(String message) {
+        return new SevereException(message);
+    }
+
+    public static SevereException of(Throwable throwable) {
+        return new SevereException(throwable);
+    }
+
+    public static void throw_exception(String message) throws SevereException {
+        throw new SevereException(message);
+    }
+
+    public static void throw_exception(Throwable throwable) throws SevereException {
+        throw new SevereException(throwable);
+    }
 }
