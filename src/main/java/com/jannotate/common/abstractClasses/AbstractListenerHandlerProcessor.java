@@ -4,10 +4,12 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.EventListener;
 
+import com.jannotate.common.exceptions.SevereException;
+
 public abstract class AbstractListenerHandlerProcessor<T extends Annotation, L extends EventListener>
         extends AbstractMethodProccessor<T> {
 
-    public void process(Method method, Object object, T annotation, String addMethodName) {
+    public void process(Method method, Object object, T annotation, String addMethodName) throws SevereException {
         try {
             Method valueMethod = annotation.getClass().getDeclaredMethod("value");
             Method argsMethod = annotation.getClass().getDeclaredMethod("args");
@@ -18,12 +20,12 @@ public abstract class AbstractListenerHandlerProcessor<T extends Annotation, L e
             L listener = getEventListenerClass().cast(method.invoke(object, parametros));
             addMethod.invoke(component, listener);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new SevereException(e);
         }
     }
 
     public <E extends EventListener> void process(Method method, Object object, T annotation, String addMethodName,
-            Class<E> clazzEventListener) {
+            Class<E> clazzEventListener) throws SevereException {
         try {
             Method valueMethod = annotation.getClass().getDeclaredMethod("value");
             Method argsMethod = annotation.getClass().getDeclaredMethod("args");
@@ -34,7 +36,7 @@ public abstract class AbstractListenerHandlerProcessor<T extends Annotation, L e
             E listener = clazzEventListener.cast(method.invoke(object, parametros));
             addMethod.invoke(component, listener);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new SevereException(e);
         }
     }
 

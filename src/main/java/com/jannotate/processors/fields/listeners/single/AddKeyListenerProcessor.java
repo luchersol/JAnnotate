@@ -29,7 +29,7 @@ public class AddKeyListenerProcessor extends AbstractListenerProcessor<AddKeyLis
                         }
                     } catch (NoSuchMethodException | SecurityException | IllegalAccessException
                             | IllegalArgumentException | InvocationTargetException e) {
-                        e.printStackTrace();
+                        logger.severe(e.getMessage());
                     }
                 }
 
@@ -41,7 +41,7 @@ public class AddKeyListenerProcessor extends AbstractListenerProcessor<AddKeyLis
                         }
                     } catch (NoSuchMethodException | SecurityException | IllegalAccessException
                             | IllegalArgumentException | InvocationTargetException e) {
-                        e.printStackTrace();
+                        logger.severe(e.getMessage());
                     }
                 }
 
@@ -53,14 +53,14 @@ public class AddKeyListenerProcessor extends AbstractListenerProcessor<AddKeyLis
                         }
                     } catch (NoSuchMethodException | SecurityException | IllegalAccessException
                             | IllegalArgumentException | InvocationTargetException e) {
-                        e.printStackTrace();
+                        logger.severe(e.getMessage());
                     }
                 }
 
             });
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.severe(e.getMessage());
         }
     }
 

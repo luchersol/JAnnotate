@@ -26,7 +26,7 @@ public class SecondFrame extends JFrame2 {
     JLabel label;
 
     @SetText("Cerrar")
-    @AddActionListener(method = "dispose")
+    @AddActionListener("dispose")
     JButton closeButton;
 
     public void dispose() {

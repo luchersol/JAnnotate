@@ -17,7 +17,7 @@ public class SetPositionProcessor extends AbstractFieldProcessor<SetPosition> {
             int x = annotation.x(), y = annotation.y(), width = jComponent.getWidth(), heigth = jComponent.getHeight();
             jComponent.setBounds(x, y, width, heigth);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            logger.severe(e.getMessage());
         }
     }
 

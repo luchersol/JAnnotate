@@ -18,7 +18,7 @@ public class SetBoundProcessor extends AbstractFieldProcessor<SetBound> {
             int x = annotation.x(), y = annotation.y(), width = annotation.width(), heigth = annotation.heigth();
             jComponent.setBounds(x, y, width, heigth);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            logger.severe(e.getMessage());
         }
     }
 

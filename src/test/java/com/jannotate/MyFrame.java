@@ -6,8 +6,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Random;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -16,6 +18,7 @@ import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
 import com.jannotate.annotations.fields.SetImagenIcon;
+import com.jannotate.annotations.fields.SetPosition;
 import com.jannotate.annotations.fields.listeners.group.AddActionListeners;
 import com.jannotate.annotations.fields.listeners.single.AddActionListener;
 import com.jannotate.annotations.methods.handlers.group.ActionListenerHandlers;
@@ -24,6 +27,7 @@ import com.jannotate.annotations.methods.handlers.single.ActionListenerHandler;
 import com.jannotate.annotations.methods.handlers.single.KeyListenerHandler;
 import com.jannotate.annotations.methods.handlers.single.ListenerHandler;
 import com.jannotate.annotations.mixed.fields_classes.IsVisible;
+import com.jannotate.annotations.mixed.fields_classes.SetDefaultClose;
 import com.jannotate.annotations.mixed.fields_classes.SetSize;
 import com.jannotate.annotations.mixed.fields_classes.SetText;
 import com.jannotate.annotations.mixed.fields_classes.SetTitle;
@@ -36,24 +40,27 @@ import com.jannotate.common.enums.TextColor;
 @IsVisible
 @SetTitle("MY FRAME")
 @SetSize(heigth = 500, width = 500)
+@SetDefaultClose(JFrame.DISPOSE_ON_CLOSE + 121)
 public class MyFrame extends JFrame2 {
 
     @SetText(value = "Click", color = TextColor.BLUE)
     @AddActionListeners({
-            @AddActionListener(method = "printBoton"),
-            @AddActionListener(method = "mostrarAlerta")
+            @AddActionListener("printBoton"),
+            @AddActionListener("mostrarAlerta")
     })
-    JButton jButton;
+    private JButton jButton;
 
     @SetText(value = "Hola", color = TextColor.RED)
     @SetSize(width = 100, heigth = 100)
-    JTextField jTextField_1;
+    @SetPosition(x = 0, y = 10)
+    private JTextField jTextField_1;
 
     @SetSize(width = 100, heigth = 100)
-    JTextField jTextField_2;
+    @SetPosition(x = 150, y = 10)
+    private JTextField jTextField_2;
 
     @SetImagenIcon("src/main/resources/images/imagen.png")
-    JLabel jLabel;
+    private JLabel jLabel;
 
     @ActionListenerHandlers({
             @ActionListenerHandler(value = "jButton", args = { "1" }),
@@ -89,6 +96,8 @@ public class MyFrame extends JFrame2 {
         };
     }
 
+    public static final Random rand = new Random(1);
+
     @ListenerHandlers({
             @ListenerHandler(value = "jButton", type = MouseListener.class)
     })
@@ -96,7 +105,9 @@ public class MyFrame extends JFrame2 {
         return new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Mouse Clicked en " + e.getPoint());
+                int x = rand.nextInt(getWidth() - getWidth());
+                int y = rand.nextInt(getHeight() - getHeight() - 30);
+                jButton.setBounds(x, y, 100, 40);
             }
 
             @Override

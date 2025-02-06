@@ -25,12 +25,12 @@ public class MainFrame extends JFrame2 {
     @SetColumns(20)
     JTextField textField;
 
-    @AddActionListener(method = "openNewWindow")
+    @AddActionListener("openNewWindow")
     @SetText("Abrir nueva pantalla")
     JButton button;
 
     public static void main(String[] args) {
-        MainFrame mainFrame = new MainFrame();
+        new MainFrame();
     }
 
     public void openNewWindow() {

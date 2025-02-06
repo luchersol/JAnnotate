@@ -16,7 +16,7 @@ public class AddActionListenerProcessor extends AbstractListenerProcessor<AddAct
     public void process(Field field, Object object, AddActionListener annotation) {
         try {
             AbstractButton component = getFieldAs(field, object, AbstractButton.class);
-            Method method = getMethod(object.getClass(), annotation.method(), annotation.type_args());
+            Method method = getMethod(object.getClass(), annotation.value(), annotation.type_args());
             Object[] args = parseArguments(method, annotation.args());
             component.addActionListener(e -> {
                 try {
@@ -27,7 +27,7 @@ public class AddActionListenerProcessor extends AbstractListenerProcessor<AddAct
             });
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.severe(e.getMessage());
         }
     }
 

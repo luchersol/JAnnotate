@@ -4,6 +4,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import com.jannotate.common.exceptions.SevereException;
+
 public abstract class AbstractGroupedListenerProcessor<P extends AbstractListenerProcessor<S>, S extends Annotation, G extends Annotation>
         extends AbstractFieldProcessor<G> {
 
@@ -23,14 +25,19 @@ public abstract class AbstractGroupedListenerProcessor<P extends AbstractListene
     };
 
     public void process(Field field, Object object) {
-        if (field.isAnnotationPresent(getAnnotationGroupClass())) {
-            G groupAnnotations = field.getAnnotation(getAnnotationGroupClass());
-            process(field, object, groupAnnotations);
+        try {
+            if (field.isAnnotationPresent(getAnnotationGroupClass())) {
+                G groupAnnotations = field.getAnnotation(getAnnotationGroupClass());
+                process(field, object, groupAnnotations);
+            }
+        } catch (SevereException e) {
+            logger.severe(e.getMessage());
         }
+
     }
 
     @SuppressWarnings("unchecked")
-    public void process(Field field, Object object, G annotation) {
+    public void process(Field field, Object object, G annotation) throws SevereException {
         try {
             Method value = annotation.annotationType().getMethod("value");
             Object result = value.invoke(annotation);
@@ -42,7 +49,7 @@ public abstract class AbstractGroupedListenerProcessor<P extends AbstractListene
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new SevereException(e);
         }
     }
 

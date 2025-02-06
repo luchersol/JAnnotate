@@ -17,7 +17,7 @@ public class SetTitleProcessor extends AbstractFieldAndClassProcessor<SetTitle> 
             JFrame frame = getFieldAs(field, object, JFrame.class);
             frame.setTitle(annotation.value());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.severe(e.getMessage());
         }
     }
 
@@ -27,7 +27,7 @@ public class SetTitleProcessor extends AbstractFieldAndClassProcessor<SetTitle> 
             JFrame frame = (JFrame) object;
             frame.setTitle(annotation.value());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.severe(e.getMessage());
         }
 
     }

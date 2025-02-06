@@ -16,7 +16,7 @@ public class SetColumnsProcessor extends AbstractFieldAndClassProcessor<SetColum
         try {
             processMethodInField(field, object, "setColumns", new Object[] { annotation.value() }, int.class);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            logger.severe(e.getMessage());
         }
     }
 
@@ -27,7 +27,7 @@ public class SetColumnsProcessor extends AbstractFieldAndClassProcessor<SetColum
             setColumnMethod.invoke(object, annotation.value());
         } catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException
                 | InvocationTargetException e) {
-            e.printStackTrace();
+            logger.severe(e.getMessage());
         }
     }
 

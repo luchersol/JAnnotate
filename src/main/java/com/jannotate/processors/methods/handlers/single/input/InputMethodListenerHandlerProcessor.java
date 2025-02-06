@@ -6,13 +6,14 @@ import java.lang.reflect.Method;
 import com.jannotate.annotations.methods.handlers.single.input.InputMethodListenerHandler;
 import com.jannotate.common.abstractClasses.AbstractListenerHandlerProcessor;
 import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
 public class InputMethodListenerHandlerProcessor
         extends AbstractListenerHandlerProcessor<InputMethodListenerHandler, InputMethodListener> {
 
     @Override
-    public void process(Method method, Object object, InputMethodListenerHandler annotation) {
+    public void process(Method method, Object object, InputMethodListenerHandler annotation) throws SevereException {
         process(method, object, annotation, "addInputMethodListener");
     }
 

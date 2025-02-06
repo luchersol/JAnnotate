@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import org.reflections.Reflections;
@@ -24,9 +25,13 @@ import com.jannotate.common.interfaces.ClassProcessorInterface;
 import com.jannotate.common.interfaces.FieldProcessorInterface;
 import com.jannotate.common.interfaces.MethodProcessorInterface;
 import com.jannotate.common.interfaces.MyFrameInterface;
+import com.jannotate.common.logger.CustomLogger;
 
 public class AnnotationProcessorProxy implements InvocationHandler {
+
     private final Object target;
+
+    private static final Logger logger = CustomLogger.getLogger(AnnotationProcessorProxy.class.getName());
 
     public AnnotationProcessorProxy(Object target) {
         this.target = target;
@@ -38,16 +43,35 @@ public class AnnotationProcessorProxy implements InvocationHandler {
         return proxy;
     }
 
-    private static final Set<Class<? extends ClassProcessorInterface>> classProcessors;
-    private static final Set<Class<? extends FieldProcessorInterface>> fieldProcessors;
-    private static final Set<Class<? extends MethodProcessorInterface>> methodProcessors;
+    private static Set<Class<? extends ClassProcessorInterface>> classProcessors;
+    private static Set<Class<? extends FieldProcessorInterface>> fieldProcessors;
+    private static Set<Class<? extends MethodProcessorInterface>> methodProcessors;
 
     static {
-        classProcessors = doReflections(ClassProcessorInterface.class, "com.jannotate.processors.classes",
-                "com.jannotate.processors.mixed.fields_classes");
-        fieldProcessors = doReflections(FieldProcessorInterface.class, "com.jannotate.processors.fields",
-                "com.jannotate.processors.mixed.fields_classes");
-        methodProcessors = doReflections(MethodProcessorInterface.class, "com.jannotate.processors.methods");
+        try {
+            CustomLogger.load();
+            logger.info("Load custom logger");
+        } catch (Exception e) {
+            logger.severe(e.getMessage());
+        }
+
+    }
+
+    static {
+        try {
+            classProcessors = doReflections(ClassProcessorInterface.class, "com.jannotate.processors.classes",
+                    "com.jannotate.processors.mixed.fields_classes");
+            logger.info("Load class proccessors");
+            fieldProcessors = doReflections(FieldProcessorInterface.class, "com.jannotate.processors.fields",
+                    "com.jannotate.processors.mixed.fields_classes");
+            logger.info("Load field proccessors");
+            methodProcessors = doReflections(MethodProcessorInterface.class, "com.jannotate.processors.methods");
+            logger.info("Load method proccessors");
+        } catch (Exception e) {
+            logger.severe(e.getMessage());
+            System.exit(1);
+        }
+
     }
 
     @SuppressWarnings("unchecked")

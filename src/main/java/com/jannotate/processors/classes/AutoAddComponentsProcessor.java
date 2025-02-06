@@ -141,13 +141,12 @@ public class AutoAddComponentsProcessor implements ClassProcessorInterface {
             field.setAccessible(true); // Asegurar acceso al campo
             Object value = field.get(object);
 
-            if (value == null || !Component.class.isAssignableFrom(clazz))
+            if (value == null || !Component.class.isAssignableFrom(value.getClass()))
                 return;
 
             Method method = clazz.getMethod("add", Component.class);
-            method.setAccessible(true); // Asegurar acceso al método
+            method.setAccessible(true);
             method.invoke(object, value);
-
         } catch (Exception e) {
             throw new RuntimeException("Error al procesar el campo: " + field.getName(), e);
         }

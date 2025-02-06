@@ -15,10 +15,10 @@ import com.jannotate.common.annotations.PriorityAnnotation;
 import com.jannotate.common.interfaces.ClassProcessorInterface;
 
 @JProcessor
-@PriorityAnnotation(value = 1, annotations = {AutoAddComponents.class})
+@PriorityAnnotation(value = 1, annotations = { AutoAddComponents.class })
 public class UseGridLayoutProcessor implements ClassProcessorInterface {
 
-    public void process(Class<?> clazz, Object object){        
+    public void process(Class<?> clazz, Object object) {
         if (clazz.isAnnotationPresent(UseGridLayout.class)) {
             UseGridLayout annotation = clazz.getAnnotation(UseGridLayout.class);
 
@@ -33,13 +33,15 @@ public class UseGridLayoutProcessor implements ClassProcessorInterface {
         }
     }
 
-    private static void applyLayout(Container container, Class<? extends LayoutManager> layoutClass, UseGridLayout annotation) {
+    private static void applyLayout(Container container, Class<? extends LayoutManager> layoutClass,
+            UseGridLayout annotation) {
         try {
             int rows = annotation.rows(), cols = annotation.cols(), hgap = annotation.hgap(), vgap = annotation.vgap();
             // Crear una instancia del LayoutManager
-            Constructor<? extends LayoutManager> constructor = layoutClass.getDeclaredConstructor(int.class, int.class, int.class, int.class);
+            Constructor<? extends LayoutManager> constructor = layoutClass.getDeclaredConstructor(int.class, int.class,
+                    int.class, int.class);
             LayoutManager layoutManager = constructor.newInstance(rows, cols, hgap, vgap);
-            container.setLayout(layoutManager);  // Asignar el layout al contenedor
+            container.setLayout(layoutManager); // Asignar el layout al contenedor
         } catch (Exception e) {
             e.printStackTrace();
             // En caso de error, podrías optar por un layout por defecto como FlowLayout.

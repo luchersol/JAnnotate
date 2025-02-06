@@ -4,32 +4,30 @@ import java.awt.Component;
 import java.lang.reflect.Field;
 
 import com.jannotate.annotations.mixed.fields_classes.IsVisible;
+import com.jannotate.common.abstractClasses.AbstractFieldAndClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.interfaces.FieldAndClassProccesorInterface;
+import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
-public class IsVisibleProcessor implements FieldAndClassProccesorInterface {
+public class IsVisibleProcessor extends AbstractFieldAndClassProcessor<IsVisible> {
 
     @Override
-    public void process(Field field, Object object) {
-        if(field.isAnnotationPresent(IsVisible.class)){
-            try {
-                IsVisible annotation = field.getAnnotation(IsVisible.class);
-                field.setAccessible(true);
-                Component component = (Component) field.get(object);
-                component.setVisible(annotation.value());
-            } catch (IllegalArgumentException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
+    protected void process(Field field, Object object, IsVisible annotation) throws SevereException {
+        try {
+            Component component = (Component) field.get(object);
+            component.setVisible(annotation.value());
+        } catch (Exception e) {
+            throw new SevereException(e);
         }
     }
 
     @Override
-    public void process(Class<?> clazz, Object object) {
-        if(clazz.isAnnotationPresent(IsVisible.class)){
-            IsVisible annotation = clazz.getAnnotation(IsVisible.class);
+    protected void process(Class<?> clazz, Object object, IsVisible annotation) throws SevereException {
+        try {
             Component component = (Component) object;
             component.setVisible(annotation.value());
+        } catch (Exception e) {
+            throw new SevereException(e);
         }
     }
 

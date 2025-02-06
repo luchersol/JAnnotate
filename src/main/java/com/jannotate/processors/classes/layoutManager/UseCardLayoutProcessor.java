@@ -15,13 +15,13 @@ import com.jannotate.common.annotations.PriorityAnnotation;
 import com.jannotate.common.interfaces.ClassProcessorInterface;
 
 @JProcessor
-@PriorityAnnotation(value = 1, annotations = {AutoAddComponents.class})
-public class UseCardLayoutProcessor implements ClassProcessorInterface{
+@PriorityAnnotation(value = 1, annotations = { AutoAddComponents.class })
+public class UseCardLayoutProcessor implements ClassProcessorInterface {
 
-    public void process(Class<?> clazz, Object object){        
+    public void process(Class<?> clazz, Object object) {
         if (clazz.isAnnotationPresent(UseCardLayout.class)) {
             UseCardLayout annotation = clazz.getAnnotation(UseCardLayout.class);
-            
+
             // Verificar si el objeto es una instancia de JPanel o JFrame
             if (object instanceof JPanel) {
                 JPanel panel = (JPanel) object;
@@ -33,13 +33,14 @@ public class UseCardLayoutProcessor implements ClassProcessorInterface{
         }
     }
 
-    private static void applyLayout(Container container, Class<? extends LayoutManager> layoutClass, UseCardLayout annotation) {
+    private static void applyLayout(Container container, Class<? extends LayoutManager> layoutClass,
+            UseCardLayout annotation) {
         try {
             int hgap = annotation.hgap(), vgap = annotation.vgap();
             // Crear una instancia del LayoutManager
             Constructor<? extends LayoutManager> constructor = layoutClass.getDeclaredConstructor(int.class, int.class);
             LayoutManager layoutManager = constructor.newInstance(hgap, vgap);
-            container.setLayout(layoutManager);  // Asignar el layout al contenedor
+            container.setLayout(layoutManager); // Asignar el layout al contenedor
         } catch (Exception e) {
             e.printStackTrace();
             // En caso de error, podrías optar por un layout por defecto como FlowLayout.

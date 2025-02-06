@@ -18,7 +18,7 @@ public class AutoAddProcessor extends AbstractFieldProcessor<AutoAdd> {
             JComponent value = getFieldAs(field, object, JComponent.class);
             container.add(value);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            logger.severe(e.getMessage());
         }
     }
 }

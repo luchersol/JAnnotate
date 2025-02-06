@@ -1,0 +1,54 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>408</x><y>216</y><w>112</w><h>48</h></coordinates><panel_attributes>/AbstractProcessor/
+bg=#f21a00
+--
+Logger logger
+Miscelaniun methods</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>552</y><w>512</w><h>56</h></coordinates><panel_attributes>/AbstractGroupedListenerHandlerProcessor&lt;P extends AbstractListenerHandlerProcessor&lt;S, ? extends EventListener&gt;, /
+/S extends Annotation, G extends Annotation&gt;/
+bg=#f2d500
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>288</y><w>312</w><h>48</h></coordinates><panel_attributes>/AbstractClassProcessor&lt;T extends Annotation&gt;/
+bg=#d87a1c
+--
+abstract void process(Class&lt;?&gt; clazz, Object object, T annotation)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>256</y><w>80</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;50;10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>480</y><w>312</w><h>56</h></coordinates><panel_attributes>/AbstractFieldAndClassProcessor&lt;T extends Annotation&gt;/
+bg=#d87a1c
+--
+abstract void process(Class&lt;?&gt; clazz, Object object, T annotation)
+abstract void process(Field field, Object object, T annotation)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>352</y><w>312</w><h>48</h></coordinates><panel_attributes>/AbstractFieldProcessor&lt;T extends Annotation&gt;/
+bg=#d87a1c
+--
+abstract void process(Field field, Object object, T annotation)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>256</y><w>80</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;130;10;130;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>256</y><w>80</w><h>248</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;290;10;290;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>416</y><w>360</w><h>104</h></coordinates><panel_attributes>/AbstractListenerHandlerProcessor&lt;T extends Annotation, L extends EventListener&gt;/
+bg=#f2d500
+--
+void process(Method method, Object object, 
+		                      T annotation, String addMethodName)
+&lt;E extends EventListener&gt; void process(Method method, 
+		                      		                      		                      Object object, T annotation, 
+		                      		                      		                      String addMethodName, 
+		                      		                      		                      Class&lt;E&gt; clazzEventListener)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>416</y><w>312</w><h>48</h></coordinates><panel_attributes>/AbstractMethodProcessor&lt;T extends Annotation&gt;/
+bg=#d87a1c
+--
+abstract void process(Method method, Object object, T annotation)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>256</y><w>80</w><h>184</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;210;10;210;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>824</x><y>416</y><w>72</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>352</y><w>312</w><h>48</h></coordinates><panel_attributes>/AbstractListenerProcessor&lt;T extends Annotation&gt;/
+bg=#f2d500
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>824</x><y>352</y><w>72</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>288</y><w>336</w><h>48</h></coordinates><panel_attributes>/AbstractGroupedListenerProcessor&lt;P extends AbstractListenerProcessor&lt;S&gt;, /
+/S extends Annotation, G extends Annotation&gt;/
+bg=#f2d500
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>824</x><y>296</y><w>72</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;40;10;40;80;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>824</x><y>416</y><w>72</w><h>168</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;190;40;190;40;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>352</y><w>184</w><h>48</h></coordinates><panel_attributes>/FieldProcessorInterface/
+bg=#83a9ea
+--
+void process(Field field, Object object)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>184</x><y>288</y><w>200</w><h>40</h></coordinates><panel_attributes>/ClassProcessorInterface/
+bg=#83a9ea
+--
+void process(Class&lt;?&gt; clazz, Object object)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>176</x><y>416</y><w>208</w><h>48</h></coordinates><panel_attributes>/MethodProcessorInterface/
+bg=#83a9ea
+--
+void process(Method method, Object object)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>248</x><y>480</y><w>208</w><h>40</h></coordinates><panel_attributes>/FieldAndClassProcessorInterface/
+bg=#83a9ea
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>376</x><y>352</y><w>48</w><h>144</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>40;160;40;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>376</x><y>288</y><w>48</w><h>208</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>40;240;40;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>376</x><y>376</y><w>160</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>376</x><y>304</y><w>160</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>376</x><y>440</y><w>160</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>448</x><y>504</y><w>88</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>32</x><y>216</y><w>200</w><h>32</h></coordinates><panel_attributes>/AbstractProcessorInterface/
+bg=#003ca5
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>128</x><y>240</y><w>72</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;70;10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>128</x><y>240</y><w>136</w><h>264</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;310;10;310;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>128</x><y>240</y><w>64</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>60;230;10;230;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>128</x><y>240</y><w>88</w><h>136</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>90;150;10;150;10;10</additional_attributes></element></diagram>

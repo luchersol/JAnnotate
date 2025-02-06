@@ -4,15 +4,33 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
+import java.util.Arrays;
+import java.util.logging.Logger;
 
 import com.jannotate.common.annotations.MethodAndArgs;
+import com.jannotate.common.logger.CustomLogger;
 
 public abstract class AbstractProcessor {
+
+    protected Logger logger;
+
+    public AbstractProcessor() {
+        this.logger = CustomLogger.getLogger(this.getClass().getName());
+    }
+
+    protected Logger getLogger(Class<?> clazz) {
+        return Logger.getLogger(clazz.getName());
+    }
 
     protected static <T> T getFieldAs(Field field, Object object, Class<T> clazz)
             throws IllegalArgumentException, IllegalAccessException {
         field.setAccessible(true);
         return clazz.cast(field.get(object));
+    }
+
+    protected static Object getField(Field field, Object object)
+            throws IllegalArgumentException, IllegalAccessException {
+        return getFieldAs(field, object, Object.class);
     }
 
     protected static <T> T getFieldAs(String fieldName, Object object, Class<T> clazz)
@@ -24,6 +42,7 @@ public abstract class AbstractProcessor {
 
     protected static Method getMethod(Class<?> clazz, String methodName, Class<?>... parameterType)
             throws NoSuchMethodException {
+        String originClazzName = clazz.getSimpleName();
         while (clazz != null) {
             try {
                 Method method = clazz.getDeclaredMethod(methodName, parameterType);
@@ -33,7 +52,8 @@ public abstract class AbstractProcessor {
                 clazz = clazz.getSuperclass();
             }
         }
-        throw new NoSuchMethodException();
+        throw new NoSuchMethodException(String.format("Method %s with params %s not found in class %s", methodName,
+                Arrays.toString(parameterType), originClazzName));
     }
 
     protected static <T> Class<?> getAnnotationClass(Class<T> clazz, int index) {
@@ -59,18 +79,15 @@ public abstract class AbstractProcessor {
     }
 
     public static void processMethodInClass(Class<?> clazz, Object object, String methodName, Object[] params,
-            Class<?>... parameterType) {
-        try {
-            Method method = getMethod(clazz, methodName, parameterType);
-            method.invoke(object, params);
-        } catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException
-                | InvocationTargetException e) {
-            e.printStackTrace();
-        }
+            Class<?>... parameterType)
+            throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Method method = getMethod(clazz, methodName, parameterType);
+        method.invoke(object, params);
     }
 
     public static void processMethodInClass(Class<?> clazz, Object object, String methodName, Object param,
-            Class<?>... parameterType) {
+            Class<?>... parameterType)
+            throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         processMethodInClass(clazz, object, methodName, new Object[] { param }, parameterType);
     }
 

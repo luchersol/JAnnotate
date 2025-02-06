@@ -15,13 +15,13 @@ import com.jannotate.common.annotations.PriorityAnnotation;
 import com.jannotate.common.interfaces.ClassProcessorInterface;
 
 @JProcessor
-@PriorityAnnotation(value = 1, annotations = {AutoAddComponents.class})
+@PriorityAnnotation(value = 1, annotations = { AutoAddComponents.class })
 public class UseFlowLayoutProcessor implements ClassProcessorInterface {
 
-    public void process(Class<?> clazz, Object object){        
+    public void process(Class<?> clazz, Object object) {
         if (clazz.isAnnotationPresent(UseFlowLayout.class)) {
             UseFlowLayout annotation = clazz.getAnnotation(UseFlowLayout.class);
-            
+
             // Verificar si el objeto es una instancia de JPanel o JFrame
             if (object instanceof JPanel) {
                 JPanel panel = (JPanel) object;
@@ -33,13 +33,15 @@ public class UseFlowLayoutProcessor implements ClassProcessorInterface {
         }
     }
 
-    private static void applyLayout(Container container, Class<? extends LayoutManager> layoutClass, UseFlowLayout annotation) {
+    private static void applyLayout(Container container, Class<? extends LayoutManager> layoutClass,
+            UseFlowLayout annotation) {
         try {
             int align = annotation.align(), hgap = annotation.hgap(), vgap = annotation.vgap();
             // Crear una instancia del LayoutManager
-            Constructor<? extends LayoutManager> constructor = layoutClass.getDeclaredConstructor(int.class, int.class, int.class);
+            Constructor<? extends LayoutManager> constructor = layoutClass.getDeclaredConstructor(int.class, int.class,
+                    int.class);
             LayoutManager layoutManager = constructor.newInstance(align, hgap, vgap);
-            container.setLayout(layoutManager);  // Asignar el layout al contenedor
+            container.setLayout(layoutManager); // Asignar el layout al contenedor
         } catch (Exception e) {
             e.printStackTrace();
             // En caso de error, podrías optar por un layout por defecto como FlowLayout.

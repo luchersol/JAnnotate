@@ -22,7 +22,7 @@ public class SetImageIconProcessor extends AbstractFieldProcessor<SetImagenIcon>
             method.invoke(value, new ImageIcon(annotation.value()));
         } catch (InvocationTargetException | SecurityException | IllegalArgumentException
                 | IllegalAccessException | NoSuchMethodException e) {
-            e.printStackTrace();
+            logger.severe(e.getMessage());
         }
     }
 

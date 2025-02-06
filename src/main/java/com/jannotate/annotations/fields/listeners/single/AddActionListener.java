@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AddActionListener {
 
-    String method() default "";
+    String value();
 
     String[] args() default {};
 

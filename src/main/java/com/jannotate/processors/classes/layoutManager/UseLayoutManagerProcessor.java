@@ -14,10 +14,10 @@ import com.jannotate.common.annotations.PriorityAnnotation;
 import com.jannotate.common.interfaces.ClassProcessorInterface;
 
 @JProcessor
-@PriorityAnnotation(value = 1, annotations = {AutoAddComponents.class})
+@PriorityAnnotation(value = 1, annotations = { AutoAddComponents.class })
 public class UseLayoutManagerProcessor implements ClassProcessorInterface {
 
-    public void process(Class<?> clazz, Object object){        
+    public void process(Class<?> clazz, Object object) {
         if (clazz.isAnnotationPresent(UseLayoutManager.class)) {
             UseLayoutManager annotation = clazz.getAnnotation(UseLayoutManager.class);
             Class<? extends LayoutManager> layoutClass = annotation.value();
@@ -38,7 +38,7 @@ public class UseLayoutManagerProcessor implements ClassProcessorInterface {
             // Crear una instancia del LayoutManager
             Constructor<? extends LayoutManager> constructor = layoutClass.getDeclaredConstructor();
             LayoutManager layoutManager = constructor.newInstance();
-            container.setLayout(layoutManager);  // Asignar el layout al contenedor
+            container.setLayout(layoutManager); // Asignar el layout al contenedor
         } catch (Exception e) {
             e.printStackTrace();
             // En caso de error, podrías optar por un layout por defecto como FlowLayout.

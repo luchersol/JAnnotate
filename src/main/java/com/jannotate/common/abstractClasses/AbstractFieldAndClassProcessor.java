@@ -3,28 +3,39 @@ package com.jannotate.common.abstractClasses;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
+import com.jannotate.common.exceptions.SevereException;
 import com.jannotate.common.interfaces.FieldAndClassProccesorInterface;
 
 public abstract class AbstractFieldAndClassProcessor<T extends Annotation> extends AbstractProcessor
         implements FieldAndClassProccesorInterface {
 
-    protected abstract void process(Field field, Object object, T annotation);
+    protected abstract void process(Field field, Object object, T annotation) throws SevereException;
 
-    protected abstract void process(Class<?> clazz, Object object, T annotation);
+    protected abstract void process(Class<?> clazz, Object object, T annotation) throws SevereException;
 
     @Override
     public void process(Field field, Object object) {
-        if (field.isAnnotationPresent(getAnnotationClass())) {
-            T annotation = field.getAnnotation(getAnnotationClass());
-            process(field, object, annotation);
+        try {
+            if (field != null && object != null && field.isAnnotationPresent(getAnnotationClass())) {
+                T annotation = field.getAnnotation(getAnnotationClass());
+                field.setAccessible(true);
+                process(field, object, annotation);
+            }
+        } catch (SevereException e) {
+            logger.severe(e.getMessage());
         }
+
     }
 
     @Override
     public void process(Class<?> clazz, Object object) {
-        if (clazz.isAnnotationPresent(getAnnotationClass())) {
-            T annotation = clazz.getAnnotation(getAnnotationClass());
-            process(clazz, object, annotation);
+        try {
+            if (clazz.isAnnotationPresent(getAnnotationClass())) {
+                T annotation = clazz.getAnnotation(getAnnotationClass());
+                process(clazz, object, annotation);
+            }
+        } catch (Exception e) {
+            logger.severe(e.getMessage());
         }
     }
 
