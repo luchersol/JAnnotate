@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 
 import com.jannotate.annotations.classes.AutoAddComponents;
 import com.jannotate.annotations.classes.AutoInstantiateFields;
-import com.jannotate.annotations.classes.layoutManager.UseBorderLayout;
+import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
 import com.jannotate.annotations.fields.SetImagenIcon;
 import com.jannotate.annotations.fields.SetPosition;
 import com.jannotate.annotations.fields.listeners.group.AddActionListeners;
@@ -34,12 +34,12 @@ import com.jannotate.annotations.mixed.fields_classes.SetTitle;
 import com.jannotate.common.classes.JFrame2;
 import com.jannotate.common.enums.TextColor;
 
-@UseBorderLayout
+@UseFlowLayout
 @AutoAddComponents
 @AutoInstantiateFields
 @IsVisible
 @SetTitle("MY FRAME")
-@SetSize(heigth = 500, width = 500)
+@SetSize(heigth = 400, width = 500)
 @SetDefaultClose(JFrame.DISPOSE_ON_CLOSE)
 public class MyFrame extends JFrame2 {
 

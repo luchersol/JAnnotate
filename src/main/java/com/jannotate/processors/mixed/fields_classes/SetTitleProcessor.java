@@ -2,32 +2,29 @@ package com.jannotate.processors.mixed.fields_classes;
 
 import java.lang.reflect.Field;
 
-import javax.swing.JFrame;
-
 import com.jannotate.annotations.mixed.fields_classes.SetTitle;
 import com.jannotate.common.abstractClasses.AbstractFieldAndClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
 public class SetTitleProcessor extends AbstractFieldAndClassProcessor<SetTitle> {
 
     @Override
-    protected void process(Field field, Object object, SetTitle annotation) {
+    protected void process(Field field, Object object, SetTitle annotation) throws SevereException {
         try {
-            JFrame frame = getFieldAs(field, object, JFrame.class);
-            frame.setTitle(annotation.value());
+            processMethodInField(field, object, "setTitle", annotation.value(), String.class);
         } catch (Exception e) {
-            logger.severe(e.getMessage());
+            SevereException.throw_exception(e);
         }
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, SetTitle annotation) {
+    protected void process(Class<?> clazz, Object object, SetTitle annotation) throws SevereException {
         try {
-            JFrame frame = (JFrame) object;
-            frame.setTitle(annotation.value());
+            processMethodInClass(clazz, object, "setTitle", annotation.value(), String.class);
         } catch (Exception e) {
-            logger.severe(e.getMessage());
+            SevereException.throw_exception(e);
         }
 
     }

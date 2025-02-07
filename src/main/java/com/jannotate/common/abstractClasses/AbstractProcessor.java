@@ -1,10 +1,12 @@
 package com.jannotate.common.abstractClasses;
 
+import java.awt.Component;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
 import com.jannotate.common.annotations.MethodAndArgs;
@@ -38,6 +40,21 @@ public abstract class AbstractProcessor {
         Field field = object.getClass().getDeclaredField(fieldName);
         field.setAccessible(true);
         return clazz.cast(field.get(object));
+    }
+
+    protected static <T> boolean isFieldAs(String fieldName, Object object, Class<T> clazz) {
+        try {
+            getFieldAs(fieldName, object, clazz);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    protected static List<Field> getComponentFields(Class<?> clazz) {
+        return Arrays.stream(clazz.getDeclaredFields())
+                .filter(field -> Component.class.isAssignableFrom(field.getType()))
+                .toList();
     }
 
     protected static Method getMethod(Class<?> clazz, String methodName, Class<?>... parameterType)
@@ -78,6 +95,10 @@ public abstract class AbstractProcessor {
         processMethodInField(field, object, methodName, new Object[] { param }, parameterType);
     }
 
+    public static void processMethodInField(Field field, Object object, String methodName) {
+        processMethodInField(field, object, methodName, new Object[] {});
+    }
+
     public static void processMethodInClass(Class<?> clazz, Object object, String methodName, Object[] params,
             Class<?>... parameterType)
             throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
@@ -89,6 +110,11 @@ public abstract class AbstractProcessor {
             Class<?>... parameterType)
             throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         processMethodInClass(clazz, object, methodName, new Object[] { param }, parameterType);
+    }
+
+    public static void processMethodInClass(Class<?> clazz, Object object, String methodName)
+            throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        processMethodInClass(clazz, object, methodName, new Object[] {});
     }
 
     protected static void processMethodAndArgs(MethodAndArgs methodAndArgs, Object object)

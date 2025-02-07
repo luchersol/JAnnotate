@@ -34,7 +34,7 @@ public class SetTextProcessor extends AbstractFieldAndClassProcessor<SetText> {
 
             }
         } catch (Exception e) {
-            throw new SevereException(e);
+            SevereException.throw_exception(e);
         }
 
     }
@@ -74,7 +74,7 @@ public class SetTextProcessor extends AbstractFieldAndClassProcessor<SetText> {
             }
 
         } catch (Exception e) {
-            throw new SevereException(e);
+            SevereException.throw_exception(e);
         }
 
     }

@@ -20,7 +20,7 @@ public abstract class AbstractListenerHandlerProcessor<T extends Annotation, L e
             L listener = getEventListenerClass().cast(method.invoke(object, parametros));
             addMethod.invoke(component, listener);
         } catch (Exception e) {
-            throw new SevereException(e);
+            SevereException.throw_exception(e);
         }
     }
 
@@ -36,7 +36,7 @@ public abstract class AbstractListenerHandlerProcessor<T extends Annotation, L e
             E listener = clazzEventListener.cast(method.invoke(object, parametros));
             addMethod.invoke(component, listener);
         } catch (Exception e) {
-            throw new SevereException(e);
+            SevereException.throw_exception(e);
         }
     }
 

@@ -11,5 +11,5 @@ import com.jannotate.common.annotations.PriorityAnnotation;
 @Target(ElementType.TYPE)
 @PriorityAnnotation
 public @interface AutoInstantiateFields {
-
+    boolean recursive() default false;
 }

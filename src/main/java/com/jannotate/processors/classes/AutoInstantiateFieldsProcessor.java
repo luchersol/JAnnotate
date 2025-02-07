@@ -17,20 +17,19 @@ public class AutoInstantiateFieldsProcessor extends AbstractClassProcessor<AutoI
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             try {
-                // Asegurarse de que el campo sea accesible
                 field.setAccessible(true);
 
                 // Verificar si el campo es null
                 if (field.get(object) == null) {
-                    // Obtener el tipo del campo y crear una instancia con el constructor vacío
                     Class<?> fieldType = field.getType();
                     Object instance = fieldType.getDeclaredConstructor().newInstance();
                     field.set(object, instance);
+                    if (annotation.recursive()) {
+                        process(field.getType(), field.get(object), annotation);
+                    }
                 }
             } catch (Exception e) {
-                // Manejar errores (por ejemplo, si no hay un constructor vacío o acceso
-                // denegado)
-                System.err.println("No se pudo inicializar el campo: " + field.getName());
+                SevereException.throw_exception("No se pudo inicializar el campo: " + field.getName());
             }
         }
     }

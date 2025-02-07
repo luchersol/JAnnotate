@@ -50,7 +50,7 @@ public class AnnotationProcessorProxy implements InvocationHandler {
     static {
         try {
             CustomLogger.load();
-            logger.info("Load custom logger");
+            logger.info("Loaded custom logger");
         } catch (Exception e) {
             logger.severe(e.getMessage());
         }
@@ -61,12 +61,12 @@ public class AnnotationProcessorProxy implements InvocationHandler {
         try {
             classProcessors = doReflections(ClassProcessorInterface.class, "com.jannotate.processors.classes",
                     "com.jannotate.processors.mixed.fields_classes");
-            logger.info("Load class proccessors");
+            logger.info("Loaded class proccessors");
             fieldProcessors = doReflections(FieldProcessorInterface.class, "com.jannotate.processors.fields",
                     "com.jannotate.processors.mixed.fields_classes");
-            logger.info("Load field proccessors");
+            logger.info("Loaded field proccessors");
             methodProcessors = doReflections(MethodProcessorInterface.class, "com.jannotate.processors.methods");
-            logger.info("Load method proccessors");
+            logger.info("Loaded method proccessors");
         } catch (Exception e) {
             logger.severe(e.getMessage());
             System.exit(1);
@@ -107,12 +107,9 @@ public class AnnotationProcessorProxy implements InvocationHandler {
                     return annotation != null ? annotation.value() : Integer.MAX_VALUE;
                 }).thenComparing((Class<? extends T> cls) -> {
                     PriorityAnnotation annotation = cls.getAnnotation(PriorityAnnotation.class);
-                    // Opcional: puedes definir cómo ordenar por `annotations` si tiene múltiples
-                    // valores
                     return annotation != null && annotation.annotations().length > 0
-                            ? annotation.annotations()[0].getName() // Ordena por el nombre de la primera clase en la
-                                                                    // lista
-                            : ""; // Usa un valor por defecto si no hay anotaciones
+                            ? annotation.annotations()[0].getName()
+                            : "";
                 }))
                 .collect(Collectors.toList());
     }

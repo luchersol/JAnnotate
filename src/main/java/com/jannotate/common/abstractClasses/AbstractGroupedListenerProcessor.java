@@ -49,7 +49,7 @@ public abstract class AbstractGroupedListenerProcessor<P extends AbstractListene
                 }
             }
         } catch (Exception e) {
-            throw new SevereException(e);
+            SevereException.throw_exception(e);
         }
     }
 

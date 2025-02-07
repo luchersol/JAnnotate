@@ -15,7 +15,7 @@ public class SetDefaultCloseProccesor extends AbstractFieldAndClassProcessor<Set
         try {
             processMethodInField(field, object, "setDefaultCloseOperation", annotation.value(), int.class);
         } catch (Exception e) {
-            throw new SevereException(e);
+            SevereException.throw_exception(e);
         }
     }
 
@@ -24,7 +24,7 @@ public class SetDefaultCloseProccesor extends AbstractFieldAndClassProcessor<Set
         try {
             processMethodInClass(clazz, object, "setDefaultCloseOperation", annotation.value(), int.class);
         } catch (Exception e) {
-            throw new SevereException(e);
+            SevereException.throw_exception(e);
         }
     }
 
