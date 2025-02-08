@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.jannotate.common.annotations.MethodAndArgs;
+import com.jannotate.common.exceptions.LogException;
+import com.jannotate.common.exceptions.SevereException;
 import com.jannotate.common.logger.CustomLogger;
 
 public abstract class AbstractProcessor {
@@ -51,6 +53,18 @@ public abstract class AbstractProcessor {
         }
     }
 
+    protected static <T> T invokeMethod(Method method, Object object, String[] args, Class<T> clazz)
+            throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Object[] parsedArgs = parseArguments(method, args);
+        return clazz.cast(method.invoke(object, parsedArgs));
+    }
+
+    protected static void invokeMethod(Method method, Object object, String[] args)
+            throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Object[] parsedArgs = parseArguments(method, args);
+        method.invoke(object, parsedArgs);
+    }
+
     protected static List<Field> getComponentFields(Class<?> clazz) {
         return Arrays.stream(clazz.getDeclaredFields())
                 .filter(field -> Component.class.isAssignableFrom(field.getType()))
@@ -59,6 +73,7 @@ public abstract class AbstractProcessor {
 
     protected static Method getMethod(Class<?> clazz, String methodName, Class<?>... parameterType)
             throws NoSuchMethodException {
+        // The original class name is saved before the iteration.
         String originClazzName = clazz.getSimpleName();
         while (clazz != null) {
             try {
@@ -79,42 +94,72 @@ public abstract class AbstractProcessor {
     }
 
     public static void processMethodInField(Field field, Object object, String methodName, Object[] params,
-            Class<?>... parameterType) {
+            Class<?>... parameterType) throws LogException {
         try {
             Object value = getFieldAs(field, object, Object.class);
             Method method = getMethod(value.getClass(), methodName, parameterType);
             method.invoke(value, params);
-        } catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException
-                | InvocationTargetException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            SevereException.throw_exception(e);
         }
     }
 
     public static void processMethodInField(Field field, Object object, String methodName, Object param,
-            Class<?>... parameterType) {
+            Class<?>... parameterType) throws LogException {
         processMethodInField(field, object, methodName, new Object[] { param }, parameterType);
     }
 
-    public static void processMethodInField(Field field, Object object, String methodName) {
+    public static void processMethodInField(Field field, Object object, String methodName) throws LogException {
         processMethodInField(field, object, methodName, new Object[] {});
     }
 
     public static void processMethodInClass(Class<?> clazz, Object object, String methodName, Object[] params,
             Class<?>... parameterType)
-            throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        Method method = getMethod(clazz, methodName, parameterType);
-        method.invoke(object, params);
+            throws LogException {
+        try {
+            Method method = getMethod(clazz, methodName, parameterType);
+            method.invoke(object, params);
+        } catch (Exception e) {
+            SevereException.throw_exception(e);
+        }
+
     }
 
     public static void processMethodInClass(Class<?> clazz, Object object, String methodName, Object param,
             Class<?>... parameterType)
-            throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+            throws LogException {
         processMethodInClass(clazz, object, methodName, new Object[] { param }, parameterType);
     }
 
     public static void processMethodInClass(Class<?> clazz, Object object, String methodName)
-            throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+            throws LogException {
         processMethodInClass(clazz, object, methodName, new Object[] {});
+    }
+
+    public void processMethodInFieldOrClass(Object target, Object object, String methodName, Object[] param,
+            Class<?>... parameterType)
+            throws LogException {
+        try {
+            if (target instanceof Field) {
+                processMethodInField((Field) target, object, methodName, param, parameterType);
+            } else if (target instanceof Class) {
+                processMethodInClass((Class<?>) target, object, methodName, param, parameterType);
+            }
+        } catch (Exception e) {
+            SevereException.throw_exception(e);
+        }
+    }
+
+    public void processMethodInFieldOrClass(Object target, Object object, String methodName, Object param,
+            Class<?>... parameterType)
+            throws LogException {
+        processMethodInFieldOrClass(target, object, methodName, new Object[] { param }, parameterType);
+    }
+
+    public void processMethodInFieldOrClass(Object target, Object object, String methodName)
+            throws LogException {
+        processMethodInFieldOrClass(target, object, methodName, new Object[] {});
+
     }
 
     protected static void processMethodAndArgs(MethodAndArgs methodAndArgs, Object object)

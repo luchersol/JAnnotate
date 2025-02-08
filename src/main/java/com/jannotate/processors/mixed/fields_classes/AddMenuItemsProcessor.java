@@ -12,13 +12,14 @@ import javax.swing.JSeparator;
 import com.jannotate.annotations.mixed.fields_classes.AddMenuItems;
 import com.jannotate.common.abstractClasses.AbstractFieldAndClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.exceptions.LogException;
 import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
 public class AddMenuItemsProcessor extends AbstractFieldAndClassProcessor<AddMenuItems> {
 
     @Override
-    protected void process(Field field, Object object, AddMenuItems annotation) throws SevereException {
+    protected void process(Field field, Object object, AddMenuItems annotation) throws LogException {
         try {
             JMenu jMenu = getFieldAs(field, object, JMenu.class);
             Set<String> set = new LinkedHashSet<>(Arrays.asList(annotation.value()));
@@ -39,7 +40,7 @@ public class AddMenuItemsProcessor extends AbstractFieldAndClassProcessor<AddMen
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, AddMenuItems annotation) throws SevereException {
+    protected void process(Class<?> clazz, Object object, AddMenuItems annotation) throws LogException {
         try {
             JMenu jMenu = (JMenu) object;
             Set<String> set = new LinkedHashSet<>(Arrays.asList(annotation.value()));

@@ -7,6 +7,7 @@ import com.jannotate.annotations.mixed.fields_classes.IsVisible;
 import com.jannotate.common.abstractClasses.AbstractFieldAndClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.common.annotations.PriorityAnnotation;
+import com.jannotate.common.exceptions.LogException;
 import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
@@ -14,7 +15,7 @@ import com.jannotate.common.exceptions.SevereException;
 public class IsVisibleProcessor extends AbstractFieldAndClassProcessor<IsVisible> {
 
     @Override
-    protected void process(Field field, Object object, IsVisible annotation) throws SevereException {
+    protected void process(Field field, Object object, IsVisible annotation) throws LogException {
         try {
             Component component = (Component) field.get(object);
             component.setVisible(annotation.value());
@@ -24,7 +25,7 @@ public class IsVisibleProcessor extends AbstractFieldAndClassProcessor<IsVisible
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, IsVisible annotation) throws SevereException {
+    protected void process(Class<?> clazz, Object object, IsVisible annotation) throws LogException {
         try {
             Component component = (Component) object;
             component.setVisible(annotation.value());

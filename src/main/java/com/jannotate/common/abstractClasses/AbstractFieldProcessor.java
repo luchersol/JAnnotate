@@ -3,13 +3,14 @@ package com.jannotate.common.abstractClasses;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
-import com.jannotate.common.exceptions.SevereException;
+import com.jannotate.common.exceptions.LogException;
+import com.jannotate.common.exceptions.WarningException;
 import com.jannotate.common.interfaces.FieldProcessorInterface;
 
 public abstract class AbstractFieldProcessor<T extends Annotation> extends AbstractProcessor
         implements FieldProcessorInterface {
 
-    public abstract void process(Field field, Object object, T annotation) throws SevereException;
+    public abstract void process(Field field, Object object, T annotation) throws LogException;
 
     @Override
     public void process(Field field, Object object) {
@@ -19,7 +20,9 @@ public abstract class AbstractFieldProcessor<T extends Annotation> extends Abstr
                 T annotation = field.getAnnotation(getAnnotationClass());
                 process(field, object, annotation);
             }
-        } catch (SevereException e) {
+        } catch (WarningException e) {
+            logger.warning(e.getMessage());
+        } catch (Exception e) {
             logger.severe(e.getMessage());
         }
 

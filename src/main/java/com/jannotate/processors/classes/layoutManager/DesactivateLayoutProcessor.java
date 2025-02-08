@@ -7,6 +7,7 @@ import com.jannotate.annotations.classes.layoutManager.DesactivateLayout;
 import com.jannotate.common.abstractClasses.AbstractClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.common.annotations.PriorityAnnotation;
+import com.jannotate.common.exceptions.LogException;
 import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
@@ -14,7 +15,7 @@ import com.jannotate.common.exceptions.SevereException;
 public class DesactivateLayoutProcessor extends AbstractClassProcessor<DesactivateLayout> {
 
     @Override
-    public void process(Class<?> clazz, Object object, DesactivateLayout annotation) throws SevereException {
+    public void process(Class<?> clazz, Object object, DesactivateLayout annotation) throws LogException {
         try {
             processMethodInClass(clazz, object, "setLayout", new Object[] { null }, LayoutManager.class);
         } catch (Exception e) {

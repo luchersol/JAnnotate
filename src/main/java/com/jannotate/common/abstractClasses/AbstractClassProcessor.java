@@ -2,13 +2,14 @@ package com.jannotate.common.abstractClasses;
 
 import java.lang.annotation.Annotation;
 
-import com.jannotate.common.exceptions.SevereException;
+import com.jannotate.common.exceptions.LogException;
+import com.jannotate.common.exceptions.WarningException;
 import com.jannotate.common.interfaces.ClassProcessorInterface;
 
 public abstract class AbstractClassProcessor<T extends Annotation> extends AbstractProcessor
         implements ClassProcessorInterface {
 
-    public abstract void process(Class<?> clazz, Object object, T annotation) throws SevereException;
+    public abstract void process(Class<?> clazz, Object object, T annotation) throws LogException;
 
     @Override
     public void process(Class<?> clazz, Object object) {
@@ -17,10 +18,11 @@ public abstract class AbstractClassProcessor<T extends Annotation> extends Abstr
                 T annotation = clazz.getAnnotation(getAnnotationClass());
                 process(clazz, object, annotation);
             }
-        } catch (SevereException e) {
+        } catch (WarningException e) {
+            logger.warning(e.getMessage());
+        } catch (Exception e) {
             logger.severe(e.getMessage());
         }
-
     }
 
     @SuppressWarnings("unchecked")

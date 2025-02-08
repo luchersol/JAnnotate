@@ -9,13 +9,14 @@ import javax.swing.JList;
 import com.jannotate.annotations.mixed.fields_classes.SetJList;
 import com.jannotate.common.abstractClasses.AbstractFieldAndClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.exceptions.LogException;
 import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
 public class SetJListProcessor extends AbstractFieldAndClassProcessor<SetJList> {
 
     @Override
-    protected void process(Field field, Object object, SetJList annotation) throws SevereException {
+    protected void process(Field field, Object object, SetJList annotation) throws LogException {
         try {
             @SuppressWarnings("unchecked")
             JList<Object> jList = getFieldAs(field, object, JList.class);
@@ -30,7 +31,7 @@ public class SetJListProcessor extends AbstractFieldAndClassProcessor<SetJList> 
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, SetJList annotation) throws SevereException {
+    protected void process(Class<?> clazz, Object object, SetJList annotation) throws LogException {
         try {
             @SuppressWarnings("unchecked")
             JList<Object> jList = (JList<Object>) object;

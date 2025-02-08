@@ -6,13 +6,14 @@ import java.lang.reflect.Field;
 import com.jannotate.annotations.mixed.fields_classes.SetLocationRelativeTo;
 import com.jannotate.common.abstractClasses.AbstractFieldAndClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.exceptions.LogException;
 import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
 public class SetLocationRelativeToProcessor extends AbstractFieldAndClassProcessor<SetLocationRelativeTo> {
 
     @Override
-    protected void process(Field field, Object object, SetLocationRelativeTo annotation) throws SevereException {
+    protected void process(Field field, Object object, SetLocationRelativeTo annotation) throws LogException {
         try {
             Component component = null;
             if (!annotation.value().isBlank())
@@ -24,7 +25,7 @@ public class SetLocationRelativeToProcessor extends AbstractFieldAndClassProcess
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, SetLocationRelativeTo annotation) throws SevereException {
+    protected void process(Class<?> clazz, Object object, SetLocationRelativeTo annotation) throws LogException {
         try {
             Component component = null;
             if (!annotation.value().isBlank())

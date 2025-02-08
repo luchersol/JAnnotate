@@ -9,13 +9,14 @@ import java.util.List;
 import com.jannotate.annotations.mixed.fields_classes.SetText;
 import com.jannotate.common.abstractClasses.AbstractFieldAndClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
+import com.jannotate.common.exceptions.LogException;
 import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
 public class SetTextProcessor extends AbstractFieldAndClassProcessor<SetText> {
 
     @Override
-    public void process(Field field, Object object, SetText annotation) throws SevereException {
+    public void process(Field field, Object object, SetText annotation) throws LogException {
         try {
             Object value = getField(field, object);
             if (value != null) {
@@ -40,7 +41,7 @@ public class SetTextProcessor extends AbstractFieldAndClassProcessor<SetText> {
     }
 
     @Override
-    public void process(Class<?> clazz, Object object, SetText annotation) throws SevereException {
+    public void process(Class<?> clazz, Object object, SetText annotation) throws LogException {
         try {
             List<String> errorMessages = new ArrayList<>();
 

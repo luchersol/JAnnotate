@@ -6,6 +6,7 @@ import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.common.abstractClasses.AbstractClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.common.annotations.PriorityAnnotation;
+import com.jannotate.common.exceptions.LogException;
 import com.jannotate.common.exceptions.SevereException;
 
 @JProcessor
@@ -13,7 +14,7 @@ import com.jannotate.common.exceptions.SevereException;
 public class AutoInstantiateFieldsProcessor extends AbstractClassProcessor<AutoInstantiateFields> {
 
     @Override
-    public void process(Class<?> clazz, Object object, AutoInstantiateFields annotation) throws SevereException {
+    public void process(Class<?> clazz, Object object, AutoInstantiateFields annotation) throws LogException {
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             try {

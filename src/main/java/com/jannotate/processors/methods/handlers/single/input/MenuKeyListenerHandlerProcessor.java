@@ -7,14 +7,14 @@ import javax.swing.event.MenuKeyListener;
 import com.jannotate.annotations.methods.handlers.single.input.MenuKeyListenerHandler;
 import com.jannotate.common.abstractClasses.AbstractListenerHandlerProcessor;
 import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.exceptions.SevereException;
+import com.jannotate.common.exceptions.LogException;
 
 @JProcessor
 public class MenuKeyListenerHandlerProcessor
         extends AbstractListenerHandlerProcessor<MenuKeyListenerHandler, MenuKeyListener> {
 
     @Override
-    public void process(Method method, Object object, MenuKeyListenerHandler annotation) throws SevereException {
+    public void process(Method method, Object object, MenuKeyListenerHandler annotation) throws LogException {
         process(method, object, annotation, "addMenuKeyListener");
     }
 

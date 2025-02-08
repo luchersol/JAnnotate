@@ -24,13 +24,13 @@ import com.jannotate.annotations.fields.GridBagConfig;
 import com.jannotate.common.abstractClasses.AbstractClassProcessor;
 import com.jannotate.common.annotations.InsetsAnnotation;
 import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.exceptions.SevereException;
+import com.jannotate.common.exceptions.LogException;
 
 @JProcessor
 public class AutoAddComponentsProcessor extends AbstractClassProcessor<AutoAddComponents> {
 
     @Override
-    public void process(Class<?> clazz, Object object, AutoAddComponents annotation) throws SevereException {
+    public void process(Class<?> clazz, Object object, AutoAddComponents annotation) throws LogException {
         List<Field> sortedFields = Arrays.stream(clazz.getDeclaredFields())
                 .filter((Field f) -> {
                     try {

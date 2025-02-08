@@ -14,14 +14,14 @@ import com.jannotate.annotations.classes.layoutManager.UseBorderLayout;
 import com.jannotate.common.abstractClasses.AbstractClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.common.annotations.PriorityAnnotation;
-import com.jannotate.common.exceptions.SevereException;
+import com.jannotate.common.exceptions.LogException;
 
 @JProcessor
 @PriorityAnnotation(value = 1, annotations = { AutoAddComponents.class })
 public class UseBorderLayoutProcessor extends AbstractClassProcessor<UseBorderLayout> {
 
     @Override
-    public void process(Class<?> clazz, Object object, UseBorderLayout annotation) throws SevereException {
+    public void process(Class<?> clazz, Object object, UseBorderLayout annotation) throws LogException {
         if (object instanceof JPanel) {
             JPanel panel = (JPanel) object;
             applyLayout(panel, BorderLayout.class, annotation);

@@ -12,14 +12,14 @@ import com.jannotate.annotations.classes.layoutManager.UseLayoutManager;
 import com.jannotate.common.abstractClasses.AbstractClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.common.annotations.PriorityAnnotation;
-import com.jannotate.common.exceptions.SevereException;
+import com.jannotate.common.exceptions.LogException;
 
 @JProcessor
 @PriorityAnnotation(value = 1, annotations = { AutoAddComponents.class })
 public class UseLayoutManagerProcessor extends AbstractClassProcessor<UseLayoutManager> {
 
     @Override
-    public void process(Class<?> clazz, Object object, UseLayoutManager annotation) throws SevereException {
+    public void process(Class<?> clazz, Object object, UseLayoutManager annotation) throws LogException {
         Class<? extends LayoutManager> layoutClass = annotation.value();
 
         if (object instanceof JPanel) {

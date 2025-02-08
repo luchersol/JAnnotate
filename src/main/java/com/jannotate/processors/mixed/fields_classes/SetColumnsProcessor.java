@@ -15,7 +15,7 @@ public class SetColumnsProcessor extends AbstractFieldAndClassProcessor<SetColum
     protected void process(Field field, Object object, SetColumns annotation) {
         try {
             processMethodInField(field, object, "setColumns", new Object[] { annotation.value() }, int.class);
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             logger.severe(e.getMessage());
         }
     }
