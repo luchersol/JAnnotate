@@ -1,4 +1,4 @@
-package com.jannotate.annotations.mixed.fields_classes;
+package com.jannotate.annotations.mixed.fields_classes.file_chooser;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,6 +10,7 @@ import javax.swing.JFileChooser;
 @Target({ ElementType.FIELD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SetFileSelectionMode {
+
     /**
      * <p>
      * Options:

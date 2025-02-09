@@ -12,15 +12,15 @@ import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
 import com.jannotate.annotations.fields.AutoAdd;
 import com.jannotate.annotations.fields.SetAccelerator;
 import com.jannotate.annotations.fields.listeners.single.AddActionListener;
-import com.jannotate.annotations.mixed.fields_classes.AddMenuItems;
-import com.jannotate.annotations.mixed.fields_classes.AddMenus;
 import com.jannotate.annotations.mixed.fields_classes.IsVisible;
 import com.jannotate.annotations.mixed.fields_classes.SetDefaultClose;
-import com.jannotate.annotations.mixed.fields_classes.SetJMenuBar;
 import com.jannotate.annotations.mixed.fields_classes.SetLocationRelativeTo;
 import com.jannotate.annotations.mixed.fields_classes.SetSize;
 import com.jannotate.annotations.mixed.fields_classes.SetText;
 import com.jannotate.annotations.mixed.fields_classes.SetTitle;
+import com.jannotate.annotations.mixed.fields_classes.menu.AddMenuItems;
+import com.jannotate.annotations.mixed.fields_classes.menu.AddMenus;
+import com.jannotate.annotations.mixed.fields_classes.menu.SetJMenuBar;
 import com.jannotate.common.classes.JFrame2;
 
 @UseFlowLayout

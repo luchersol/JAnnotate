@@ -1,10 +1,10 @@
-package com.jannotate.processors.mixed.fields_classes;
+package com.jannotate.processors.mixed.fields_classes.menu;
 
 import java.lang.reflect.Field;
 
 import javax.swing.JMenuBar;
 
-import com.jannotate.annotations.mixed.fields_classes.SetJMenuBar;
+import com.jannotate.annotations.mixed.fields_classes.menu.SetJMenuBar;
 import com.jannotate.common.abstractClasses.AbstractFieldAndClassProcessor;
 import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.common.exceptions.LogException;

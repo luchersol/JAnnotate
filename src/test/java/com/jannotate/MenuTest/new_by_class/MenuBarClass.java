@@ -4,7 +4,7 @@ import com.jannotate.MenuTest.new_by_class.menus.MenuArchivoClass;
 import com.jannotate.MenuTest.new_by_class.menus.MenuAyudaClass;
 import com.jannotate.MenuTest.new_by_class.menus.MenuEditarClass;
 import com.jannotate.annotations.classes.AutoInstantiateFields;
-import com.jannotate.annotations.mixed.fields_classes.AddMenus;
+import com.jannotate.annotations.mixed.fields_classes.menu.AddMenus;
 import com.jannotate.common.classes.JMenuBar2;
 
 @AddMenus

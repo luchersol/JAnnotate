@@ -6,8 +6,8 @@ import javax.swing.JOptionPane;
 import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.annotations.fields.SetAccelerator;
 import com.jannotate.annotations.fields.listeners.single.AddActionListener;
-import com.jannotate.annotations.mixed.fields_classes.AddMenuItems;
 import com.jannotate.annotations.mixed.fields_classes.SetText;
+import com.jannotate.annotations.mixed.fields_classes.menu.AddMenuItems;
 import com.jannotate.common.classes.JMenu2;
 
 @SetText("Archivo")

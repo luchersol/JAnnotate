@@ -1,12 +1,12 @@
-package com.jannotate.annotations.mixed.fields_classes;
+package com.jannotate.annotations.mixed.fields_classes.file_chooser;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target({ ElementType.FIELD, ElementType.TYPE })
+@Target({ ElementType.TYPE, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface AddMenuItems {
-    String[] value() default {};
+public @interface SetApproveButtonText {
+    String value();
 }

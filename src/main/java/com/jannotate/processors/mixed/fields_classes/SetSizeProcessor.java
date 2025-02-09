@@ -15,7 +15,8 @@ public class SetSizeProcessor extends AbstractFieldAndClassProcessor<SetSize> {
     @Override
     protected void process(Field field, Object object, SetSize annotation) throws LogException {
         try {
-            Dimension dimension = new Dimension(annotation.width(), annotation.heigth());
+            int value = annotation.value(), width = annotation.width(), heigth = annotation.heigth();
+            Dimension dimension = annotation.value() == 0 ? new Dimension(width, heigth) : new Dimension(value, value);
             processMethodInField(field, object, "setPreferredSize", dimension, Dimension.class);
         } catch (Exception e) {
             SevereException.throw_exception(e);

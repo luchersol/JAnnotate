@@ -1,4 +1,4 @@
-package com.jannotate.DiferentesComponentes;
+package com.jannotate.FileChoocerTest.new_by_class;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,32 +9,36 @@ import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
 import com.jannotate.annotations.fields.listeners.single.AddActionListener;
 import com.jannotate.annotations.mixed.fields_classes.IsVisible;
+import com.jannotate.annotations.mixed.fields_classes.SetDefaultClose;
+import com.jannotate.annotations.mixed.fields_classes.SetLocationRelativeTo;
 import com.jannotate.annotations.mixed.fields_classes.SetSize;
 import com.jannotate.annotations.mixed.fields_classes.SetText;
 import com.jannotate.annotations.mixed.fields_classes.SetTitle;
 import com.jannotate.common.classes.JFrame2;
 
+@SetTitle("JFileChooser Demo")
+@SetSize(width = 400, heigth = 200)
+@SetDefaultClose(JFrame.EXIT_ON_CLOSE)
+@SetLocationRelativeTo
 @UseFlowLayout
 @AutoAddComponents
 @AutoInstantiateFields
 @IsVisible
-@SetTitle("Nueva Pantalla")
-@SetSize(width = 300, heigth = 150)
-public class SecondFrame extends JFrame2 {
+public class FileChooserMain extends JFrame2 {
 
-    @SetText("Esto es una nueva ventana")
-    JLabel label;
+    @SetText("Seleccionar Archivo")
+    @AddActionListener("openFileChooser")
+    JButton openButton;
 
-    @SetText("Cerrar")
-    @AddActionListener("dispose")
-    JButton closeButton;
+    @SetText("Archivo seleccionado: Ninguno")
+    JLabel fileLabel;
 
-    public void dispose() {
-        super.dispose();
+    void openFileChooser() {
+        new FileChooserSecondary(this, fileLabel);
     }
 
-    public SecondFrame() {
-        super();
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    public static void main(String[] args) {
+        new FileChooserMain();
     }
+
 }

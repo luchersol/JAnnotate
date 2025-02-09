@@ -1,6 +1,5 @@
 package com.jannotate;
 
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JList;
 
@@ -9,7 +8,6 @@ import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
 import com.jannotate.annotations.mixed.fields_classes.IsVisible;
 import com.jannotate.annotations.mixed.fields_classes.SetDefaultClose;
-import com.jannotate.annotations.mixed.fields_classes.SetFileSelectionMode;
 import com.jannotate.annotations.mixed.fields_classes.SetJList;
 import com.jannotate.annotations.mixed.fields_classes.SetSize;
 import com.jannotate.annotations.mixed.fields_classes.SetTitle;
@@ -27,9 +25,6 @@ public class MyFrame_2 extends JFrame2 {
     @SetJList({ "Opción 1", "Opción 2", "Opción 3", "Opción 4" })
     @SetSize(width = 100, heigth = 100)
     JList<String> lista;
-
-    @SetFileSelectionMode
-    JFileChooser d;
 
     public static void main(String[] args) {
         new MyFrame_2();
