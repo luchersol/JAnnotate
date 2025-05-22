@@ -186,10 +186,10 @@ public class AnnotationProcessorProxy implements InvocationHandler {
 
     private static void processAnnotationFields(Class<?> clazz, Object object) {
         for (Field field : clazz.getDeclaredFields()) {
-            for (Class<? extends FieldProcessorInterface> clazzProcessor : getFieldProcessors()) {
+            for (Class<? extends FieldProcessorInterface> fieldProcessor : getFieldProcessors()) {
                 try {
-                    Method method = getFieldProcessorMethod(clazzProcessor);
-                    Constructor<?> constructor = getFieldProcessorConstructor(clazzProcessor);
+                    Method method = getFieldProcessorMethod(fieldProcessor);
+                    Constructor<?> constructor = getFieldProcessorConstructor(fieldProcessor);
                     if (method != null && constructor != null) {
                         method.invoke(constructor.newInstance(), field, object);
                     }
@@ -202,10 +202,10 @@ public class AnnotationProcessorProxy implements InvocationHandler {
 
     private static void processAnnotationMethods(Class<?> clazz, Object object) {
         for (Method method : clazz.getDeclaredMethods()) {
-            for (Class<? extends MethodProcessorInterface> clazzProcessor : getMethodProcessors()) {
+            for (Class<? extends MethodProcessorInterface> methodProcessor : getMethodProcessors()) {
                 try {
-                    Method innerMethod = getMethodProcessorMethod(clazzProcessor);
-                    Constructor<?> constructor = getMethodProcessorConstructor(clazzProcessor);
+                    Method innerMethod = getMethodProcessorMethod(methodProcessor);
+                    Constructor<?> constructor = getMethodProcessorConstructor(methodProcessor);
                     if (innerMethod != null && constructor != null) {
                         innerMethod.invoke(constructor.newInstance(), method, object);
                     }

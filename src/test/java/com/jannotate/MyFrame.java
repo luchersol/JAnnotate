@@ -19,10 +19,7 @@ import com.jannotate.annotations.classes.AutoInstantiateFields;
 import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
 import com.jannotate.annotations.fields.SetImagenIcon;
 import com.jannotate.annotations.fields.SetPosition;
-import com.jannotate.annotations.fields.listeners.group.AddActionListeners;
 import com.jannotate.annotations.fields.listeners.single.AddActionListener;
-import com.jannotate.annotations.methods.handlers.group.ActionListenerHandlers;
-import com.jannotate.annotations.methods.handlers.group.ListenerHandlers;
 import com.jannotate.annotations.methods.handlers.single.ActionListenerHandler;
 import com.jannotate.annotations.methods.handlers.single.KeyListenerHandler;
 import com.jannotate.annotations.methods.handlers.single.ListenerHandler;
@@ -44,10 +41,8 @@ import com.jannotate.common.enums.TextColor;
 public class MyFrame extends JFrame2 {
 
     @SetText(value = "Click", color = TextColor.BLUE)
-    @AddActionListeners({
-            @AddActionListener("printBoton"),
-            @AddActionListener("mostrarAlerta")
-    })
+    @AddActionListener("printBoton")
+    @AddActionListener("mostrarAlerta")
     private JButton jButton;
 
     @SetText(value = "Hola", color = TextColor.RED)
@@ -62,11 +57,9 @@ public class MyFrame extends JFrame2 {
     @SetImagenIcon("src/main/resources/images/imagen.png")
     private JLabel jLabel;
 
-    @ActionListenerHandlers({
-            @ActionListenerHandler(value = "jButton", args = { "1" }),
-            @ActionListenerHandler(value = "jTextField_1", args = { "2" }),
-            @ActionListenerHandler(value = "jTextField_2", args = { "3" })
-    })
+    @ActionListenerHandler(value = "jButton", args = { "1" })
+    @ActionListenerHandler(value = "jTextField_1", args = { "2" })
+    @ActionListenerHandler(value = "jTextField_2", args = { "3" })
     public ActionListener metodoActionListener(int i) {
         return new ActionListener() {
             @Override
@@ -98,9 +91,7 @@ public class MyFrame extends JFrame2 {
 
     public static final Random rand = new Random(1);
 
-    @ListenerHandlers({
-            @ListenerHandler(value = "jButton", type = MouseListener.class)
-    })
+    @ListenerHandler(value = "jButton", type = MouseListener.class)
     public MouseListener metodoMouseListener() {
         return new MouseListener() {
             @Override
