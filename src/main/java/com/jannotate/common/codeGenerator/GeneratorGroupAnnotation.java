@@ -21,11 +21,11 @@ import com.squareup.javapoet.TypeSpec;
 
 public class GeneratorGroupAnnotation {
 
-    public static void main(String[] args) throws IOException {
-        String inputPackage = "com.jannotate.annotations.fields.listeners.single";
-        String outputDirectory = "src/main/java/com/jannotate/annotations/fields/listeners/group";
+    private static final String INPUT_PACKAGE = "com.jannotate.annotations.fields.listeners.single";
+    private static final String OUTPUT_DIRECTORY = "src/main/java";
 
-        Reflections reflections = new Reflections(inputPackage);
+    public static void main(String[] args) throws IOException {
+        Reflections reflections = new Reflections(INPUT_PACKAGE);
         Set<Class<?>> annotations = reflections.getTypesAnnotatedWith(Target.class);
 
         for (Class<?> annotationClass : annotations) {
@@ -57,10 +57,11 @@ public class GeneratorGroupAnnotation {
                             .build())
                     .build();
 
-            JavaFile javaFile = JavaFile.builder(annotationClass.getPackage().getName(), containerAnnotation)
+            String outputPackage = annotationClass.getPackage().getName().replace("single", "group");
+            JavaFile javaFile = JavaFile.builder(outputPackage, containerAnnotation)
                     .build();
 
-            javaFile.writeTo(new File(outputDirectory));
+            javaFile.writeTo(new File(OUTPUT_DIRECTORY));
             System.out.println("Generado: " + pluralName + ".java");
         }
     }

@@ -1,6 +1,6 @@
-package com.jannotate.annotations.fields.listeners.group;
+package com.jannotate.annotations.fields.listeners.group.scroll;
 
-import com.jannotate.annotations.fields.listeners.single.AddKeyListener;
+import com.jannotate.annotations.fields.listeners.single.scroll.AddItemListener;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -8,6 +8,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface AddKeyListeners {
-  AddKeyListener[] value() default {};
+public @interface AddItemListeners {
+  AddItemListener[] value() default {};
 }
