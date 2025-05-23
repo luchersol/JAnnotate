@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 import com.jannotate.annotations.methods.handlers.group.mouse.MouseWheelListenerHandlers;
 
-@Target(ElementType.FIELD)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Repeatable(MouseWheelListenerHandlers.class)
 public @interface MouseWheelListenerHandler {

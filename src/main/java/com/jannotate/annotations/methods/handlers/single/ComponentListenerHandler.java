@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 import com.jannotate.annotations.methods.handlers.group.ComponentListenerHandlers;
 
-@Target(ElementType.FIELD)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Repeatable(ComponentListenerHandlers.class)
 public @interface ComponentListenerHandler {

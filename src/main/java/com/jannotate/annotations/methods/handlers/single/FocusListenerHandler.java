@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 import com.jannotate.annotations.methods.handlers.group.FocusListenerHandlers;
 
-@Target(ElementType.FIELD)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Repeatable(FocusListenerHandlers.class)
 public @interface FocusListenerHandler {

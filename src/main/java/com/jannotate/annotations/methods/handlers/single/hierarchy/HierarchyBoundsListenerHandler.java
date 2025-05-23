@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 import com.jannotate.annotations.methods.handlers.group.hierarchy.HierarchyBoundsListenerHandlers;
 
-@Target(ElementType.FIELD)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Repeatable(HierarchyBoundsListenerHandlers.class)
 public @interface HierarchyBoundsListenerHandler {

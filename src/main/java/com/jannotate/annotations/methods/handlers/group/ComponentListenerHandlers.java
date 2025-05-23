@@ -1,15 +1,13 @@
 package com.jannotate.annotations.methods.handlers.group;
 
+import com.jannotate.annotations.methods.handlers.single.ComponentListenerHandler;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.jannotate.annotations.methods.handlers.single.ComponentListenerHandler;
-
-@Target(ElementType.FIELD)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ComponentListenerHandlers {
-    ComponentListenerHandler[] value() default {};
-
+  ComponentListenerHandler[] value() default {};
 }

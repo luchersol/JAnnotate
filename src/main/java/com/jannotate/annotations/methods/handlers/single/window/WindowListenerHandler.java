@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 import com.jannotate.annotations.methods.handlers.group.window.WindowListenerHandlers;
 import com.jannotate.common.annotations.MethodAndArgs;
 
-@Target(ElementType.FIELD)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Repeatable(WindowListenerHandlers.class)
 public @interface WindowListenerHandler {

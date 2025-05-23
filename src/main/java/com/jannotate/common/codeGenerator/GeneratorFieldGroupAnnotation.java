@@ -19,7 +19,7 @@ import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
-public class GeneratorGroupAnnotation {
+public class GeneratorFieldGroupAnnotation {
 
     private static final String INPUT_PACKAGE = "com.jannotate.annotations.fields.listeners.single";
     private static final String OUTPUT_DIRECTORY = "src/main/java";

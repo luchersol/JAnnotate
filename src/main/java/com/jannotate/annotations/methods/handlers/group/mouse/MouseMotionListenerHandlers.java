@@ -1,14 +1,13 @@
 package com.jannotate.annotations.methods.handlers.group.mouse;
 
+import com.jannotate.annotations.methods.handlers.single.mouse.MouseMotionListenerHandler;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.jannotate.annotations.methods.handlers.single.mouse.MouseMotionListenerHandler;
-
-@Target(ElementType.FIELD)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MouseMotionListenerHandlers {
-    MouseMotionListenerHandler[] value() default {};
+  MouseMotionListenerHandler[] value() default {};
 }
