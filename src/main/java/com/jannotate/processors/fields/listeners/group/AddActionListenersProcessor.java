@@ -7,7 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.fields.listeners.single.AddActionListenerProcessor;
 
 @JProcessor
-public class AddActionListenersProcessor extends
-                AbstractGroupedListenerProcessor<AddActionListenerProcessor, AddActionListener, AddActionListeners> {
-
+public class AddActionListenersProcessor extends AbstractGroupedListenerProcessor<AddActionListenerProcessor, AddActionListener, AddActionListeners> {
 }

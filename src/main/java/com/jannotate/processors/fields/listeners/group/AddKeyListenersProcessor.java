@@ -7,7 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.fields.listeners.single.AddKeyListenerProcessor;
 
 @JProcessor
-public class AddKeyListenersProcessor extends
-        AbstractGroupedListenerProcessor<AddKeyListenerProcessor, AddKeyListener, AddKeyListeners> {
-
+public class AddKeyListenersProcessor extends AbstractGroupedListenerProcessor<AddKeyListenerProcessor, AddKeyListener, AddKeyListeners> {
 }
