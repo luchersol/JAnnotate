@@ -14,22 +14,22 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.jannotate.annotations.classes.AutoAddComponents;
-import com.jannotate.annotations.classes.AutoInstantiateFields;
-import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
-import com.jannotate.annotations.fields.SetImagenIcon;
-import com.jannotate.annotations.fields.SetPosition;
-import com.jannotate.annotations.fields.listeners.single.AddActionListener;
-import com.jannotate.annotations.methods.handlers.single.ActionListenerHandler;
-import com.jannotate.annotations.methods.handlers.single.KeyListenerHandler;
-import com.jannotate.annotations.methods.handlers.single.ListenerHandler;
-import com.jannotate.annotations.mixed.fields_classes.IsVisible;
-import com.jannotate.annotations.mixed.fields_classes.SetDefaultClose;
-import com.jannotate.annotations.mixed.fields_classes.SetSize;
-import com.jannotate.annotations.mixed.fields_classes.SetText;
-import com.jannotate.annotations.mixed.fields_classes.SetTitle;
-import com.jannotate.common.classes.JFrame2;
-import com.jannotate.common.enums.TextColor;
+import com.luchersol.annotations.classes.AutoAddComponents;
+import com.luchersol.annotations.classes.AutoInstantiateFields;
+import com.luchersol.annotations.classes.layoutManager.UseFlowLayout;
+import com.luchersol.annotations.fields.SetImagenIcon;
+import com.luchersol.annotations.fields.SetPosition;
+import com.luchersol.annotations.fields.listeners.single.AddActionListener;
+import com.luchersol.annotations.methods.handlers.single.ActionListenerHandler;
+import com.luchersol.annotations.methods.handlers.single.KeyListenerHandler;
+import com.luchersol.annotations.methods.handlers.single.ListenerHandler;
+import com.luchersol.annotations.mixed.fields_classes.IsVisible;
+import com.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
+import com.luchersol.annotations.mixed.fields_classes.SetSize;
+import com.luchersol.annotations.mixed.fields_classes.SetText;
+import com.luchersol.annotations.mixed.fields_classes.SetTitle;
+import com.luchersol.common.classes.JFrame2;
+import com.luchersol.common.enums.TextColor;
 
 @UseFlowLayout
 @AutoAddComponents

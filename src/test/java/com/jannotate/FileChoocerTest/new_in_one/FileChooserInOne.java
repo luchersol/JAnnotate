@@ -8,17 +8,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.jannotate.annotations.classes.AutoAddComponents;
-import com.jannotate.annotations.classes.AutoInstantiateFields;
-import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
-import com.jannotate.annotations.fields.listeners.single.AddActionListener;
-import com.jannotate.annotations.mixed.fields_classes.IsVisible;
-import com.jannotate.annotations.mixed.fields_classes.SetDefaultClose;
-import com.jannotate.annotations.mixed.fields_classes.SetLocationRelativeTo;
-import com.jannotate.annotations.mixed.fields_classes.SetSize;
-import com.jannotate.annotations.mixed.fields_classes.SetText;
-import com.jannotate.annotations.mixed.fields_classes.SetTitle;
-import com.jannotate.common.classes.JFrame2;
+import com.luchersol.annotations.classes.AutoAddComponents;
+import com.luchersol.annotations.classes.AutoInstantiateFields;
+import com.luchersol.annotations.classes.layoutManager.UseFlowLayout;
+import com.luchersol.annotations.fields.listeners.single.AddActionListener;
+import com.luchersol.annotations.mixed.fields_classes.IsVisible;
+import com.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
+import com.luchersol.annotations.mixed.fields_classes.SetLocationRelativeTo;
+import com.luchersol.annotations.mixed.fields_classes.SetSize;
+import com.luchersol.annotations.mixed.fields_classes.SetText;
+import com.luchersol.annotations.mixed.fields_classes.SetTitle;
+import com.luchersol.common.classes.JFrame2;
 
 @SetTitle("JFileChooser Demo")
 @SetSize(width = 400, heigth = 200)

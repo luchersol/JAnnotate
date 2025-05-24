@@ -5,13 +5,13 @@ import java.awt.Component;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 
-import com.jannotate.annotations.mixed.fields_classes.file_chooser.AddFileFilter;
-import com.jannotate.annotations.mixed.fields_classes.file_chooser.AddFileFilters;
-import com.jannotate.annotations.mixed.fields_classes.file_chooser.IsMultiSelection;
-import com.jannotate.annotations.mixed.fields_classes.file_chooser.SetApproveButtonText;
-import com.jannotate.annotations.mixed.fields_classes.file_chooser.SetCurrentDirectory;
-import com.jannotate.annotations.mixed.fields_classes.file_chooser.SetFileSelectionMode;
-import com.jannotate.common.classes.JFileChooser2;
+import com.luchersol.annotations.mixed.fields_classes.file_chooser.AddFileFilter;
+import com.luchersol.annotations.mixed.fields_classes.file_chooser.AddFileFilters;
+import com.luchersol.annotations.mixed.fields_classes.file_chooser.IsMultiSelection;
+import com.luchersol.annotations.mixed.fields_classes.file_chooser.SetApproveButtonText;
+import com.luchersol.annotations.mixed.fields_classes.file_chooser.SetCurrentDirectory;
+import com.luchersol.annotations.mixed.fields_classes.file_chooser.SetFileSelectionMode;
+import com.luchersol.common.classes.JFileChooser2;
 
 @SetFileSelectionMode(JFileChooser.FILES_ONLY)
 @SetApproveButtonText("Seleccionar")

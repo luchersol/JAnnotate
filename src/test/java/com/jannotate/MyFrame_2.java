@@ -3,15 +3,15 @@ package com.jannotate;
 import javax.swing.JFrame;
 import javax.swing.JList;
 
-import com.jannotate.annotations.classes.AutoAddComponents;
-import com.jannotate.annotations.classes.AutoInstantiateFields;
-import com.jannotate.annotations.classes.layoutManager.UseFlowLayout;
-import com.jannotate.annotations.mixed.fields_classes.IsVisible;
-import com.jannotate.annotations.mixed.fields_classes.SetDefaultClose;
-import com.jannotate.annotations.mixed.fields_classes.SetJList;
-import com.jannotate.annotations.mixed.fields_classes.SetSize;
-import com.jannotate.annotations.mixed.fields_classes.SetTitle;
-import com.jannotate.common.classes.JFrame2;
+import com.luchersol.annotations.classes.AutoAddComponents;
+import com.luchersol.annotations.classes.AutoInstantiateFields;
+import com.luchersol.annotations.classes.layoutManager.UseFlowLayout;
+import com.luchersol.annotations.mixed.fields_classes.IsVisible;
+import com.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
+import com.luchersol.annotations.mixed.fields_classes.SetJList;
+import com.luchersol.annotations.mixed.fields_classes.SetSize;
+import com.luchersol.annotations.mixed.fields_classes.SetTitle;
+import com.luchersol.common.classes.JFrame2;
 
 @UseFlowLayout
 @AutoAddComponents

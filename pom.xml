@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Actualiza el groupId y artifactId para reflejar el nuevo nombre del proyecto -->
-    <groupId>com.jannotate</groupId>
+    <groupId>io.github.luchersol</groupId>
     <artifactId>JAnnotate</artifactId>
     <version>1.0.0</version> <!-- Puedes actualizar la versión según corresponda -->
 
@@ -13,6 +13,14 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub luchersol Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/luchersol/JAnnotate</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.reflections/reflections -->

@@ -3,21 +3,21 @@ package com.jannotate.NotificationTest.new_in_one;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import com.jannotate.annotations.classes.AutoAddComponents;
-import com.jannotate.annotations.classes.AutoInstantiateFields;
-import com.jannotate.annotations.classes.layoutManager.UseGridLayout;
-import com.jannotate.annotations.fields.notifications.ShowError;
-import com.jannotate.annotations.fields.notifications.ShowInfo;
-import com.jannotate.annotations.fields.notifications.ShowPlain;
-import com.jannotate.annotations.fields.notifications.ShowQuestion;
-import com.jannotate.annotations.fields.notifications.ShowWarning;
-import com.jannotate.annotations.mixed.fields_classes.IsVisible;
-import com.jannotate.annotations.mixed.fields_classes.SetDefaultClose;
-import com.jannotate.annotations.mixed.fields_classes.SetLocationRelativeTo;
-import com.jannotate.annotations.mixed.fields_classes.SetSize;
-import com.jannotate.annotations.mixed.fields_classes.SetText;
-import com.jannotate.annotations.mixed.fields_classes.SetTitle;
-import com.jannotate.common.classes.JFrame2;
+import com.luchersol.annotations.classes.AutoAddComponents;
+import com.luchersol.annotations.classes.AutoInstantiateFields;
+import com.luchersol.annotations.classes.layoutManager.UseGridLayout;
+import com.luchersol.annotations.fields.notifications.ShowError;
+import com.luchersol.annotations.fields.notifications.ShowInfo;
+import com.luchersol.annotations.fields.notifications.ShowPlain;
+import com.luchersol.annotations.fields.notifications.ShowQuestion;
+import com.luchersol.annotations.fields.notifications.ShowWarning;
+import com.luchersol.annotations.mixed.fields_classes.IsVisible;
+import com.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
+import com.luchersol.annotations.mixed.fields_classes.SetLocationRelativeTo;
+import com.luchersol.annotations.mixed.fields_classes.SetSize;
+import com.luchersol.annotations.mixed.fields_classes.SetText;
+import com.luchersol.annotations.mixed.fields_classes.SetTitle;
+import com.luchersol.common.classes.JFrame2;
 
 @IsVisible
 @AutoInstantiateFields
