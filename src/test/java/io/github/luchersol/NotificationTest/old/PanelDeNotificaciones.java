@@ -1,4 +1,4 @@
-package com.jannotate.NotificationTest.old;
+package io.github.luchersol.NotificationTest.old;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

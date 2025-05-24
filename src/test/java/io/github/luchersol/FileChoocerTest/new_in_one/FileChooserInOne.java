@@ -1,4 +1,4 @@
-package com.jannotate.FileChoocerTest.new_in_one;
+package io.github.luchersol.FileChoocerTest.new_in_one;
 
 import java.io.File;
 
@@ -8,17 +8,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.luchersol.annotations.classes.AutoAddComponents;
-import com.luchersol.annotations.classes.AutoInstantiateFields;
-import com.luchersol.annotations.classes.layoutManager.UseFlowLayout;
-import com.luchersol.annotations.fields.listeners.single.AddActionListener;
-import com.luchersol.annotations.mixed.fields_classes.IsVisible;
-import com.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
-import com.luchersol.annotations.mixed.fields_classes.SetLocationRelativeTo;
-import com.luchersol.annotations.mixed.fields_classes.SetSize;
-import com.luchersol.annotations.mixed.fields_classes.SetText;
-import com.luchersol.annotations.mixed.fields_classes.SetTitle;
-import com.luchersol.common.classes.JFrame2;
+import io.github.luchersol.annotations.classes.AutoAddComponents;
+import io.github.luchersol.annotations.classes.AutoInstantiateFields;
+import io.github.luchersol.annotations.classes.layoutManager.UseFlowLayout;
+import io.github.luchersol.annotations.fields.listeners.single.AddActionListener;
+import io.github.luchersol.annotations.mixed.fields_classes.IsVisible;
+import io.github.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
+import io.github.luchersol.annotations.mixed.fields_classes.SetLocationRelativeTo;
+import io.github.luchersol.annotations.mixed.fields_classes.SetSize;
+import io.github.luchersol.annotations.mixed.fields_classes.SetText;
+import io.github.luchersol.annotations.mixed.fields_classes.SetTitle;
+import io.github.luchersol.common.classes.JFrame2;
 
 @SetTitle("JFileChooser Demo")
 @SetSize(width = 400, heigth = 200)

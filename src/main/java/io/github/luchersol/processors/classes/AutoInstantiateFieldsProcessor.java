@@ -1,13 +1,13 @@
-package com.jannotate.processors.classes;
+package io.github.luchersol.processors.classes;
 
 import java.lang.reflect.Field;
 
-import com.jannotate.annotations.classes.AutoInstantiateFields;
-import com.jannotate.common.abstractClasses.AbstractClassProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.annotations.PriorityAnnotation;
-import com.jannotate.common.exceptions.LogException;
-import com.jannotate.common.exceptions.SevereException;
+import io.github.luchersol.annotations.classes.AutoInstantiateFields;
+import io.github.luchersol.common.abstractClasses.AbstractClassProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.annotations.PriorityAnnotation;
+import io.github.luchersol.common.exceptions.LogException;
+import io.github.luchersol.common.exceptions.SevereException;
 
 @JProcessor
 @PriorityAnnotation

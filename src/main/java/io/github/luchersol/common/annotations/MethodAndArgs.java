@@ -1,4 +1,4 @@
-package com.jannotate.common.annotations;
+package io.github.luchersol.common.annotations;
 
 public @interface MethodAndArgs {
     String value() default "";

@@ -1,10 +1,11 @@
-package com.jannotate.annotations.fields.listeners.group.mouse;
+package io.github.luchersol.annotations.fields.listeners.group.mouse;
 
-import com.jannotate.annotations.fields.listeners.single.mouse.AddMouseMotionListener;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
+import io.github.luchersol.annotations.fields.listeners.single.mouse.AddMouseMotionListener;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

@@ -1,23 +1,23 @@
-package com.jannotate.NotificationTest.new_in_one;
+package io.github.luchersol.NotificationTest.new_in_one;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import com.luchersol.annotations.classes.AutoAddComponents;
-import com.luchersol.annotations.classes.AutoInstantiateFields;
-import com.luchersol.annotations.classes.layoutManager.UseGridLayout;
-import com.luchersol.annotations.fields.notifications.ShowError;
-import com.luchersol.annotations.fields.notifications.ShowInfo;
-import com.luchersol.annotations.fields.notifications.ShowPlain;
-import com.luchersol.annotations.fields.notifications.ShowQuestion;
-import com.luchersol.annotations.fields.notifications.ShowWarning;
-import com.luchersol.annotations.mixed.fields_classes.IsVisible;
-import com.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
-import com.luchersol.annotations.mixed.fields_classes.SetLocationRelativeTo;
-import com.luchersol.annotations.mixed.fields_classes.SetSize;
-import com.luchersol.annotations.mixed.fields_classes.SetText;
-import com.luchersol.annotations.mixed.fields_classes.SetTitle;
-import com.luchersol.common.classes.JFrame2;
+import io.github.luchersol.annotations.classes.AutoAddComponents;
+import io.github.luchersol.annotations.classes.AutoInstantiateFields;
+import io.github.luchersol.annotations.classes.layoutManager.UseGridLayout;
+import io.github.luchersol.annotations.fields.notifications.ShowError;
+import io.github.luchersol.annotations.fields.notifications.ShowInfo;
+import io.github.luchersol.annotations.fields.notifications.ShowPlain;
+import io.github.luchersol.annotations.fields.notifications.ShowQuestion;
+import io.github.luchersol.annotations.fields.notifications.ShowWarning;
+import io.github.luchersol.annotations.mixed.fields_classes.IsVisible;
+import io.github.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
+import io.github.luchersol.annotations.mixed.fields_classes.SetLocationRelativeTo;
+import io.github.luchersol.annotations.mixed.fields_classes.SetSize;
+import io.github.luchersol.annotations.mixed.fields_classes.SetText;
+import io.github.luchersol.annotations.mixed.fields_classes.SetTitle;
+import io.github.luchersol.common.classes.JFrame2;
 
 @IsVisible
 @AutoInstantiateFields

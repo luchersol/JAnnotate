@@ -1,11 +1,11 @@
-package com.jannotate.common.abstractClasses;
+package io.github.luchersol.common.abstractClasses;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.EventListener;
 
-import com.jannotate.common.exceptions.LogException;
-import com.jannotate.common.exceptions.SevereException;
+import io.github.luchersol.common.exceptions.LogException;
+import io.github.luchersol.common.exceptions.SevereException;
 
 public abstract class AbstractListenerHandlerProcessor<T extends Annotation, L extends EventListener>
         extends AbstractMethodProccessor<T> {

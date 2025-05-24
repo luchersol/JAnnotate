@@ -1,4 +1,4 @@
-package com.jannotate.annotations.classes.layoutManager;
+package io.github.luchersol.annotations.classes.layoutManager;
 
 import java.awt.LayoutManager;
 import java.lang.annotation.ElementType;

@@ -1,11 +1,12 @@
-package com.jannotate.processors.methods.handlers.group.window;
+package io.github.luchersol.processors.methods.handlers.group.window;
 
-import com.jannotate.annotations.methods.handlers.group.window.WindowFocusListenerHandlers;
-import com.jannotate.annotations.methods.handlers.single.window.WindowFocusListenerHandler;
-import com.jannotate.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.processors.methods.handlers.single.window.WindowFocusListenerHandlerProcessor;
+import io.github.luchersol.annotations.methods.handlers.group.window.WindowFocusListenerHandlers;
+import io.github.luchersol.annotations.methods.handlers.single.window.WindowFocusListenerHandler;
+import io.github.luchersol.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.processors.methods.handlers.single.window.WindowFocusListenerHandlerProcessor;
 
 @JProcessor
-public class WindowFocusListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<WindowFocusListenerHandlerProcessor, WindowFocusListenerHandler, WindowFocusListenerHandlers> {
+public class WindowFocusListenerHandlersProcessor extends
+                AbstractGroupedListenerHandlerProcessor<WindowFocusListenerHandlerProcessor, WindowFocusListenerHandler, WindowFocusListenerHandlers> {
 }

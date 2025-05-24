@@ -1,4 +1,4 @@
-package com.jannotate.annotations.mixed.fields_classes.file_chooser;
+package io.github.luchersol.annotations.mixed.fields_classes.file_chooser;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

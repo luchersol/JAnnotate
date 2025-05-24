@@ -1,13 +1,13 @@
-package com.jannotate.processors.methods.handlers.single.input;
+package io.github.luchersol.processors.methods.handlers.single.input;
 
 import java.lang.reflect.Method;
 
 import javax.swing.event.PopupMenuListener;
 
-import com.jannotate.annotations.methods.handlers.single.input.PopupMenuListenerHandler;
-import com.jannotate.common.abstractClasses.AbstractListenerHandlerProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.exceptions.LogException;
+import io.github.luchersol.annotations.methods.handlers.single.input.PopupMenuListenerHandler;
+import io.github.luchersol.common.abstractClasses.AbstractListenerHandlerProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.exceptions.LogException;
 
 @JProcessor
 public class PopupMenuListenerHandlerProcessor

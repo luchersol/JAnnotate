@@ -1,4 +1,4 @@
-package com.jannotate.processors.classes;
+package io.github.luchersol.processors.classes;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -14,17 +14,17 @@ import java.util.List;
 
 import javax.swing.JComponent;
 
-import com.jannotate.annotations.classes.AutoAddComponents;
-import com.jannotate.annotations.classes.layoutManager.UseBorderLayout;
-import com.jannotate.annotations.classes.layoutManager.UseGridBagLayout;
-import com.jannotate.annotations.classes.layoutManager.UseLayoutManager;
-import com.jannotate.annotations.fields.AddOrder;
-import com.jannotate.annotations.fields.BorderPosition;
-import com.jannotate.annotations.fields.GridBagConfig;
-import com.jannotate.common.abstractClasses.AbstractClassProcessor;
-import com.jannotate.common.annotations.InsetsAnnotation;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.exceptions.LogException;
+import io.github.luchersol.annotations.classes.AutoAddComponents;
+import io.github.luchersol.annotations.classes.layoutManager.UseBorderLayout;
+import io.github.luchersol.annotations.classes.layoutManager.UseGridBagLayout;
+import io.github.luchersol.annotations.classes.layoutManager.UseLayoutManager;
+import io.github.luchersol.annotations.fields.AddOrder;
+import io.github.luchersol.annotations.fields.BorderPosition;
+import io.github.luchersol.annotations.fields.GridBagConfig;
+import io.github.luchersol.common.abstractClasses.AbstractClassProcessor;
+import io.github.luchersol.common.annotations.InsetsAnnotation;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.exceptions.LogException;
 
 @JProcessor
 public class AutoAddComponentsProcessor extends AbstractClassProcessor<AutoAddComponents> {

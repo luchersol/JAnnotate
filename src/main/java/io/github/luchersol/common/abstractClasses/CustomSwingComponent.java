@@ -1,12 +1,12 @@
-package com.jannotate.common.abstractClasses;
+package io.github.luchersol.common.abstractClasses;
 
 import java.awt.Component;
 import java.lang.reflect.ParameterizedType;
 
 import javax.swing.JComponent;
 
-import com.jannotate.common.AnnotationProcessorProxy;
-import com.jannotate.common.interfaces.MyFrameInterface;
+import io.github.luchersol.common.AnnotationProcessorProxy;
+import io.github.luchersol.common.interfaces.MyFrameInterface;
 
 public abstract class CustomSwingComponent<T extends Component> extends JComponent implements MyFrameInterface {
 

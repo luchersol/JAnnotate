@@ -1,12 +1,12 @@
-package com.jannotate.processors.fields;
+package io.github.luchersol.processors.fields;
 
 import java.lang.reflect.Field;
 
 import javax.swing.JComponent;
 
-import com.jannotate.annotations.fields.SetPosition;
-import com.jannotate.common.abstractClasses.AbstractFieldProcessor;
-import com.jannotate.common.annotations.JProcessor;
+import io.github.luchersol.annotations.fields.SetPosition;
+import io.github.luchersol.common.abstractClasses.AbstractFieldProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
 
 @JProcessor
 public class SetPositionProcessor extends AbstractFieldProcessor<SetPosition> {

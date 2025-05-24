@@ -1,4 +1,4 @@
-package com.jannotate.common.abstractClasses;
+package io.github.luchersol.common.abstractClasses;
 
 import java.lang.annotation.Annotation;
 

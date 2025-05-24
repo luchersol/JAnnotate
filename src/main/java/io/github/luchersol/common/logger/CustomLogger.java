@@ -1,4 +1,4 @@
-package com.jannotate.common.logger;
+package io.github.luchersol.common.logger;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;

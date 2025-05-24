@@ -1,12 +1,12 @@
-package com.jannotate.processors.methods.handlers.single.mouse;
+package io.github.luchersol.processors.methods.handlers.single.mouse;
 
 import java.awt.event.MouseMotionListener;
 import java.lang.reflect.Method;
 
-import com.jannotate.annotations.methods.handlers.single.mouse.MouseMotionListenerHandler;
-import com.jannotate.common.abstractClasses.AbstractListenerHandlerProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.exceptions.LogException;
+import io.github.luchersol.annotations.methods.handlers.single.mouse.MouseMotionListenerHandler;
+import io.github.luchersol.common.abstractClasses.AbstractListenerHandlerProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.exceptions.LogException;
 
 @JProcessor
 public class MouseMotionListenerHandlerProcessor

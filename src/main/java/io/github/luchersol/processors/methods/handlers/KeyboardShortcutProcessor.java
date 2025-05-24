@@ -1,4 +1,4 @@
-package com.jannotate.processors.methods.handlers;
+package io.github.luchersol.processors.methods.handlers;
 
 import java.awt.event.ActionEvent;
 import java.lang.reflect.Method;
@@ -12,12 +12,12 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 
-import com.jannotate.annotations.methods.handlers.KeyboardShortcut;
-import com.jannotate.common.abstractClasses.AbstractMethodProccessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.exceptions.LogException;
-import com.jannotate.common.exceptions.SevereException;
-import com.jannotate.common.exceptions.WarningException;
+import io.github.luchersol.annotations.methods.handlers.KeyboardShortcut;
+import io.github.luchersol.common.abstractClasses.AbstractMethodProccessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.exceptions.LogException;
+import io.github.luchersol.common.exceptions.SevereException;
+import io.github.luchersol.common.exceptions.WarningException;
 
 @JProcessor
 public class KeyboardShortcutProcessor extends AbstractMethodProccessor<KeyboardShortcut> {

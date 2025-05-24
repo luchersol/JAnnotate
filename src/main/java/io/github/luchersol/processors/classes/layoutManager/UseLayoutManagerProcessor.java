@@ -1,4 +1,4 @@
-package com.jannotate.processors.classes.layoutManager;
+package io.github.luchersol.processors.classes.layoutManager;
 
 import java.awt.Container;
 import java.awt.LayoutManager;
@@ -7,12 +7,12 @@ import java.lang.reflect.Constructor;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.jannotate.annotations.classes.AutoAddComponents;
-import com.jannotate.annotations.classes.layoutManager.UseLayoutManager;
-import com.jannotate.common.abstractClasses.AbstractClassProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.annotations.PriorityAnnotation;
-import com.jannotate.common.exceptions.LogException;
+import io.github.luchersol.annotations.classes.AutoAddComponents;
+import io.github.luchersol.annotations.classes.layoutManager.UseLayoutManager;
+import io.github.luchersol.common.abstractClasses.AbstractClassProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.annotations.PriorityAnnotation;
+import io.github.luchersol.common.exceptions.LogException;
 
 @JProcessor
 @PriorityAnnotation(value = 1, annotations = { AutoAddComponents.class })

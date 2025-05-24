@@ -1,4 +1,4 @@
-package com.jannotate.common.utils;
+package io.github.luchersol.common.utils;
 
 import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
@@ -6,8 +6,8 @@ import java.lang.reflect.Method;
 
 import javax.swing.JOptionPane;
 
-import com.jannotate.common.enums.NotificationType;
-import com.jannotate.common.enums.QuestionType;
+import io.github.luchersol.common.enums.NotificationType;
+import io.github.luchersol.common.enums.QuestionType;
 
 public class NotificationUtils {
 

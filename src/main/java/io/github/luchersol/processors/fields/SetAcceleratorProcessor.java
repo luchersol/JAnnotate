@@ -1,14 +1,14 @@
-package com.jannotate.processors.fields;
+package io.github.luchersol.processors.fields;
 
 import java.lang.reflect.Field;
 
 import javax.swing.KeyStroke;
 
-import com.jannotate.annotations.fields.SetAccelerator;
-import com.jannotate.common.abstractClasses.AbstractFieldProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.exceptions.LogException;
-import com.jannotate.common.exceptions.SevereException;
+import io.github.luchersol.annotations.fields.SetAccelerator;
+import io.github.luchersol.common.abstractClasses.AbstractFieldProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.exceptions.LogException;
+import io.github.luchersol.common.exceptions.SevereException;
 
 @JProcessor
 public class SetAcceleratorProcessor extends AbstractFieldProcessor<SetAccelerator> {

@@ -1,4 +1,4 @@
-package com.jannotate.common.exceptions;
+package io.github.luchersol.common.exceptions;
 
 import java.util.Collection;
 

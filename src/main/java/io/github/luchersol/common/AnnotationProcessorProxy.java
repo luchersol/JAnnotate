@@ -1,4 +1,4 @@
-package com.jannotate.common;
+package io.github.luchersol.common;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -17,15 +17,15 @@ import java.util.stream.Collectors;
 
 import org.reflections.Reflections;
 
-import com.jannotate.common.abstractClasses.CustomSwingComponent;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.annotations.PriorityAnnotation;
-import com.jannotate.common.interfaces.AbstractProcessorInterface;
-import com.jannotate.common.interfaces.ClassProcessorInterface;
-import com.jannotate.common.interfaces.FieldProcessorInterface;
-import com.jannotate.common.interfaces.MethodProcessorInterface;
-import com.jannotate.common.interfaces.MyFrameInterface;
-import com.jannotate.common.logger.CustomLogger;
+import io.github.luchersol.common.abstractClasses.CustomSwingComponent;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.annotations.PriorityAnnotation;
+import io.github.luchersol.common.interfaces.AbstractProcessorInterface;
+import io.github.luchersol.common.interfaces.ClassProcessorInterface;
+import io.github.luchersol.common.interfaces.FieldProcessorInterface;
+import io.github.luchersol.common.interfaces.MethodProcessorInterface;
+import io.github.luchersol.common.interfaces.MyFrameInterface;
+import io.github.luchersol.common.logger.CustomLogger;
 
 public class AnnotationProcessorProxy implements InvocationHandler {
 
@@ -59,13 +59,13 @@ public class AnnotationProcessorProxy implements InvocationHandler {
 
     static {
         try {
-            classProcessors = doReflections(ClassProcessorInterface.class, "com.jannotate.processors.classes",
-                    "com.jannotate.processors.mixed.fields_classes");
+            classProcessors = doReflections(ClassProcessorInterface.class, "io.github.luchersol.processors.classes",
+                    "io.github.luchersol.processors.mixed.fields_classes");
             logger.info("Loaded class proccessors");
-            fieldProcessors = doReflections(FieldProcessorInterface.class, "com.jannotate.processors.fields",
-                    "com.jannotate.processors.mixed.fields_classes");
+            fieldProcessors = doReflections(FieldProcessorInterface.class, "io.github.luchersol.processors.fields",
+                    "io.github.luchersol.processors.mixed.fields_classes");
             logger.info("Loaded field proccessors");
-            methodProcessors = doReflections(MethodProcessorInterface.class, "com.jannotate.processors.methods");
+            methodProcessors = doReflections(MethodProcessorInterface.class, "io.github.luchersol.processors.methods");
             logger.info("Loaded method proccessors");
         } catch (Exception e) {
             logger.severe(e.getMessage());

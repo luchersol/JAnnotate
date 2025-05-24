@@ -1,4 +1,4 @@
-package com.jannotate.common.annotations;
+package io.github.luchersol.common.annotations;
 
 import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;

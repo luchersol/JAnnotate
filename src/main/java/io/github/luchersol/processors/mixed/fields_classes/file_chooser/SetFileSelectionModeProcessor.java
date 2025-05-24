@@ -1,11 +1,11 @@
-package com.jannotate.processors.mixed.fields_classes.file_chooser;
+package io.github.luchersol.processors.mixed.fields_classes.file_chooser;
 
 import java.lang.reflect.Field;
 
-import com.jannotate.annotations.mixed.fields_classes.file_chooser.SetFileSelectionMode;
-import com.jannotate.common.abstractClasses.AbstractFieldAndClassProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.exceptions.LogException;
+import io.github.luchersol.annotations.mixed.fields_classes.file_chooser.SetFileSelectionMode;
+import io.github.luchersol.common.abstractClasses.AbstractFieldAndClassProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.exceptions.LogException;
 
 @JProcessor
 public class SetFileSelectionModeProcessor extends AbstractFieldAndClassProcessor<SetFileSelectionMode> {

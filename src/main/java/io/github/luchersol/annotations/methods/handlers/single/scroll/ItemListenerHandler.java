@@ -1,4 +1,4 @@
-package com.jannotate.annotations.methods.handlers.single.scroll;
+package io.github.luchersol.annotations.methods.handlers.single.scroll;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Repeatable;
@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.jannotate.annotations.methods.handlers.group.scroll.ItemListenerHandlers;
+import io.github.luchersol.annotations.methods.handlers.group.scroll.ItemListenerHandlers;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

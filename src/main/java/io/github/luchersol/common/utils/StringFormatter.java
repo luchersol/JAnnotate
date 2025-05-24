@@ -1,4 +1,4 @@
-package com.jannotate.common.utils;
+package io.github.luchersol.common.utils;
 
 public class StringFormatter {
 

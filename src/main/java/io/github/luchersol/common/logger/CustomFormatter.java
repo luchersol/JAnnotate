@@ -1,11 +1,11 @@
-package com.jannotate.common.logger;
+package io.github.luchersol.common.logger;
 
 import java.util.logging.LogRecord;
 import java.util.logging.SimpleFormatter;
 
-import com.jannotate.common.utils.StringFormatter;
-import com.jannotate.common.utils.StringFormatter.Color;
-import com.jannotate.common.utils.StringFormatter.Font;
+import io.github.luchersol.common.utils.StringFormatter;
+import io.github.luchersol.common.utils.StringFormatter.Color;
+import io.github.luchersol.common.utils.StringFormatter.Font;
 
 public class CustomFormatter extends SimpleFormatter {
 

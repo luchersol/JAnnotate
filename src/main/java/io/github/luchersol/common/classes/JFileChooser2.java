@@ -1,9 +1,9 @@
-package com.jannotate.common.classes;
+package io.github.luchersol.common.classes;
 
 import javax.swing.JFileChooser;
 
-import com.jannotate.common.AnnotationProcessorProxy;
-import com.jannotate.common.interfaces.MyFrameInterface;
+import io.github.luchersol.common.AnnotationProcessorProxy;
+import io.github.luchersol.common.interfaces.MyFrameInterface;
 
 public class JFileChooser2 extends JFileChooser implements MyFrameInterface {
 

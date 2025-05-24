@@ -1,4 +1,4 @@
-package com.jannotate.common.codeGenerator;
+package io.github.luchersol.common.codeGenerator;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import javax.lang.model.element.Modifier;
 
 import org.reflections.Reflections;
 
-import com.jannotate.common.annotations.JProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.ParameterizedTypeName;
@@ -18,7 +18,7 @@ import com.squareup.javapoet.TypeSpec;
 
 public class GeneratorFieldGroupProcessor {
 
-    private static final String INPUT_PACKAGE = "com.jannotate.processors.fields.listeners.single";
+    private static final String INPUT_PACKAGE = "io.github.luchersol.processors.fields.listeners.single";
     private static final String OUTPUT_DIRECTORY = "src/main/java";
 
     public static void main(String[] args) throws IOException {
@@ -51,13 +51,13 @@ public class GeneratorFieldGroupProcessor {
 
             // Definir tipo del nuevo processor agrupado
             ParameterizedTypeName superClass = ParameterizedTypeName.get(
-                    ClassName.get("com.jannotate.common.abstractClasses", "AbstractGroupedListenerProcessor"),
+                    ClassName.get("io.github.luchersol.common.abstractClasses", "AbstractGroupedListenerProcessor"),
                     originalProcessor, singleAnnotation, groupAnnotation);
 
             TypeSpec groupedProcessor = TypeSpec.classBuilder(pluralName + "Processor")
                     .addModifiers(Modifier.PUBLIC)
                     .superclass(superClass)
-                    .addAnnotation(ClassName.get("com.jannotate.common.annotations", "JProcessor"))
+                    .addAnnotation(ClassName.get("io.github.luchersol.common.annotations", "JProcessor"))
                     .build();
 
             JavaFile javaFile = JavaFile.builder(outputPackage, groupedProcessor)

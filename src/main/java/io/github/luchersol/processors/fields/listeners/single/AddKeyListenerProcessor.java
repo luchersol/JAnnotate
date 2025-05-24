@@ -1,4 +1,4 @@
-package com.jannotate.processors.fields.listeners.single;
+package io.github.luchersol.processors.fields.listeners.single;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -9,9 +9,9 @@ import java.util.stream.IntStream;
 
 import javax.swing.JComponent;
 
-import com.jannotate.annotations.fields.listeners.single.AddKeyListener;
-import com.jannotate.common.abstractClasses.AbstractListenerProcessor;
-import com.jannotate.common.annotations.JProcessor;
+import io.github.luchersol.annotations.fields.listeners.single.AddKeyListener;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.abstractClasses.AbstractListenerProcessor;
 
 @JProcessor
 public class AddKeyListenerProcessor extends AbstractListenerProcessor<AddKeyListener> {

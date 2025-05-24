@@ -1,4 +1,4 @@
-package com.jannotate.common.abstractClasses;
+package io.github.luchersol.common.abstractClasses;
 
 import java.awt.Component;
 import java.lang.reflect.Field;
@@ -9,10 +9,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.jannotate.common.annotations.MethodAndArgs;
-import com.jannotate.common.exceptions.LogException;
-import com.jannotate.common.exceptions.SevereException;
-import com.jannotate.common.logger.CustomLogger;
+import io.github.luchersol.common.annotations.MethodAndArgs;
+import io.github.luchersol.common.exceptions.LogException;
+import io.github.luchersol.common.exceptions.SevereException;
+import io.github.luchersol.common.logger.CustomLogger;
 
 public abstract class AbstractProcessor {
 

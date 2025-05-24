@@ -1,4 +1,4 @@
-package com.jannotate.annotations.mixed.fields_classes.menu;
+package io.github.luchersol.annotations.mixed.fields_classes.menu;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

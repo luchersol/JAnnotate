@@ -1,4 +1,4 @@
-package com.jannotate.annotations.fields;
+package io.github.luchersol.annotations.fields;
 
 import java.awt.BorderLayout;
 import java.lang.annotation.ElementType;

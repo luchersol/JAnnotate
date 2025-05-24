@@ -1,4 +1,4 @@
-package com.jannotate.MenuTest.new_by_class;
+package io.github.luchersol.MenuTest.new_by_class;
 
 import java.awt.event.ActionEvent;
 
@@ -7,18 +7,18 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import com.luchersol.annotations.classes.AutoInstantiateFields;
-import com.luchersol.annotations.classes.layoutManager.UseFlowLayout;
-import com.luchersol.annotations.fields.AutoAdd;
-import com.luchersol.annotations.methods.handlers.KeyboardShortcut;
-import com.luchersol.annotations.mixed.fields_classes.IsVisible;
-import com.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
-import com.luchersol.annotations.mixed.fields_classes.SetLocationRelativeTo;
-import com.luchersol.annotations.mixed.fields_classes.SetSize;
-import com.luchersol.annotations.mixed.fields_classes.SetText;
-import com.luchersol.annotations.mixed.fields_classes.SetTitle;
-import com.luchersol.annotations.mixed.fields_classes.menu.SetJMenuBar;
-import com.luchersol.common.classes.JFrame2;
+import io.github.luchersol.annotations.classes.AutoInstantiateFields;
+import io.github.luchersol.annotations.classes.layoutManager.UseFlowLayout;
+import io.github.luchersol.annotations.fields.AutoAdd;
+import io.github.luchersol.annotations.methods.handlers.KeyboardShortcut;
+import io.github.luchersol.annotations.mixed.fields_classes.IsVisible;
+import io.github.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
+import io.github.luchersol.annotations.mixed.fields_classes.SetLocationRelativeTo;
+import io.github.luchersol.annotations.mixed.fields_classes.SetSize;
+import io.github.luchersol.annotations.mixed.fields_classes.SetText;
+import io.github.luchersol.annotations.mixed.fields_classes.SetTitle;
+import io.github.luchersol.annotations.mixed.fields_classes.menu.SetJMenuBar;
+import io.github.luchersol.common.classes.JFrame2;
 
 @UseFlowLayout
 @AutoInstantiateFields

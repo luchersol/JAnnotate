@@ -1,4 +1,4 @@
-package com.jannotate.annotations.classes;
+package io.github.luchersol.annotations.classes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,5 +8,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface AutoAddComponents {
-    
+
 }

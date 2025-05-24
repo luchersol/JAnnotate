@@ -1,7 +1,7 @@
-package com.jannotate.common.interfaces;
+package io.github.luchersol.common.interfaces;
 
 public interface MyFrameInterface {
     default void applyAnnotations() {
-        
+
     }
 }

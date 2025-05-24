@@ -1,11 +1,12 @@
-package com.jannotate.processors.methods.handlers.group;
+package io.github.luchersol.processors.methods.handlers.group;
 
-import com.jannotate.annotations.methods.handlers.group.KeyListenerHandlers;
-import com.jannotate.annotations.methods.handlers.single.KeyListenerHandler;
-import com.jannotate.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.processors.methods.handlers.single.KeyListenerHandlerProcessor;
+import io.github.luchersol.annotations.methods.handlers.group.KeyListenerHandlers;
+import io.github.luchersol.annotations.methods.handlers.single.KeyListenerHandler;
+import io.github.luchersol.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.processors.methods.handlers.single.KeyListenerHandlerProcessor;
 
 @JProcessor
-public class KeyListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<KeyListenerHandlerProcessor, KeyListenerHandler, KeyListenerHandlers> {
+public class KeyListenerHandlersProcessor extends
+                AbstractGroupedListenerHandlerProcessor<KeyListenerHandlerProcessor, KeyListenerHandler, KeyListenerHandlers> {
 }

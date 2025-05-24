@@ -1,4 +1,4 @@
-package com.jannotate.MenuTest.new_in_one;
+package io.github.luchersol.MenuTest.new_in_one;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -7,21 +7,21 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import com.luchersol.annotations.classes.AutoInstantiateFields;
-import com.luchersol.annotations.classes.layoutManager.UseFlowLayout;
-import com.luchersol.annotations.fields.AutoAdd;
-import com.luchersol.annotations.fields.SetAccelerator;
-import com.luchersol.annotations.fields.listeners.single.AddActionListener;
-import com.luchersol.annotations.mixed.fields_classes.IsVisible;
-import com.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
-import com.luchersol.annotations.mixed.fields_classes.SetLocationRelativeTo;
-import com.luchersol.annotations.mixed.fields_classes.SetSize;
-import com.luchersol.annotations.mixed.fields_classes.SetText;
-import com.luchersol.annotations.mixed.fields_classes.SetTitle;
-import com.luchersol.annotations.mixed.fields_classes.menu.AddMenuItems;
-import com.luchersol.annotations.mixed.fields_classes.menu.AddMenus;
-import com.luchersol.annotations.mixed.fields_classes.menu.SetJMenuBar;
-import com.luchersol.common.classes.JFrame2;
+import io.github.luchersol.annotations.classes.AutoInstantiateFields;
+import io.github.luchersol.annotations.classes.layoutManager.UseFlowLayout;
+import io.github.luchersol.annotations.fields.AutoAdd;
+import io.github.luchersol.annotations.fields.SetAccelerator;
+import io.github.luchersol.annotations.fields.listeners.single.AddActionListener;
+import io.github.luchersol.annotations.mixed.fields_classes.IsVisible;
+import io.github.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
+import io.github.luchersol.annotations.mixed.fields_classes.SetLocationRelativeTo;
+import io.github.luchersol.annotations.mixed.fields_classes.SetSize;
+import io.github.luchersol.annotations.mixed.fields_classes.SetText;
+import io.github.luchersol.annotations.mixed.fields_classes.SetTitle;
+import io.github.luchersol.annotations.mixed.fields_classes.menu.AddMenuItems;
+import io.github.luchersol.annotations.mixed.fields_classes.menu.AddMenus;
+import io.github.luchersol.annotations.mixed.fields_classes.menu.SetJMenuBar;
+import io.github.luchersol.common.classes.JFrame2;
 
 @UseFlowLayout
 @AutoInstantiateFields

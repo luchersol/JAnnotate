@@ -1,13 +1,13 @@
-package com.jannotate.processors.fields.listeners.single;
+package io.github.luchersol.processors.fields.listeners.single;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import javax.swing.AbstractButton;
 
-import com.jannotate.annotations.fields.listeners.single.AddActionListener;
-import com.jannotate.common.abstractClasses.AbstractListenerProcessor;
-import com.jannotate.common.annotations.JProcessor;
+import io.github.luchersol.annotations.fields.listeners.single.AddActionListener;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.abstractClasses.AbstractListenerProcessor;
 
 @JProcessor
 public class AddActionListenerProcessor extends AbstractListenerProcessor<AddActionListener> {

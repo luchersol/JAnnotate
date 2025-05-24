@@ -1,4 +1,4 @@
-package com.jannotate.annotations.fields.listeners.single.scroll;
+package io.github.luchersol.annotations.fields.listeners.single.scroll;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

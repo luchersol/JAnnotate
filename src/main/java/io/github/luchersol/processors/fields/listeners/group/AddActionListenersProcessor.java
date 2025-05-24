@@ -1,11 +1,13 @@
-package com.jannotate.processors.fields.listeners.group;
+package io.github.luchersol.processors.fields.listeners.group;
 
-import com.jannotate.annotations.fields.listeners.group.AddActionListeners;
-import com.jannotate.annotations.fields.listeners.single.AddActionListener;
-import com.jannotate.common.abstractClasses.AbstractGroupedListenerProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.processors.fields.listeners.single.AddActionListenerProcessor;
+import io.github.luchersol.annotations.fields.listeners.group.AddActionListeners;
+import io.github.luchersol.annotations.fields.listeners.single.AddActionListener;
+import io.github.luchersol.common.abstractClasses.AbstractGroupedListenerProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.processors.fields.listeners.single.AddActionListenerProcessor;
 
 @JProcessor
-public class AddActionListenersProcessor extends AbstractGroupedListenerProcessor<AddActionListenerProcessor, AddActionListener, AddActionListeners> {
+public class AddActionListenersProcessor
+                extends
+                AbstractGroupedListenerProcessor<AddActionListenerProcessor, AddActionListener, AddActionListeners> {
 }

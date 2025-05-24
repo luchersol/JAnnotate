@@ -1,4 +1,4 @@
-package com.jannotate.annotations.fields;
+package io.github.luchersol.annotations.fields;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,8 +10,11 @@ import java.lang.annotation.Target;
 public @interface SetBound {
 
     int x();
+
     int y();
+
     int width();
+
     int heigth();
 
 }

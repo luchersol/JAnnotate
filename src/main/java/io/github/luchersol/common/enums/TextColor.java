@@ -1,4 +1,4 @@
-package com.jannotate.common.enums;
+package io.github.luchersol.common.enums;
 
 import java.awt.Color;
 

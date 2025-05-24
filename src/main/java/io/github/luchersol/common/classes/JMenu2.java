@@ -1,9 +1,9 @@
-package com.jannotate.common.classes;
+package io.github.luchersol.common.classes;
 
 import javax.swing.JMenu;
 
-import com.jannotate.common.AnnotationProcessorProxy;
-import com.jannotate.common.interfaces.MyFrameInterface;
+import io.github.luchersol.common.AnnotationProcessorProxy;
+import io.github.luchersol.common.interfaces.MyFrameInterface;
 
 public class JMenu2 extends JMenu implements MyFrameInterface {
 

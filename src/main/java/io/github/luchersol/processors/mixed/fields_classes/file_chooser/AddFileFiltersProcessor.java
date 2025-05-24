@@ -1,4 +1,4 @@
-package com.jannotate.processors.mixed.fields_classes.file_chooser;
+package io.github.luchersol.processors.mixed.fields_classes.file_chooser;
 
 import java.lang.reflect.Field;
 import java.util.Objects;
@@ -6,11 +6,11 @@ import java.util.Objects;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.jannotate.annotations.mixed.fields_classes.file_chooser.AddFileFilter;
-import com.jannotate.annotations.mixed.fields_classes.file_chooser.AddFileFilters;
-import com.jannotate.common.abstractClasses.AbstractFieldAndClassProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.exceptions.LogException;
+import io.github.luchersol.annotations.mixed.fields_classes.file_chooser.AddFileFilter;
+import io.github.luchersol.annotations.mixed.fields_classes.file_chooser.AddFileFilters;
+import io.github.luchersol.common.abstractClasses.AbstractFieldAndClassProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.exceptions.LogException;
 
 @JProcessor
 public class AddFileFiltersProcessor extends AbstractFieldAndClassProcessor<AddFileFilters> {

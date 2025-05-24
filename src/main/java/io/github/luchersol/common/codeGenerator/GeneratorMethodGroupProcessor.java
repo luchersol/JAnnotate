@@ -1,4 +1,4 @@
-package com.jannotate.common.codeGenerator;
+package io.github.luchersol.common.codeGenerator;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,14 +10,14 @@ import javax.lang.model.element.Modifier;
 
 import org.reflections.Reflections;
 
-import com.jannotate.common.annotations.JProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeSpec;
 
 public class GeneratorMethodGroupProcessor {
-    private static final String INPUT_PACKAGE = "com.jannotate.processors.methods.handlers.single";
+    private static final String INPUT_PACKAGE = "io.github.luchersol.processors.methods.handlers.single";
     private static final String OUTPUT_DIRECTORY = "src/main/java";
 
     public static void main(String[] args) throws IOException {
@@ -51,7 +51,7 @@ public class GeneratorMethodGroupProcessor {
             String outputPackage = processorClass.getPackage().getName().replace("single", "group");
 
             // Clase base agrupadora (ajusta si tienes otras variantes)
-            ClassName superClassRaw = ClassName.get("com.jannotate.common.abstractClasses",
+            ClassName superClassRaw = ClassName.get("io.github.luchersol.common.abstractClasses",
                     "AbstractGroupedListenerHandlerProcessor");
             ParameterizedTypeName superClass = ParameterizedTypeName.get(
                     superClassRaw,

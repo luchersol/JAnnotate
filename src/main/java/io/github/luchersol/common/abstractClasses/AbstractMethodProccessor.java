@@ -1,11 +1,11 @@
-package com.jannotate.common.abstractClasses;
+package io.github.luchersol.common.abstractClasses;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
-import com.jannotate.common.exceptions.LogException;
-import com.jannotate.common.exceptions.WarningException;
-import com.jannotate.common.interfaces.MethodProcessorInterface;
+import io.github.luchersol.common.exceptions.LogException;
+import io.github.luchersol.common.exceptions.WarningException;
+import io.github.luchersol.common.interfaces.MethodProcessorInterface;
 
 public abstract class AbstractMethodProccessor<T extends Annotation> extends AbstractProcessor
         implements MethodProcessorInterface {

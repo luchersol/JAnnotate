@@ -1,11 +1,12 @@
-package com.jannotate.processors.methods.handlers.group;
+package io.github.luchersol.processors.methods.handlers.group;
 
-import com.jannotate.annotations.methods.handlers.group.FocusListenerHandlers;
-import com.jannotate.annotations.methods.handlers.single.FocusListenerHandler;
-import com.jannotate.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.processors.methods.handlers.single.FocusListenerHandlerProcessor;
+import io.github.luchersol.annotations.methods.handlers.group.FocusListenerHandlers;
+import io.github.luchersol.annotations.methods.handlers.single.FocusListenerHandler;
+import io.github.luchersol.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.processors.methods.handlers.single.FocusListenerHandlerProcessor;
 
 @JProcessor
-public class FocusListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<FocusListenerHandlerProcessor, FocusListenerHandler, FocusListenerHandlers> {
+public class FocusListenerHandlersProcessor extends
+                AbstractGroupedListenerHandlerProcessor<FocusListenerHandlerProcessor, FocusListenerHandler, FocusListenerHandlers> {
 }

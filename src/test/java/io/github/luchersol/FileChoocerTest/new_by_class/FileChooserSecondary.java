@@ -1,17 +1,17 @@
-package com.jannotate.FileChoocerTest.new_by_class;
+package io.github.luchersol.FileChoocerTest.new_by_class;
 
 import java.awt.Component;
 
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 
-import com.luchersol.annotations.mixed.fields_classes.file_chooser.AddFileFilter;
-import com.luchersol.annotations.mixed.fields_classes.file_chooser.AddFileFilters;
-import com.luchersol.annotations.mixed.fields_classes.file_chooser.IsMultiSelection;
-import com.luchersol.annotations.mixed.fields_classes.file_chooser.SetApproveButtonText;
-import com.luchersol.annotations.mixed.fields_classes.file_chooser.SetCurrentDirectory;
-import com.luchersol.annotations.mixed.fields_classes.file_chooser.SetFileSelectionMode;
-import com.luchersol.common.classes.JFileChooser2;
+import io.github.luchersol.annotations.mixed.fields_classes.file_chooser.AddFileFilter;
+import io.github.luchersol.annotations.mixed.fields_classes.file_chooser.AddFileFilters;
+import io.github.luchersol.annotations.mixed.fields_classes.file_chooser.IsMultiSelection;
+import io.github.luchersol.annotations.mixed.fields_classes.file_chooser.SetApproveButtonText;
+import io.github.luchersol.annotations.mixed.fields_classes.file_chooser.SetCurrentDirectory;
+import io.github.luchersol.annotations.mixed.fields_classes.file_chooser.SetFileSelectionMode;
+import io.github.luchersol.common.classes.JFileChooser2;
 
 @SetFileSelectionMode(JFileChooser.FILES_ONLY)
 @SetApproveButtonText("Seleccionar")

@@ -1,4 +1,4 @@
-package com.jannotate.annotations.fields.notifications;
+package io.github.luchersol.annotations.fields.notifications;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

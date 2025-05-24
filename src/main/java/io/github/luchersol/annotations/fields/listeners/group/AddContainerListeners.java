@@ -1,10 +1,11 @@
-package com.jannotate.annotations.fields.listeners.group;
+package io.github.luchersol.annotations.fields.listeners.group;
 
-import com.jannotate.annotations.fields.listeners.single.AddContainerListener;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
+import io.github.luchersol.annotations.fields.listeners.single.AddContainerListener;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

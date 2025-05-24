@@ -1,11 +1,11 @@
-package com.jannotate.annotations.classes;
+package io.github.luchersol.annotations.classes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.jannotate.common.annotations.PriorityAnnotation;
+import io.github.luchersol.common.annotations.PriorityAnnotation;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

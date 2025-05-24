@@ -1,4 +1,4 @@
-package com.jannotate;
+package io.github.luchersol;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,22 +14,22 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.luchersol.annotations.classes.AutoAddComponents;
-import com.luchersol.annotations.classes.AutoInstantiateFields;
-import com.luchersol.annotations.classes.layoutManager.UseFlowLayout;
-import com.luchersol.annotations.fields.SetImagenIcon;
-import com.luchersol.annotations.fields.SetPosition;
-import com.luchersol.annotations.fields.listeners.single.AddActionListener;
-import com.luchersol.annotations.methods.handlers.single.ActionListenerHandler;
-import com.luchersol.annotations.methods.handlers.single.KeyListenerHandler;
-import com.luchersol.annotations.methods.handlers.single.ListenerHandler;
-import com.luchersol.annotations.mixed.fields_classes.IsVisible;
-import com.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
-import com.luchersol.annotations.mixed.fields_classes.SetSize;
-import com.luchersol.annotations.mixed.fields_classes.SetText;
-import com.luchersol.annotations.mixed.fields_classes.SetTitle;
-import com.luchersol.common.classes.JFrame2;
-import com.luchersol.common.enums.TextColor;
+import io.github.luchersol.annotations.classes.AutoAddComponents;
+import io.github.luchersol.annotations.classes.AutoInstantiateFields;
+import io.github.luchersol.annotations.classes.layoutManager.UseFlowLayout;
+import io.github.luchersol.annotations.fields.SetImagenIcon;
+import io.github.luchersol.annotations.fields.SetPosition;
+import io.github.luchersol.annotations.fields.listeners.single.AddActionListener;
+import io.github.luchersol.annotations.methods.handlers.single.ActionListenerHandler;
+import io.github.luchersol.annotations.methods.handlers.single.KeyListenerHandler;
+import io.github.luchersol.annotations.methods.handlers.single.ListenerHandler;
+import io.github.luchersol.annotations.mixed.fields_classes.IsVisible;
+import io.github.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
+import io.github.luchersol.annotations.mixed.fields_classes.SetSize;
+import io.github.luchersol.annotations.mixed.fields_classes.SetText;
+import io.github.luchersol.annotations.mixed.fields_classes.SetTitle;
+import io.github.luchersol.common.classes.JFrame2;
+import io.github.luchersol.common.enums.TextColor;
 
 @UseFlowLayout
 @AutoAddComponents

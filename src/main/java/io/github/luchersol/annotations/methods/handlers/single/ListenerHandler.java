@@ -1,4 +1,4 @@
-package com.jannotate.annotations.methods.handlers.single;
+package io.github.luchersol.annotations.methods.handlers.single;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Repeatable;
@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.EventListener;
 
-import com.jannotate.annotations.methods.handlers.group.ListenerHandlers;
+import io.github.luchersol.annotations.methods.handlers.group.ListenerHandlers;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

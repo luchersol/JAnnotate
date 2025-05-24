@@ -1,4 +1,4 @@
-package com.jannotate.FileChoocerTest.old;
+package io.github.luchersol.FileChoocerTest.old;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;

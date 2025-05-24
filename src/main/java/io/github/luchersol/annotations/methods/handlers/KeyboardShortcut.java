@@ -1,4 +1,4 @@
-package com.jannotate.annotations.methods.handlers;
+package io.github.luchersol.annotations.methods.handlers;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

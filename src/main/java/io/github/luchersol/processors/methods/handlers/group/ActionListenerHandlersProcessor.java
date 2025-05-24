@@ -1,11 +1,12 @@
-package com.jannotate.processors.methods.handlers.group;
+package io.github.luchersol.processors.methods.handlers.group;
 
-import com.jannotate.annotations.methods.handlers.group.ActionListenerHandlers;
-import com.jannotate.annotations.methods.handlers.single.ActionListenerHandler;
-import com.jannotate.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.processors.methods.handlers.single.ActionListenerHandlerProcessor;
+import io.github.luchersol.annotations.methods.handlers.group.ActionListenerHandlers;
+import io.github.luchersol.annotations.methods.handlers.single.ActionListenerHandler;
+import io.github.luchersol.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.processors.methods.handlers.single.ActionListenerHandlerProcessor;
 
 @JProcessor
-public class ActionListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<ActionListenerHandlerProcessor, ActionListenerHandler, ActionListenerHandlers> {
+public class ActionListenerHandlersProcessor extends
+                AbstractGroupedListenerHandlerProcessor<ActionListenerHandlerProcessor, ActionListenerHandler, ActionListenerHandlers> {
 }

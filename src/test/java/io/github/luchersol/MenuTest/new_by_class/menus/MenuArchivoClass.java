@@ -1,14 +1,14 @@
-package com.jannotate.MenuTest.new_by_class.menus;
+package io.github.luchersol.MenuTest.new_by_class.menus;
 
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import com.luchersol.annotations.classes.AutoInstantiateFields;
-import com.luchersol.annotations.fields.SetAccelerator;
-import com.luchersol.annotations.fields.listeners.single.AddActionListener;
-import com.luchersol.annotations.mixed.fields_classes.SetText;
-import com.luchersol.annotations.mixed.fields_classes.menu.AddMenuItems;
-import com.luchersol.common.classes.JMenu2;
+import io.github.luchersol.annotations.classes.AutoInstantiateFields;
+import io.github.luchersol.annotations.fields.SetAccelerator;
+import io.github.luchersol.annotations.fields.listeners.single.AddActionListener;
+import io.github.luchersol.annotations.mixed.fields_classes.SetText;
+import io.github.luchersol.annotations.mixed.fields_classes.menu.AddMenuItems;
+import io.github.luchersol.common.classes.JMenu2;
 
 @SetText("Archivo")
 @AddMenuItems({ "itemAbrir", "itemGuardar", "-", "itemSalir" })

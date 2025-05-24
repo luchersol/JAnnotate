@@ -1,4 +1,4 @@
-package com.jannotate.annotations.fields.listeners.single.mouse;
+package io.github.luchersol.annotations.fields.listeners.single.mouse;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

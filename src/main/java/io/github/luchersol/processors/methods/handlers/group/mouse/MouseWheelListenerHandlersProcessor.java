@@ -1,11 +1,12 @@
-package com.jannotate.processors.methods.handlers.group.mouse;
+package io.github.luchersol.processors.methods.handlers.group.mouse;
 
-import com.jannotate.annotations.methods.handlers.group.mouse.MouseWheelListenerHandlers;
-import com.jannotate.annotations.methods.handlers.single.mouse.MouseWheelListenerHandler;
-import com.jannotate.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.processors.methods.handlers.single.mouse.MouseWheelListenerHandlerProcessor;
+import io.github.luchersol.annotations.methods.handlers.group.mouse.MouseWheelListenerHandlers;
+import io.github.luchersol.annotations.methods.handlers.single.mouse.MouseWheelListenerHandler;
+import io.github.luchersol.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.processors.methods.handlers.single.mouse.MouseWheelListenerHandlerProcessor;
 
 @JProcessor
-public class MouseWheelListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<MouseWheelListenerHandlerProcessor, MouseWheelListenerHandler, MouseWheelListenerHandlers> {
+public class MouseWheelListenerHandlersProcessor extends
+                AbstractGroupedListenerHandlerProcessor<MouseWheelListenerHandlerProcessor, MouseWheelListenerHandler, MouseWheelListenerHandlers> {
 }

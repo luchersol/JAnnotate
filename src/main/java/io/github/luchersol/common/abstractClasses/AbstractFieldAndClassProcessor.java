@@ -1,11 +1,11 @@
-package com.jannotate.common.abstractClasses;
+package io.github.luchersol.common.abstractClasses;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
-import com.jannotate.common.exceptions.LogException;
-import com.jannotate.common.exceptions.WarningException;
-import com.jannotate.common.interfaces.FieldAndClassProccesorInterface;
+import io.github.luchersol.common.exceptions.LogException;
+import io.github.luchersol.common.exceptions.WarningException;
+import io.github.luchersol.common.interfaces.FieldAndClassProccesorInterface;
 
 public abstract class AbstractFieldAndClassProcessor<T extends Annotation> extends AbstractProcessor
         implements FieldAndClassProccesorInterface {

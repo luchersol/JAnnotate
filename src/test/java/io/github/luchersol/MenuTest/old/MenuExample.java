@@ -1,4 +1,4 @@
-package com.jannotate.MenuTest.old;
+package io.github.luchersol.MenuTest.old;
 
 import java.awt.FlowLayout;
 import java.awt.Toolkit;

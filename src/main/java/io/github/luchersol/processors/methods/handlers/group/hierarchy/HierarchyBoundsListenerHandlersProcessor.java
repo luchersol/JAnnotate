@@ -1,11 +1,12 @@
-package com.jannotate.processors.methods.handlers.group.hierarchy;
+package io.github.luchersol.processors.methods.handlers.group.hierarchy;
 
-import com.jannotate.annotations.methods.handlers.group.hierarchy.HierarchyBoundsListenerHandlers;
-import com.jannotate.annotations.methods.handlers.single.hierarchy.HierarchyBoundsListenerHandler;
-import com.jannotate.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.processors.methods.handlers.single.hierarchy.HierarchyBoundsListenerHandlerProcessor;
+import io.github.luchersol.annotations.methods.handlers.group.hierarchy.HierarchyBoundsListenerHandlers;
+import io.github.luchersol.annotations.methods.handlers.single.hierarchy.HierarchyBoundsListenerHandler;
+import io.github.luchersol.common.abstractClasses.AbstractGroupedListenerHandlerProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.processors.methods.handlers.single.hierarchy.HierarchyBoundsListenerHandlerProcessor;
 
 @JProcessor
-public class HierarchyBoundsListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<HierarchyBoundsListenerHandlerProcessor, HierarchyBoundsListenerHandler, HierarchyBoundsListenerHandlers> {
+public class HierarchyBoundsListenerHandlersProcessor extends
+                AbstractGroupedListenerHandlerProcessor<HierarchyBoundsListenerHandlerProcessor, HierarchyBoundsListenerHandler, HierarchyBoundsListenerHandlers> {
 }

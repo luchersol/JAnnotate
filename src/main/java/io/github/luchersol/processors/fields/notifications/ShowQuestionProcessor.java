@@ -1,17 +1,17 @@
-package com.jannotate.processors.fields.notifications;
+package io.github.luchersol.processors.fields.notifications;
 
 import java.awt.event.ActionListener;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.function.Function;
 
-import com.jannotate.annotations.fields.notifications.ShowQuestion;
-import com.jannotate.common.abstractClasses.AbstractFieldProcessor;
-import com.jannotate.common.annotations.JProcessor;
-import com.jannotate.common.enums.QuestionType;
-import com.jannotate.common.exceptions.LogException;
-import com.jannotate.common.exceptions.SevereException;
-import com.jannotate.common.utils.NotificationUtils;
+import io.github.luchersol.annotations.fields.notifications.ShowQuestion;
+import io.github.luchersol.common.abstractClasses.AbstractFieldProcessor;
+import io.github.luchersol.common.annotations.JProcessor;
+import io.github.luchersol.common.enums.QuestionType;
+import io.github.luchersol.common.exceptions.LogException;
+import io.github.luchersol.common.exceptions.SevereException;
+import io.github.luchersol.common.utils.NotificationUtils;
 
 @JProcessor
 public class ShowQuestionProcessor extends AbstractFieldProcessor<ShowQuestion> {
