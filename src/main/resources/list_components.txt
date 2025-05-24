@@ -1,0 +1,40 @@
+JFrame – Es la ventana principal de una aplicación GUI en Swing.
+JPanel – Contenedor genérico que puede contener otros componentes.
+JLabel – Etiqueta para mostrar texto o imágenes.
+JButton – Botón clickeable con eventos de acción.
+JTextField – Campo de texto de una sola línea.
+JTextArea – Área de texto multilínea.
+JPasswordField – Campo de texto para contraseñas (oculta los caracteres).
+JCheckBox – Casilla de verificación (checkbox) para opciones activadas o desactivadas.
+JRadioButton – Botón de opción que se usa en grupos de selección única.
+JComboBox – Menú desplegable con opciones seleccionables.
+JList – Lista de elementos seleccionables.
+JTable – Tabla para mostrar datos en filas y columnas.
+JScrollPane – Contenedor con barras de desplazamiento para otros componentes.
+JProgressBar – Barra de progreso para indicar el avance de una tarea.
+JSlider – Control deslizante para seleccionar un valor dentro de un rango.
+JSpinner – Selector numérico o de valores personalizados con botones de incremento y decremento.
+JTree – Árbol jerárquico de elementos.
+JTabbedPane – Panel con pestañas para organizar contenido en secciones.
+JSplitPane – Panel dividido en dos áreas redimensionables.
+JToolBar – Barra de herramientas con botones y controles.
+JMenuBar, JMenu y JMenuItem – Componentes para crear menús desplegables.
+JDialog: Ventana emergente que puede mostrar información o permitir interacción adicional, similar a una nueva ventana dentro de la aplicación.
+JCheckBoxMenuItem: Elemento de menú desplegable que actúa como una casilla de verificación, permitiendo marcar o desmarcar opciones.
+JTree: Componente que muestra datos en una estructura jerárquica en forma de árbol, donde los nodos pueden expandirse y contraerse.
+JFormattedTextField: Campo de texto que permite formatear la entrada de datos, como fechas, números o monedas.
+JColorChooser: Diálogo que permite al usuario seleccionar un color.
+JFileChooser: Componente para abrir o guardar archivos en un sistema de archivos.
+JSeparator: Línea divisoria que se usa para separar visualmente elementos dentro de una interfaz.
+JToolTip: Muestra un mensaje emergente cuando el usuario pasa el ratón sobre un componente, generalmente para proporcionar más información sobre lo que hace ese componente.
+JEditorPane: Componente que puede mostrar y editar texto en varios formatos, como HTML o RTF.
+JLayer: Componente que se puede usar para agregar efectos gráficos sobre otros componentes (por ejemplo, para aplicar filtros visuales).
+JOptionPane: Componente de diálogo para mostrar mensajes simples (como mensajes de alerta o confirmación) o para pedir entradas al usuario.
+JViewport: Contenedor que muestra solo una parte de un componente más grande (como una sección visible de un JPanel grande), útil para aplicar desplazamiento.
+JWindow: Ventana independiente sin decoraciones como bordes y barra de título. Ideal para crear ventanas emergentes personalizadas.
+JDesktopPane: Un contenedor que permite organizar varias ventanas internas (JInternalFrame), útil para aplicaciones tipo MDI (Interfaz de Documentos Múltiples).
+JTreeTable: Combina un JTree y un JTable, ideal para mostrar información tabular de manera jerárquica.
+JDateChooser: Un componente para seleccionar fechas de un calendario visual.
+
+Bugs:
+- Con el uso de componente FileChooser, al cerrar el programa salta el mensaje de eeror "Exception while removing reference."
