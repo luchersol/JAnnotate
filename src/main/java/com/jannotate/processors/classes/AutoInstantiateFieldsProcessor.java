@@ -30,7 +30,7 @@ public class AutoInstantiateFieldsProcessor extends AbstractClassProcessor<AutoI
                     }
                 }
             } catch (Exception e) {
-                SevereException.throw_exception("No se pudo inicializar el campo: " + field.getName());
+                SevereException.throwException("No se pudo inicializar el campo: " + field.getName());
             }
         }
     }

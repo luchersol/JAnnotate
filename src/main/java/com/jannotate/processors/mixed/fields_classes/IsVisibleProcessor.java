@@ -20,7 +20,7 @@ public class IsVisibleProcessor extends AbstractFieldAndClassProcessor<IsVisible
             Component component = (Component) field.get(object);
             component.setVisible(annotation.value());
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 
@@ -30,7 +30,7 @@ public class IsVisibleProcessor extends AbstractFieldAndClassProcessor<IsVisible
             Component component = (Component) object;
             component.setVisible(annotation.value());
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 

@@ -38,7 +38,7 @@ public class AddMenusProcessor extends AbstractFieldAndClassProcessor<AddMenus> 
             }
 
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 
@@ -60,7 +60,7 @@ public class AddMenusProcessor extends AbstractFieldAndClassProcessor<AddMenus> 
                         jMenuBar.add(getFieldAs(fieldName, object, JMenu.class));
 
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 

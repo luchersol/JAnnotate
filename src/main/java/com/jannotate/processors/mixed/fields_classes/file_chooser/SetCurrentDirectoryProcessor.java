@@ -18,7 +18,7 @@ public class SetCurrentDirectoryProcessor extends AbstractFieldAndClassProcessor
             File file = new File(annotation.value());
             processMethodInField(field, object, "setCurrentDirectory", file, File.class);
         } catch (Exception e) {
-            WarningException.throw_exception(e);
+            WarningException.throwException(e);
         }
 
     }
@@ -29,7 +29,7 @@ public class SetCurrentDirectoryProcessor extends AbstractFieldAndClassProcessor
             File file = new File(annotation.value());
             processMethodInClass(clazz, object, "setCurrentDirectory", file, File.class);
         } catch (Exception e) {
-            WarningException.throw_exception(e);
+            WarningException.throwException(e);
         }
     }
 

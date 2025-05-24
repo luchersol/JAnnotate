@@ -19,7 +19,7 @@ public class SetJMenuBarProcessor extends AbstractFieldAndClassProcessor<SetJMen
             JMenuBar jMenuBar = getFieldAs(annotation.value(), object, JMenuBar.class);
             processMethodInField(field, object, "setJMenuBar", jMenuBar, JMenuBar.class);
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 
@@ -29,7 +29,7 @@ public class SetJMenuBarProcessor extends AbstractFieldAndClassProcessor<SetJMen
             JMenuBar jMenuBar = getFieldAs(annotation.value(), object, JMenuBar.class);
             processMethodInClass(clazz, object, "setJMenuBar", jMenuBar, JMenuBar.class);
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 

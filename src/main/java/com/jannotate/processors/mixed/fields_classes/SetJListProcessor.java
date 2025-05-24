@@ -26,7 +26,7 @@ public class SetJListProcessor extends AbstractFieldAndClassProcessor<SetJList> 
 
             jList.setModel(modelo);
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 
@@ -41,7 +41,7 @@ public class SetJListProcessor extends AbstractFieldAndClassProcessor<SetJList> 
 
             jList.setModel(modelo);
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 

@@ -21,7 +21,7 @@ public class SetAcceleratorProcessor extends AbstractFieldProcessor<SetAccelerat
                     annotation.onKeyRelease());
             processMethodInField(field, object, "setAccelerator", keyStroke, KeyStroke.class);
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 

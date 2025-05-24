@@ -55,7 +55,7 @@ public abstract class AbstractGroupedListenerProcessor<P extends AbstractListene
         } catch (WarningException e) {
             logger.warning(e.getMessage());
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 

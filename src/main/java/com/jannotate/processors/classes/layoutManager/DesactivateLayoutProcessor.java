@@ -19,7 +19,7 @@ public class DesactivateLayoutProcessor extends AbstractClassProcessor<Desactiva
         try {
             processMethodInClass(clazz, object, "setLayout", new Object[] { null }, LayoutManager.class);
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 

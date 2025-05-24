@@ -28,15 +28,15 @@ public class SevereException extends LogException {
         return new SevereException(throwable);
     }
 
-    public static void throw_exception(String message) throws LogException {
+    public static void throwException(String message) throws LogException {
         throw new SevereException(message);
     }
 
-    public static void throw_exception(Collection<String> messages) throws LogException {
+    public static void throwException(Collection<String> messages) throws LogException {
         throw new SevereException(messages);
     }
 
-    public static void throw_exception(Throwable throwable) throws LogException {
+    public static void throwException(Throwable throwable) throws LogException {
         throw new SevereException(throwable);
     }
 }

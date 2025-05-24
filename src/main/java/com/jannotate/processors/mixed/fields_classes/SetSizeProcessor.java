@@ -19,7 +19,7 @@ public class SetSizeProcessor extends AbstractFieldAndClassProcessor<SetSize> {
             Dimension dimension = annotation.value() == 0 ? new Dimension(width, heigth) : new Dimension(value, value);
             processMethodInField(field, object, "setPreferredSize", dimension, Dimension.class);
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 
@@ -29,7 +29,7 @@ public class SetSizeProcessor extends AbstractFieldAndClassProcessor<SetSize> {
             processMethodInClass(clazz, object, "setSize", new Object[] { annotation.width(), annotation.heigth() },
                     int.class, int.class);
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 

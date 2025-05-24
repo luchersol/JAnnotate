@@ -33,6 +33,7 @@ public class PanelDeNotificaciones extends JFrame {
     private JButton crearBoton(String texto, int tipo, String mensaje) {
         JButton boton = new JButton(texto);
         boton.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, mensaje, texto, tipo);

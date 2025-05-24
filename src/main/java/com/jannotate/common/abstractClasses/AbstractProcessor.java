@@ -100,7 +100,7 @@ public abstract class AbstractProcessor {
             Method method = getMethod(value.getClass(), methodName, parameterType);
             method.invoke(value, params);
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 
@@ -120,7 +120,7 @@ public abstract class AbstractProcessor {
             Method method = getMethod(clazz, methodName, parameterType);
             method.invoke(object, params);
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
 
     }
@@ -146,7 +146,7 @@ public abstract class AbstractProcessor {
                 processMethodInClass((Class<?>) target, object, methodName, param, parameterType);
             }
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 

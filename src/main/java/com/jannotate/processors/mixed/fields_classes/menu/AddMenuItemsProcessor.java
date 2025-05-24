@@ -35,7 +35,7 @@ public class AddMenuItemsProcessor extends AbstractFieldAndClassProcessor<AddMen
                     else if (isFieldAs(fieldName, object, JMenuItem.class))
                         jMenu.add(getFieldAs(fieldName, object, JMenuItem.class));
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 
@@ -57,7 +57,7 @@ public class AddMenuItemsProcessor extends AbstractFieldAndClassProcessor<AddMen
                         jMenu.add(getFieldAs(fieldName, object, JMenuItem.class));
 
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 

@@ -20,7 +20,7 @@ public class SetLocationRelativeToProcessor extends AbstractFieldAndClassProcess
                 component = getFieldAs(annotation.value(), object, Component.class);
             processMethodInField(field, object, "setLocationRelativeTo", component, Component.class);
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 
@@ -34,7 +34,7 @@ public class SetLocationRelativeToProcessor extends AbstractFieldAndClassProcess
             processMethodInClass(clazz, object, "revalidate");
             processMethodInClass(clazz, object, "repaint");
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 

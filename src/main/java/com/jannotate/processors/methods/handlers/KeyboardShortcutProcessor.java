@@ -48,9 +48,9 @@ public class KeyboardShortcutProcessor extends AbstractMethodProccessor<Keyboard
             putKeyStroke(object, keyStroke, annotation.value(), abstractAction, annotation.condition());
 
         } catch (WarningException e) {
-            WarningException.throw_exception(e);
+            WarningException.throwException(e);
         } catch (Exception e) {
-            SevereException.throw_exception(e);
+            SevereException.throwException(e);
         }
     }
 
@@ -75,7 +75,7 @@ public class KeyboardShortcutProcessor extends AbstractMethodProccessor<Keyboard
         inputMap.put(keyStroke, actionKey);
         actionMap.put(actionKey, abstractAction);
         if (!errorMessages.isEmpty()) {
-            WarningException.throw_exception(errorMessages);
+            WarningException.throwException(errorMessages);
         }
 
     }
