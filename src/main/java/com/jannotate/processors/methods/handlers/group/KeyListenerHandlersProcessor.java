@@ -7,6 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.methods.handlers.single.KeyListenerHandlerProcessor;
 
 @JProcessor
-public class KeyListenerHandlersProcessor extends
-        AbstractGroupedListenerHandlerProcessor<KeyListenerHandlerProcessor, KeyListenerHandler, KeyListenerHandlers> {
+public class KeyListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<KeyListenerHandlerProcessor, KeyListenerHandler, KeyListenerHandlers> {
 }

@@ -7,7 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.methods.handlers.single.input.InputMethodListenerHandlerProcessor;
 
 @JProcessor
-public class InputMethodListenerHandlersProcessor extends
-        AbstractGroupedListenerHandlerProcessor<InputMethodListenerHandlerProcessor, InputMethodListenerHandler, InputMethodListenerHandlers> {
-
+public class InputMethodListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<InputMethodListenerHandlerProcessor, InputMethodListenerHandler, InputMethodListenerHandlers> {
 }

@@ -7,6 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.methods.handlers.single.window.WindowFocusListenerHandlerProcessor;
 
 @JProcessor
-public class WindowFocusListenerHandlersProcessor extends
-        AbstractGroupedListenerHandlerProcessor<WindowFocusListenerHandlerProcessor, WindowFocusListenerHandler, WindowFocusListenerHandlers> {
+public class WindowFocusListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<WindowFocusListenerHandlerProcessor, WindowFocusListenerHandler, WindowFocusListenerHandlers> {
 }

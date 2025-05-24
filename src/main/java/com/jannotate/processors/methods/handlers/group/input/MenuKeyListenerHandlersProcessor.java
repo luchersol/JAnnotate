@@ -7,7 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.methods.handlers.single.input.MenuKeyListenerHandlerProcessor;
 
 @JProcessor
-public class MenuKeyListenerHandlersProcessor extends
-        AbstractGroupedListenerHandlerProcessor<MenuKeyListenerHandlerProcessor, MenuKeyListenerHandler, MenuKeyListenerHandlers> {
-
+public class MenuKeyListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<MenuKeyListenerHandlerProcessor, MenuKeyListenerHandler, MenuKeyListenerHandlers> {
 }

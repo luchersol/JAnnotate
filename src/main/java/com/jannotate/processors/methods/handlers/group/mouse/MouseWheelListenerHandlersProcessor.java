@@ -7,6 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.methods.handlers.single.mouse.MouseWheelListenerHandlerProcessor;
 
 @JProcessor
-public class MouseWheelListenerHandlersProcessor extends
-        AbstractGroupedListenerHandlerProcessor<MouseWheelListenerHandlerProcessor, MouseWheelListenerHandler, MouseWheelListenerHandlers> {
+public class MouseWheelListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<MouseWheelListenerHandlerProcessor, MouseWheelListenerHandler, MouseWheelListenerHandlers> {
 }

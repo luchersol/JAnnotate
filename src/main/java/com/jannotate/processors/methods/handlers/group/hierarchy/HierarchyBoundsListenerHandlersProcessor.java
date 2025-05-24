@@ -7,6 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.methods.handlers.single.hierarchy.HierarchyBoundsListenerHandlerProcessor;
 
 @JProcessor
-public class HierarchyBoundsListenerHandlersProcessor extends
-                AbstractGroupedListenerHandlerProcessor<HierarchyBoundsListenerHandlerProcessor, HierarchyBoundsListenerHandler, HierarchyBoundsListenerHandlers> {
+public class HierarchyBoundsListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<HierarchyBoundsListenerHandlerProcessor, HierarchyBoundsListenerHandler, HierarchyBoundsListenerHandlers> {
 }

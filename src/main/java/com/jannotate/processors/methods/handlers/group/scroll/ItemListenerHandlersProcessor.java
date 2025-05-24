@@ -7,6 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.methods.handlers.single.scroll.ItemListenerHandlerProcessor;
 
 @JProcessor
-public class ItemListenerHandlersProcessor extends
-        AbstractGroupedListenerHandlerProcessor<ItemListenerHandlerProcessor, ItemListenerHandler, ItemListenerHandlers> {
+public class ItemListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<ItemListenerHandlerProcessor, ItemListenerHandler, ItemListenerHandlers> {
 }

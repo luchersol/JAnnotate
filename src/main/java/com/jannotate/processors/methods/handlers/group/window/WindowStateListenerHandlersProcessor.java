@@ -7,6 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.methods.handlers.single.window.WindowStateListenerHandlerProcessor;
 
 @JProcessor
-public class WindowStateListenerHandlersProcessor extends
-        AbstractGroupedListenerHandlerProcessor<WindowStateListenerHandlerProcessor, WindowStateListenerHandler, WindowStateListenerHandlers> {
+public class WindowStateListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<WindowStateListenerHandlerProcessor, WindowStateListenerHandler, WindowStateListenerHandlers> {
 }

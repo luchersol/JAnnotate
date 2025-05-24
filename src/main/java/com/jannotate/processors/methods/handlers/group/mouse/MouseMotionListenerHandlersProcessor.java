@@ -7,6 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.methods.handlers.single.mouse.MouseMotionListenerHandlerProcessor;
 
 @JProcessor
-public class MouseMotionListenerHandlersProcessor extends
-        AbstractGroupedListenerHandlerProcessor<MouseMotionListenerHandlerProcessor, MouseMotionListenerHandler, MouseMotionListenerHandlers> {
+public class MouseMotionListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<MouseMotionListenerHandlerProcessor, MouseMotionListenerHandler, MouseMotionListenerHandlers> {
 }

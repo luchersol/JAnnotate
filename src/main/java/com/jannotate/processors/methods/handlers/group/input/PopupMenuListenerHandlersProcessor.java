@@ -7,6 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.methods.handlers.single.input.PopupMenuListenerHandlerProcessor;
 
 @JProcessor
-public class PopupMenuListenerHandlersProcessor extends
-                AbstractGroupedListenerHandlerProcessor<PopupMenuListenerHandlerProcessor, PopupMenuListenerHandler, PopupMenuListenerHandlers> {
+public class PopupMenuListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<PopupMenuListenerHandlerProcessor, PopupMenuListenerHandler, PopupMenuListenerHandlers> {
 }

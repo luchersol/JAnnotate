@@ -7,6 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.methods.handlers.single.FocusListenerHandlerProcessor;
 
 @JProcessor
-public class FocusListenerHandlersProcessor extends
-                AbstractGroupedListenerHandlerProcessor<FocusListenerHandlerProcessor, FocusListenerHandler, FocusListenerHandlers> {
+public class FocusListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<FocusListenerHandlerProcessor, FocusListenerHandler, FocusListenerHandlers> {
 }

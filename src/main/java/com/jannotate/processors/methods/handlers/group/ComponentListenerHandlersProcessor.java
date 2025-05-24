@@ -7,6 +7,5 @@ import com.jannotate.common.annotations.JProcessor;
 import com.jannotate.processors.methods.handlers.single.ComponentListenerHandlerProcessor;
 
 @JProcessor
-public class ComponentListenerHandlersProcessor extends
-                AbstractGroupedListenerHandlerProcessor<ComponentListenerHandlerProcessor, ComponentListenerHandler, ComponentListenerHandlers> {
+public class ComponentListenerHandlersProcessor extends AbstractGroupedListenerHandlerProcessor<ComponentListenerHandlerProcessor, ComponentListenerHandler, ComponentListenerHandlers> {
 }
