@@ -42,12 +42,21 @@ public class PanelDeNotificaciones extends JFrame2 {
     JButton errorButton;
 
     @SetText("Mostrar Pregunta")
-    @ShowQuestion(title = "Mostrar Pregunta", message = "¿Deseas continuar?")
+    @ShowQuestion(title = "Mostrar Pregunta", message = "¿Deseas continuar?", functions = { "printYes:Si",
+            "printNo:No" })
     JButton questionButton;
 
     @SetText("Mostrar Plano")
     @ShowPlain(title = "Mostrar Plano", message = "Mensaje plano sin icono")
     JButton plainButton;
+
+    public void printYes() {
+        System.out.println("YES");
+    }
+
+    public void printNo() {
+        System.out.println("NO");
+    }
 
     public static void main(String[] args) {
         new PanelDeNotificaciones();

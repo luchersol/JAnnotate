@@ -6,7 +6,6 @@ public enum NotificationType {
     ERROR(JOptionPane.ERROR_MESSAGE),
     INFORMATION(JOptionPane.INFORMATION_MESSAGE),
     WARNING(JOptionPane.WARNING_MESSAGE),
-    QUESTION(JOptionPane.QUESTION_MESSAGE),
     PLAIN(JOptionPane.PLAIN_MESSAGE);
 
     private int value;
