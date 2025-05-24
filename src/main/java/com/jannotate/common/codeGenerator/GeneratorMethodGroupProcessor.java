@@ -1,61 +1,75 @@
 package com.jannotate.common.codeGenerator;
 
+import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.Set;
+
+import javax.lang.model.element.Modifier;
+
+import org.reflections.Reflections;
+
+import com.jannotate.common.annotations.JProcessor;
+import com.squareup.javapoet.ClassName;
+import com.squareup.javapoet.JavaFile;
+import com.squareup.javapoet.ParameterizedTypeName;
+import com.squareup.javapoet.TypeSpec;
 
 public class GeneratorMethodGroupProcessor {
-    private static final String INPUT_PACKAGE = "com.jannotate.processors.fields.listeners.single";
+    private static final String INPUT_PACKAGE = "com.jannotate.processors.methods.handlers.single";
     private static final String OUTPUT_DIRECTORY = "src/main/java";
 
     public static void main(String[] args) throws IOException {
-        // Reflections reflections = new Reflections(INPUT_PACKAGE);
-        // Set<Class<?>> processorClasses =
-        // reflections.getTypesAnnotatedWith(JProcessor.class);
+        Reflections reflections = new Reflections(INPUT_PACKAGE);
+        Set<Class<?>> processorClasses = reflections.getTypesAnnotatedWith(JProcessor.class);
 
-        // for (Class<?> processorClass : processorClasses) {
-        // if (!processorClass.getSimpleName().endsWith("Processor") ||
-        // processorClass.isInterface())
-        // continue;
+        for (Class<?> processorClass : processorClasses) {
+            if (!processorClass.getSimpleName().endsWith("Processor"))
+                continue;
 
-        // Type genericSuperclass = processorClass.getGenericSuperclass();
-        // if (!(genericSuperclass instanceof ParameterizedType))
-        // continue;
+            Type genericSuperclass = processorClass.getGenericSuperclass();
+            if (!(genericSuperclass instanceof ParameterizedType))
+                continue;
 
-        // ParameterizedType parameterized = (ParameterizedType) genericSuperclass;
-        // if (parameterized.getActualTypeArguments().length < 1)
-        // continue;
+            ParameterizedType parameterized = (ParameterizedType) genericSuperclass;
+            if (parameterized.getActualTypeArguments().length != 2)
+                continue;
 
-        // String baseName = processorClass.getSimpleName().replace("Processor", "");
-        // String pluralName = baseName + "s";
+            Class<?> annotationClass = (Class<?>) parameterized.getActualTypeArguments()[0];
+            Class<?> listenerClass = (Class<?>) parameterized.getActualTypeArguments()[1];
 
-        // // Crear nombres de clases y paquete
-        // ClassName originalProcessor = ClassName.get(processorClass);
-        // ClassName singleAnnotation = ClassName
-        // .bestGuess(((Class<?>) parameterized.getActualTypeArguments()[0]).getName());
-        // ClassName groupAnnotation = ClassName.bestGuess(
-        // singleAnnotation.packageName().replace("single", "group") + "." +
-        // pluralName);
+            String baseName = processorClass.getSimpleName().replace("Processor", "");
+            String pluralName = baseName + "s";
 
-        // String outputPackage =
-        // processorClass.getPackage().getName().replace("single", "group");
+            // Nombres de clases
+            ClassName originalProcessor = ClassName.get(processorClass);
+            ClassName singleAnnotation = ClassName.get(annotationClass);
+            String groupPackage = singleAnnotation.packageName().replace("single", "group");
+            String groupSimpleName = singleAnnotation.simpleName() + "s";
+            ClassName groupAnnotation = ClassName.get(groupPackage, groupSimpleName);
 
-        // // Definir tipo del nuevo processor agrupado
-        // ParameterizedTypeName superClass = ParameterizedTypeName.get(
-        // ClassName.get("com.jannotate.common.abstractClasses",
-        // "AbstractGroupedListenerProcessor"),
-        // originalProcessor, singleAnnotation, groupAnnotation);
+            String outputPackage = processorClass.getPackage().getName().replace("single", "group");
 
-        // TypeSpec groupedProcessor = TypeSpec.classBuilder(pluralName + "Processor")
-        // .addModifiers(Modifier.PUBLIC)
-        // .superclass(superClass)
-        // .addAnnotation(ClassName.get("com.jannotate.common.annotations",
-        // "JProcessor"))
-        // .build();
+            // Clase base agrupadora (ajusta si tienes otras variantes)
+            ClassName superClassRaw = ClassName.get("com.jannotate.common.abstractClasses",
+                    "AbstractGroupedListenerHandlerProcessor");
+            ParameterizedTypeName superClass = ParameterizedTypeName.get(
+                    superClassRaw,
+                    originalProcessor, singleAnnotation, groupAnnotation);
 
-        // JavaFile javaFile = JavaFile.builder(outputPackage, groupedProcessor)
-        // .build();
+            String nameFile = pluralName + "Processor";
+            TypeSpec groupedProcessor = TypeSpec.classBuilder(nameFile)
+                    .addModifiers(Modifier.PUBLIC)
+                    .superclass(superClass)
+                    .addAnnotation(ClassName.get(JProcessor.class))
+                    .build();
 
-        // javaFile.writeTo(new File(OUTPUT_DIRECTORY));
-        // System.out.println("Generado: " + pluralName + "Processor.java");
-        // }
+            JavaFile javaFile = JavaFile.builder(outputPackage, groupedProcessor)
+                    .build();
+
+            javaFile.writeTo(new File(OUTPUT_DIRECTORY));
+            System.out.println("Generado: " + nameFile + ".java");
+        }
     }
 }

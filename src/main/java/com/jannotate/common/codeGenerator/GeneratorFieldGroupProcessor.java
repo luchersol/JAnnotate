@@ -26,7 +26,7 @@ public class GeneratorFieldGroupProcessor {
         Set<Class<?>> processorClasses = reflections.getTypesAnnotatedWith(JProcessor.class);
 
         for (Class<?> processorClass : processorClasses) {
-            if (!processorClass.getSimpleName().endsWith("Processor") || processorClass.isInterface())
+            if (!processorClass.getSimpleName().endsWith("Processor"))
                 continue;
 
             Type genericSuperclass = processorClass.getGenericSuperclass();
