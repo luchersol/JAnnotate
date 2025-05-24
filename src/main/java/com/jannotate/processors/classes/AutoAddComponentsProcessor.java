@@ -142,7 +142,7 @@ public class AutoAddComponentsProcessor extends AbstractClassProcessor<AutoAddCo
 
     public static void processAddDefault(Class<?> clazz, Object object, Field field) {
         try {
-            field.setAccessible(true); // Asegurar acceso al campo
+            field.setAccessible(true);
             Object value = field.get(object);
 
             if (value == null || !Component.class.isAssignableFrom(value.getClass()))
