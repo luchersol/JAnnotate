@@ -37,7 +37,6 @@ public class GeneratorMethodGroupProcessor {
                 continue;
 
             Class<?> annotationClass = (Class<?>) parameterized.getActualTypeArguments()[0];
-            Class<?> listenerClass = (Class<?>) parameterized.getActualTypeArguments()[1];
 
             String baseName = processorClass.getSimpleName().replace("Processor", "");
             String pluralName = baseName + "s";
