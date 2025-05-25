@@ -15,36 +15,34 @@ import io.github.luchersol.common.exceptions.LogException;
 @JProcessor
 public class AddFileFiltersProcessor extends AbstractFieldAndClassProcessor<AddFileFilters> {
 
-        @Override
-        protected void process(Field field, Object object, AddFileFilters annotation) throws LogException {
-
-                for (AddFileFilter fileFilterAnnotation : annotation.value()) {
-                        FileNameExtensionFilter fileNameExtensionFilter = new FileNameExtensionFilter(
-                                        fileFilterAnnotation.description(),
-                                        fileFilterAnnotation.value());
-                        processMethodInField(field, object, "addChoosableFileFilter", fileNameExtensionFilter,
-                                        FileFilter.class);
-                        if (Objects.equals(annotation.defaultFilter(), fileFilterAnnotation.description())) {
-                                processMethodInField(field, object, "setFileFilter", fileNameExtensionFilter,
-                                                FileFilter.class);
-                        }
-                }
-
+    @Override
+    public void process(Field field, Object object, AddFileFilters annotation) throws LogException {
+        for (AddFileFilter fileFilterAnnotation : annotation.value()) {
+            FileNameExtensionFilter fileNameExtensionFilter = new FileNameExtensionFilter(
+                    fileFilterAnnotation.description(),
+                    fileFilterAnnotation.value());
+            processMethodInField(field, object, "addChoosableFileFilter", fileNameExtensionFilter,
+                    FileFilter.class);
+            if (Objects.equals(annotation.defaultFilter(), fileFilterAnnotation.description())) {
+                processMethodInField(field, object, "setFileFilter", fileNameExtensionFilter,
+                        FileFilter.class);
+            }
         }
+    }
 
-        @Override
-        protected void process(Class<?> clazz, Object object, AddFileFilters annotation) throws LogException {
-                for (AddFileFilter fileFilterAnnotation : annotation.value()) {
-                        FileNameExtensionFilter fileNameExtensionFilter = new FileNameExtensionFilter(
-                                        fileFilterAnnotation.description(),
-                                        fileFilterAnnotation.value());
-                        processMethodInClass(clazz, object, "addChoosableFileFilter", fileNameExtensionFilter,
-                                        FileFilter.class);
-                        if (Objects.equals(annotation.defaultFilter(), fileFilterAnnotation.description())) {
-                                processMethodInClass(clazz, object, "setFileFilter", fileNameExtensionFilter,
-                                                FileFilter.class);
-                        }
-                }
+    @Override
+    public void process(Class<?> clazz, Object object, AddFileFilters annotation) throws LogException {
+        for (AddFileFilter fileFilterAnnotation : annotation.value()) {
+            FileNameExtensionFilter fileNameExtensionFilter = new FileNameExtensionFilter(
+                    fileFilterAnnotation.description(),
+                    fileFilterAnnotation.value());
+            processMethodInClass(clazz, object, "addChoosableFileFilter", fileNameExtensionFilter,
+                    FileFilter.class);
+            if (Objects.equals(annotation.defaultFilter(), fileFilterAnnotation.description())) {
+                processMethodInClass(clazz, object, "setFileFilter", fileNameExtensionFilter,
+                        FileFilter.class);
+            }
         }
+    }
 
 }

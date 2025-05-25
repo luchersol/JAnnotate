@@ -5,14 +5,14 @@ import java.lang.reflect.Field;
 
 import io.github.luchersol.common.exceptions.LogException;
 import io.github.luchersol.common.exceptions.WarningException;
-import io.github.luchersol.common.interfaces.FieldAndClassProccesorInterface;
+import io.github.luchersol.common.interfaces.FieldAndClassProcessorInterface;
 
 public abstract class AbstractFieldAndClassProcessor<T extends Annotation> extends AbstractProcessor
-        implements FieldAndClassProccesorInterface {
+        implements FieldAndClassProcessorInterface {
 
-    protected abstract void process(Field field, Object object, T annotation) throws LogException;
+    public abstract void process(Field field, Object object, T annotation) throws LogException;
 
-    protected abstract void process(Class<?> clazz, Object object, T annotation) throws LogException;
+    public abstract void process(Class<?> clazz, Object object, T annotation) throws LogException;
 
     @Override
     public void process(Field field, Object object) {

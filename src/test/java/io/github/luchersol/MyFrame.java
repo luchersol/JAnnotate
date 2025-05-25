@@ -14,30 +14,19 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import io.github.luchersol.annotations.classes.AutoAddComponents;
-import io.github.luchersol.annotations.classes.AutoInstantiateFields;
-import io.github.luchersol.annotations.classes.layoutManager.UseFlowLayout;
+import io.github.luchersol.annotations.classes.AutoSetup;
 import io.github.luchersol.annotations.fields.SetImagenIcon;
 import io.github.luchersol.annotations.fields.SetPosition;
 import io.github.luchersol.annotations.fields.listeners.single.AddActionListener;
 import io.github.luchersol.annotations.methods.handlers.single.ActionListenerHandler;
 import io.github.luchersol.annotations.methods.handlers.single.KeyListenerHandler;
 import io.github.luchersol.annotations.methods.handlers.single.ListenerHandler;
-import io.github.luchersol.annotations.mixed.fields_classes.IsVisible;
-import io.github.luchersol.annotations.mixed.fields_classes.SetDefaultClose;
 import io.github.luchersol.annotations.mixed.fields_classes.SetSize;
 import io.github.luchersol.annotations.mixed.fields_classes.SetText;
-import io.github.luchersol.annotations.mixed.fields_classes.SetTitle;
 import io.github.luchersol.common.classes.JFrame2;
 import io.github.luchersol.common.enums.TextColor;
 
-@UseFlowLayout
-@AutoAddComponents
-@AutoInstantiateFields
-@IsVisible
-@SetTitle("MY FRAME")
-@SetSize(heigth = 400, width = 500)
-@SetDefaultClose(JFrame.DISPOSE_ON_CLOSE)
+@AutoSetup(defaultClose = JFrame.DISPOSE_ON_CLOSE, title = "MY FRAME", size = @SetSize(heigth = 400, width = 500))
 public class MyFrame extends JFrame2 {
 
     @SetText(value = "Click", color = TextColor.BLUE)

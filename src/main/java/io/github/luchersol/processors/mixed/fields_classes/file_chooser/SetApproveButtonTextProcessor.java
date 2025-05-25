@@ -11,12 +11,12 @@ import io.github.luchersol.common.exceptions.LogException;
 public class SetApproveButtonTextProcessor extends AbstractFieldAndClassProcessor<SetApproveButtonText> {
 
     @Override
-    protected void process(Field field, Object object, SetApproveButtonText annotation) throws LogException {
+    public void process(Field field, Object object, SetApproveButtonText annotation) throws LogException {
         processMethodInField(field, object, "setApproveButtonText", annotation.value(), String.class);
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, SetApproveButtonText annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, SetApproveButtonText annotation) throws LogException {
         processMethodInClass(clazz, object, "setApproveButtonText", annotation.value(), String.class);
     }
 

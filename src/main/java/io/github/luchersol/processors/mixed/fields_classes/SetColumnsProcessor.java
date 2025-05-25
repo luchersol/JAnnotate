@@ -11,12 +11,12 @@ import io.github.luchersol.common.exceptions.LogException;
 public class SetColumnsProcessor extends AbstractFieldAndClassProcessor<SetColumns> {
 
     @Override
-    protected void process(Field field, Object object, SetColumns annotation) throws LogException {
+    public void process(Field field, Object object, SetColumns annotation) throws LogException {
         processMethodInField(field, object, "setColumns", new Object[] { annotation.value() }, int.class);
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, SetColumns annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, SetColumns annotation) throws LogException {
         processMethodInClass(clazz, object, "setColumns", int.class);
     }
 

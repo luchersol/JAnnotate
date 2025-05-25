@@ -15,7 +15,7 @@ import io.github.luchersol.common.exceptions.SevereException;
 public class IsVisibleProcessor extends AbstractFieldAndClassProcessor<IsVisible> {
 
     @Override
-    protected void process(Field field, Object object, IsVisible annotation) throws LogException {
+    public void process(Field field, Object object, IsVisible annotation) throws LogException {
         try {
             Component component = (Component) field.get(object);
             component.setVisible(annotation.value());
@@ -25,7 +25,7 @@ public class IsVisibleProcessor extends AbstractFieldAndClassProcessor<IsVisible
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, IsVisible annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, IsVisible annotation) throws LogException {
         try {
             Component component = (Component) object;
             component.setVisible(annotation.value());

@@ -16,7 +16,7 @@ import io.github.luchersol.common.exceptions.SevereException;
 public class SetJListProcessor extends AbstractFieldAndClassProcessor<SetJList> {
 
     @Override
-    protected void process(Field field, Object object, SetJList annotation) throws LogException {
+    public void process(Field field, Object object, SetJList annotation) throws LogException {
         try {
             @SuppressWarnings("unchecked")
             JList<Object> jList = getFieldAs(field, object, JList.class);
@@ -31,7 +31,7 @@ public class SetJListProcessor extends AbstractFieldAndClassProcessor<SetJList> 
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, SetJList annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, SetJList annotation) throws LogException {
         try {
             @SuppressWarnings("unchecked")
             JList<Object> jList = (JList<Object>) object;

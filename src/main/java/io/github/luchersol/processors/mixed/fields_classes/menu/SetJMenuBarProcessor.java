@@ -14,7 +14,7 @@ import io.github.luchersol.common.exceptions.SevereException;
 public class SetJMenuBarProcessor extends AbstractFieldAndClassProcessor<SetJMenuBar> {
 
     @Override
-    protected void process(Field field, Object object, SetJMenuBar annotation) throws LogException {
+    public void process(Field field, Object object, SetJMenuBar annotation) throws LogException {
         try {
             JMenuBar jMenuBar = getFieldAs(annotation.value(), object, JMenuBar.class);
             processMethodInField(field, object, "setJMenuBar", jMenuBar, JMenuBar.class);
@@ -24,7 +24,7 @@ public class SetJMenuBarProcessor extends AbstractFieldAndClassProcessor<SetJMen
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, SetJMenuBar annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, SetJMenuBar annotation) throws LogException {
         try {
             JMenuBar jMenuBar = getFieldAs(annotation.value(), object, JMenuBar.class);
             processMethodInClass(clazz, object, "setJMenuBar", jMenuBar, JMenuBar.class);

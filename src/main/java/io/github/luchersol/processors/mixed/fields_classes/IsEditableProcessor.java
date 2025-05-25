@@ -12,7 +12,7 @@ import io.github.luchersol.common.exceptions.SevereException;
 public class IsEditableProcessor extends AbstractFieldAndClassProcessor<IsEditable> {
 
     @Override
-    protected void process(Field field, Object object, IsEditable annotation) throws LogException {
+    public void process(Field field, Object object, IsEditable annotation) throws LogException {
         try {
             processMethodInField(field, object, "setEditable", annotation.value(), boolean.class);
         } catch (Exception e) {
@@ -21,7 +21,7 @@ public class IsEditableProcessor extends AbstractFieldAndClassProcessor<IsEditab
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, IsEditable annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, IsEditable annotation) throws LogException {
         try {
             processMethodInClass(clazz, object, "setEditable", annotation.value(), boolean.class);
         } catch (Exception e) {

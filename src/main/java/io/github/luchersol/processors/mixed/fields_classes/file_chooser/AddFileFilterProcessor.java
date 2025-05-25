@@ -13,20 +13,20 @@ import io.github.luchersol.common.exceptions.LogException;
 @JProcessor
 public class AddFileFilterProcessor extends AbstractFieldAndClassProcessor<AddFileFilter> {
 
-        @Override
-        protected void process(Field field, Object object, AddFileFilter annotation) throws LogException {
-                FileNameExtensionFilter fileNameExtensionFilter = new FileNameExtensionFilter(annotation.description(),
-                                annotation.value());
-                processMethodInField(field, object, "setFileFilter", fileNameExtensionFilter,
-                                FileFilter.class);
-        }
+    @Override
+    public void process(Field field, Object object, AddFileFilter annotation) throws LogException {
+        FileNameExtensionFilter fileNameExtensionFilter = new FileNameExtensionFilter(annotation.description(),
+                annotation.value());
+        processMethodInField(field, object, "setFileFilter", fileNameExtensionFilter,
+                FileFilter.class);
+    }
 
-        @Override
-        protected void process(Class<?> clazz, Object object, AddFileFilter annotation) throws LogException {
-                FileNameExtensionFilter fileNameExtensionFilter = new FileNameExtensionFilter(annotation.description(),
-                                annotation.value());
-                processMethodInClass(clazz, object, "setFileFilter", fileNameExtensionFilter,
-                                FileFilter.class);
-        }
+    @Override
+    public void process(Class<?> clazz, Object object, AddFileFilter annotation) throws LogException {
+        FileNameExtensionFilter fileNameExtensionFilter = new FileNameExtensionFilter(annotation.description(),
+                annotation.value());
+        processMethodInClass(clazz, object, "setFileFilter", fileNameExtensionFilter,
+                FileFilter.class);
+    }
 
 }

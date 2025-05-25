@@ -19,7 +19,7 @@ import io.github.luchersol.common.exceptions.SevereException;
 public class AddMenusProcessor extends AbstractFieldAndClassProcessor<AddMenus> {
 
     @Override
-    protected void process(Field field, Object object, AddMenus annotation) throws LogException {
+    public void process(Field field, Object object, AddMenus annotation) throws LogException {
         try {
             JMenuBar jMenuBar = getFieldAs(field, object, JMenuBar.class);
             Set<String> set = new HashSet<>(Arrays.asList(annotation.value()));
@@ -43,7 +43,7 @@ public class AddMenusProcessor extends AbstractFieldAndClassProcessor<AddMenus> 
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, AddMenus annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, AddMenus annotation) throws LogException {
         try {
             JMenuBar jMenuBar = (JMenuBar) object;
             Set<String> set = new HashSet<>(Arrays.asList(annotation.value()));

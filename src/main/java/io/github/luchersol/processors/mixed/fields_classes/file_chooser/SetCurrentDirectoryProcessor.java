@@ -13,7 +13,7 @@ import io.github.luchersol.common.exceptions.WarningException;
 public class SetCurrentDirectoryProcessor extends AbstractFieldAndClassProcessor<SetCurrentDirectory> {
 
     @Override
-    protected void process(Field field, Object object, SetCurrentDirectory annotation) throws LogException {
+    public void process(Field field, Object object, SetCurrentDirectory annotation) throws LogException {
         try {
             File file = new File(annotation.value());
             processMethodInField(field, object, "setCurrentDirectory", file, File.class);
@@ -24,7 +24,7 @@ public class SetCurrentDirectoryProcessor extends AbstractFieldAndClassProcessor
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, SetCurrentDirectory annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, SetCurrentDirectory annotation) throws LogException {
         try {
             File file = new File(annotation.value());
             processMethodInClass(clazz, object, "setCurrentDirectory", file, File.class);

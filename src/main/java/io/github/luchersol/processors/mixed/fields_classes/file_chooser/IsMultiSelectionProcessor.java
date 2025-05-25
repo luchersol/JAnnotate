@@ -11,12 +11,12 @@ import io.github.luchersol.common.exceptions.LogException;
 public class IsMultiSelectionProcessor extends AbstractFieldAndClassProcessor<IsMultiSelection> {
 
     @Override
-    protected void process(Field field, Object object, IsMultiSelection annotation) throws LogException {
+    public void process(Field field, Object object, IsMultiSelection annotation) throws LogException {
         processMethodInFieldOrClass(annotation, object, "setMultiSelectionEnabled", annotation.value(), boolean.class);
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, IsMultiSelection annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, IsMultiSelection annotation) throws LogException {
         processMethodInClass(clazz, object, "setMultiSelectionEnabled", annotation.value(), boolean.class);
     }
 

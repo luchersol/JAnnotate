@@ -13,7 +13,7 @@ import io.github.luchersol.common.exceptions.SevereException;
 public class SetLocationRelativeToProcessor extends AbstractFieldAndClassProcessor<SetLocationRelativeTo> {
 
     @Override
-    protected void process(Field field, Object object, SetLocationRelativeTo annotation) throws LogException {
+    public void process(Field field, Object object, SetLocationRelativeTo annotation) throws LogException {
         try {
             Component component = null;
             if (!annotation.value().isBlank())
@@ -25,7 +25,7 @@ public class SetLocationRelativeToProcessor extends AbstractFieldAndClassProcess
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, SetLocationRelativeTo annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, SetLocationRelativeTo annotation) throws LogException {
         try {
             Component component = null;
             if (!annotation.value().isBlank())

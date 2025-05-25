@@ -11,12 +11,12 @@ import io.github.luchersol.common.exceptions.LogException;
 public class SetFileSelectionModeProcessor extends AbstractFieldAndClassProcessor<SetFileSelectionMode> {
 
     @Override
-    protected void process(Field field, Object object, SetFileSelectionMode annotation) throws LogException {
+    public void process(Field field, Object object, SetFileSelectionMode annotation) throws LogException {
         processMethodInField(field, object, "setFileSelectionMode", annotation.value(), int.class);
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, SetFileSelectionMode annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, SetFileSelectionMode annotation) throws LogException {
         processMethodInClass(clazz, object, "setFileSelectionMode", annotation.value(), int.class);
     }
 

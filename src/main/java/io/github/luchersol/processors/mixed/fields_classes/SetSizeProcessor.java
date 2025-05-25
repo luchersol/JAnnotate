@@ -13,7 +13,7 @@ import io.github.luchersol.common.exceptions.SevereException;
 public class SetSizeProcessor extends AbstractFieldAndClassProcessor<SetSize> {
 
     @Override
-    protected void process(Field field, Object object, SetSize annotation) throws LogException {
+    public void process(Field field, Object object, SetSize annotation) throws LogException {
         try {
             int value = annotation.value(), width = annotation.width(), heigth = annotation.heigth();
             Dimension dimension = annotation.value() == 0 ? new Dimension(width, heigth) : new Dimension(value, value);
@@ -24,7 +24,7 @@ public class SetSizeProcessor extends AbstractFieldAndClassProcessor<SetSize> {
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, SetSize annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, SetSize annotation) throws LogException {
         try {
             processMethodInClass(clazz, object, "setSize", new Object[] { annotation.width(), annotation.heigth() },
                     int.class, int.class);

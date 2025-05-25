@@ -11,12 +11,12 @@ import io.github.luchersol.common.exceptions.LogException;
 public class SetTitleProcessor extends AbstractFieldAndClassProcessor<SetTitle> {
 
     @Override
-    protected void process(Field field, Object object, SetTitle annotation) throws LogException {
+    public void process(Field field, Object object, SetTitle annotation) throws LogException {
         processMethodInField(field, object, "setTitle", annotation.value(), String.class);
     }
 
     @Override
-    protected void process(Class<?> clazz, Object object, SetTitle annotation) throws LogException {
+    public void process(Class<?> clazz, Object object, SetTitle annotation) throws LogException {
         processMethodInClass(clazz, object, "setTitle", annotation.value(), String.class);
     }
 
