@@ -6,8 +6,8 @@
 
     <!-- Actualiza el groupId y artifactId para reflejar el nuevo nombre del proyecto -->
     <groupId>io.github.luchersol</groupId>
-    <artifactId>JAnnotate</artifactId>
-    <version>1.0.0</version> <!-- Puedes actualizar la versión según corresponda -->
+    <artifactId>jannotate</artifactId>
+    <version>1.0.2-SNAPSHOT</version> <!-- Puedes actualizar la versión según corresponda -->
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -21,6 +21,8 @@
             <url>https://maven.pkg.github.com/luchersol/JAnnotate</url>
         </repository>
     </distributionManagement>
+
+    <packaging>jar</packaging>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
